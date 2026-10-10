@@ -3,7 +3,7 @@ name: Deploy static guides
 on:
   push:
     branches: [main]
-  workflow_dispatch:
+  workflow_dispatch: {}
 
 permissions:
   contents: read
@@ -18,7 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     outputs:
-      project_name: ${{ steps.config.outputs.project_name }}
+      public_site_url: ${{ steps.config.outputs.public_site_url }}
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -36,7 +36,6 @@ jobs:
       - name: Validate publishing configuration
         id: config
         env:
-          PAGES_PROJECT: ${{ vars.CLOUDFLARE_PAGES_PROJECT_NAME || 'us-new-entities' }}
           PUBLIC_SITE_URL: ${{ vars.PUBLIC_SITE_URL }}
         run: |
           python - <<'PY'
@@ -47,9 +46,7 @@ jobs:
 
           from us_new_entities.geo.redirect import validate_public_site_url
 
-          project = os.environ['PAGES_PROJECT']
-          if not re.fullmatch(r'[a-z0-9](?:[a-z0-9-]{0,56}[a-z0-9])?', project):
-              raise SystemExit('CLOUDFLARE_PAGES_PROJECT_NAME must be a lowercase DNS slug, at most 58 characters.')
+          project = 'us-new-entities'
           origin = validate_public_site_url(
               os.environ.get('PUBLIC_SITE_URL') or f'https://{project}.pages.dev'
           )
@@ -73,7 +70,7 @@ jobs:
           if any(hostname == suffix or hostname.endswith('.' + suffix) for suffix in reserved):
               raise SystemExit('Replace the example PUBLIC_SITE_URL with the deployed Pages origin.')
           with open(os.environ['GITHUB_OUTPUT'], 'a', encoding='utf-8') as output:
-              output.write(f'project_name={project}\npublic_site_url={origin}\n')
+              output.write(f'public_site_url={origin}\n')
           PY
       - name: Generate flat LLC and corporation guides
         env:
@@ -83,24 +80,10 @@ jobs:
         run: |
           python -m us_new_entities.geo.generator dist \
             --layout flat --extensionless-urls --entity-type LLC --entity-type C-Corp
-      - name: Verify deployment artifact layout
-        run: |
-          python - <<'PY'
-          from pathlib import Path
-
-          root = Path('dist')
-          expected = {'llms.txt', 'robots.txt'} | {
-              f'{state}-{entity}-foreign-qualification.{extension}'
-              for state in ('ca', 'de', 'fl', 'tx', 'wy')
-              for entity in ('llc', 'c-corp')
-              for extension in ('html', 'md')
-          }
-          actual = {path.name for path in root.iterdir()}
-          if actual != expected or any(
-              not path.is_file() or path.is_symlink() for path in root.iterdir()
-          ):
-              raise SystemExit('Expected exactly 22 regular files at the deployment root.')
-          PY
+      - name: Verify static assets, schemas, and extensionless routes
+        env:
+          PUBLIC_SITE_URL: ${{ steps.config.outputs.public_site_url }}
+        run: python -m us_new_entities.geo.verify dist --base-url "$PUBLIC_SITE_URL"
       - uses: actions/upload-artifact@v4
         with:
           name: static-guides
@@ -114,6 +97,12 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install static-site health checker
+        run: python -m pip install --no-deps .
       - uses: actions/download-artifact@v4
         with:
           name: static-guides
@@ -133,4 +122,17 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           wranglerVersion: '4'
-          command: pages deploy dist --project-name=${{ needs.build.outputs.project_name }} --branch=main
+          command: pages deploy dist --project-name=us-new-entities --branch=main
+      - name: Verify published assets and response headers
+        env:
+          PUBLIC_SITE_URL: ${{ needs.build.outputs.public_site_url }}
+        run: |
+          for attempt in 1 2 3 4 5; do
+            if python -m us_new_entities.geo.verify dist --base-url "$PUBLIC_SITE_URL" --check-live; then
+              exit 0
+            fi
+            if [ "$attempt" -lt 5 ]; then
+              sleep 5
+            fi
+          done
+          exit 1

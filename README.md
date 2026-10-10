@@ -264,18 +264,19 @@ rejection; it does not promise instant foreign qualification.
 [.github/workflows/deploy.yml](.github/workflows/deploy.yml) runs on pushes to
 `main` and manual runs on `main`. It installs the project, runs the full pytest
 suite and Ruff checks, builds the ten LLC/C-Corp guides, validates the 22-file
-artifact, then deploys that artifact with Wrangler. Failed checks prevent deployment.
+artifact, then deploys that artifact with Wrangler. Failed build checks prevent
+deployment; post-deployment checks verify the published files and HTTP content types.
 
 Configure the repository before running the workflow:
 
 1. Create a Cloudflare Pages **Direct Upload** project with production branch
-   `main`. The default project name is `us-new-entities`; set the GitHub Actions
-   variable `CLOUDFLARE_PAGES_PROJECT_NAME` if yours differs.
+   `main`, named `us-new-entities`. The workflow explicitly deploys to this project
+   and uploads `dist/`.
 2. Add GitHub Actions repository secrets `CLOUDFLARE_API_TOKEN` (with Cloudflare
    Pages Edit permission for the account) and `CLOUDFLARE_ACCOUNT_ID`.
 3. Optionally set repository variable `PUBLIC_SITE_URL` to a custom HTTPS origin
    already connected to that Pages project. When unset, the workflow derives
-   `https://<project-name>.pages.dev`. Publishing rejects reserved example domains.
+   `https://us-new-entities.pages.dev`. Publishing rejects reserved example domains.
 4. Optionally set `NORTHWEST_AFFILIATE_URL` and `HARBOR_AFFILIATE_URL` repository
    variables to approved partner URLs. Unlike the library's local example-ID
    templates, the workflow uses direct provider service links when these are unset.
@@ -300,6 +301,21 @@ Reproduce the deployment export locally, using your actual publishing origin:
 `--extensionless-urls` requires the flat layout. Omit it for hosts that serve the
 `.html` URLs directly. Publishing configuration comes from GitHub Actions
 variables and secrets; the workflow does not copy a local `.env` file.
+
+Verify the generated deployment before publishing:
+
+```sh
+.venv/bin/python -m us_new_entities.geo.verify dist \
+  --base-url https://us-new-entities.pages.dev
+```
+
+The checker requires exactly 22 flat files, validates HTML head metadata and
+JSON-LD graphs, resolves local links and extensionless routes to existing files,
+and checks discovery links and crawler rules. It exits unsuccessfully on errors.
+Add `--check-live` after deployment to also fetch the published assets, check HTTP
+status and content types, and compare response contents to the generated files.
+The workflow retries this live check briefly to allow deployment propagation.
+To deploy manually, choose **Actions → Deploy static guides → Run workflow** on `main`.
 
 ## Public registry adapter
 
