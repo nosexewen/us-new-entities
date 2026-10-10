@@ -116,12 +116,13 @@ jobs:
             echo 'Set CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID repository secrets before deploying.'
             exit 1
           fi
-      - name: Deploy verified artifact to Cloudflare Pages
+      - name: Deploy dist to us-new-entities (main)
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           wranglerVersion: '4'
+          # Equivalent CLI: npx wrangler pages deploy dist --project-name=us-new-entities --branch=main
           command: pages deploy dist --project-name=us-new-entities --branch=main
       - name: Verify published assets and response headers
         env:
