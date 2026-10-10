@@ -1,0 +1,73 @@
+[
+  {
+    "legal_name": "Forfeited Delaware LLC",
+    "entity_type": "LLC",
+    "domestic_state": "DE",
+    "formation_date": "2020-02-29",
+    "sos_entity_id": "000042",
+    "status": "Forfeited",
+    "target_state": "CA",
+    "activities": ["operating_office"],
+    "decision": "required",
+    "foreign_filing_required": true,
+    "reinstatement_required": true,
+    "filing_blocked": true
+  },
+  {
+    "legal_name": "Revoked Texas Corporation",
+    "entity_type": "C-Corp",
+    "domestic_state": "TX",
+    "formation_date": "2019-12-31",
+    "sos_entity_id": "000043",
+    "status": "Revoked",
+    "target_state": "FL",
+    "activities": ["regular_local_services"],
+    "decision": "required",
+    "foreign_filing_required": true,
+    "reinstatement_required": true,
+    "filing_blocked": true
+  },
+  {
+    "legal_name": "Wyoming Interstate LP",
+    "entity_type": "LP",
+    "domestic_state": "WY",
+    "formation_date": "2024-02-29",
+    "sos_entity_id": "000044",
+    "status": "Good Standing",
+    "target_state": "DE",
+    "activities": ["interstate_commerce_only", "bank_account_only"],
+    "decision": "not_required",
+    "foreign_filing_required": false,
+    "reinstatement_required": false,
+    "filing_blocked": false
+  },
+  {
+    "legal_name": "California Existing Foreign LLC",
+    "entity_type": "LLC",
+    "domestic_state": "CA",
+    "formation_date": "2022-04-01",
+    "sos_entity_id": "000045",
+    "status": "Good Standing",
+    "target_state": "WY",
+    "activities": ["operating_office"],
+    "is_qualified": true,
+    "decision": "required",
+    "foreign_filing_required": false,
+    "reinstatement_required": false,
+    "filing_blocked": false
+  },
+  {
+    "legal_name": "Delaware Online Corporation",
+    "entity_type": "C-Corp",
+    "domestic_state": "DE",
+    "formation_date": "2023-07-10",
+    "sos_entity_id": "000046",
+    "status": "Good Standing",
+    "target_state": "TX",
+    "activities": ["online_sales_facts_unspecified"],
+    "decision": "review_required",
+    "foreign_filing_required": null,
+    "reinstatement_required": false,
+    "filing_blocked": false
+  }
+]

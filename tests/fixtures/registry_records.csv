@@ -1,0 +1,9 @@
+legal_name,entity_type,domestic_state,formation_date,sos_entity_id,status,source_jurisdiction,status_jurisdiction
+Zero Prefix LLC,Limited Liability Company,Delaware,2024-02-29,00001234,Good Standing,California,Delaware
+Forfeited Expansion Inc,C-Corp,Delaware,03/01/2020,0000009,Forfeited,California,Delaware
+Suspended LP,Limited Partnership,Florida,2022-06-15,00880,Suspended,California,Florida
+Ambiguous Active LLC,LLC,Wyoming,2024-01-01,0044,Active,California,Wyoming
+Invalid Date LLC,LLC,Delaware,2023-02-29,0055,Good Standing,California,Delaware
+Missing Origin LLC,LLC,,2024-01-01,0066,Good Standing,California,
+Unsupported Form,Nonprofit Corporation,Delaware,2024-01-01,0077,Good Standing,California,Delaware
+Later Valid LP,LP,Wyoming,12/31/2023,0088,Revoked,California,Wyoming

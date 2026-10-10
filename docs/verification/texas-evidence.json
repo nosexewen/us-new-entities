@@ -1,0 +1,200 @@
+[
+  {
+    "name": "tx301",
+    "url": "https://www.sos.state.tx.us/corp/forms/301_boc.pdf",
+    "final_url": "https://www.sos.state.tx.us/corp/forms/301_boc.pdf",
+    "status": 200,
+    "content_type": "application/pdf",
+    "bytes": 653990,
+    "sha256": "43c8b19f057bdb4ed52be37b29324a38c8e0ebcd16539172621109c06a1dc9b7",
+    "retrieved_on": "2026-10-10",
+    "content_reviewed": true
+  },
+  {
+    "name": "tx304",
+    "url": "https://www.sos.state.tx.us/corp/forms/304_boc.pdf",
+    "final_url": "https://www.sos.state.tx.us/corp/forms/304_boc.pdf",
+    "status": 200,
+    "content_type": "application/pdf",
+    "bytes": 672793,
+    "sha256": "4577c3494e413e30947133a47a85cf07493a52eafbc39d0cd2b69b4c6a60fe55",
+    "retrieved_on": "2026-10-10",
+    "content_reviewed": true
+  },
+  {
+    "name": "tx306",
+    "url": "https://www.sos.state.tx.us/corp/forms/306_boc.pdf",
+    "final_url": "https://www.sos.state.tx.us/corp/forms/306_boc.pdf",
+    "status": 200,
+    "content_type": "application/pdf",
+    "bytes": 691771,
+    "sha256": "007e9a47d048d11832c671e31b7558f16a871230b451dbeb88d7fd5da2ed4011",
+    "retrieved_on": "2026-10-10",
+    "content_reviewed": true
+  },
+  {
+    "name": "tx806",
+    "url": "https://www.sos.state.tx.us/corp/forms/806_boc.pdf",
+    "final_url": "https://www.sos.state.tx.us/corp/forms/806_boc.pdf",
+    "status": 200,
+    "content_type": "application/pdf",
+    "bytes": 132166,
+    "sha256": "16a36e0ce0b7ba7f0b5ac0829e68f0d9bf50d22d83ef4a124caed04270c2a0b6",
+    "retrieved_on": "2026-10-10",
+    "content_reviewed": true
+  },
+  {
+    "name": "txforeignfaq",
+    "url": "https://www.sos.state.tx.us/corp/foreignfaqs.shtml",
+    "final_url": "https://www.sos.state.tx.us/corp/foreignfaqs.shtml",
+    "status": 200,
+    "content_type": "text/html",
+    "bytes": 53488,
+    "sha256": "b860b549b94d32f0123772a28be635ef3fb421bdd4404ddf65a70a5650a57d7f",
+    "retrieved_on": "2026-10-10",
+    "content_reviewed": true
+  },
+  {
+    "name": "txformsinstructions",
+    "url": "https://www.sos.state.tx.us/corp/instructions/304.shtml",
+    "final_url": "https://www.sos.state.tx.us/corp/instructions/304.shtml",
+    "status": 200,
+    "content_type": "text/html",
+    "bytes": 34795,
+    "sha256": "f4a4a188240155a33f288207f24d728cae5c4a4f10e865eb44f8f7c50729bd9c",
+    "retrieved_on": "2026-10-10",
+    "content_reviewed": true
+  },
+  {
+    "name": "txagentfaq",
+    "url": "https://www.sos.state.tx.us/corp/registeredagentfaqs.shtml",
+    "final_url": "https://www.sos.state.tx.us/corp/registeredagentfaqs.shtml",
+    "status": 200,
+    "content_type": "text/html",
+    "bytes": 31488,
+    "sha256": "e3cfdaa0f307a56614d315b1f7519751159c8fbfdb9a9e47b5477ea264211195",
+    "retrieved_on": "2026-10-10",
+    "content_reviewed": true
+  },
+  {
+    "name": "tx804instructions",
+    "url": "https://www.sos.state.tx.us/corp/instructions/804.shtml",
+    "final_url": "https://www.sos.state.tx.us/corp/instructions/804.shtml",
+    "status": 200,
+    "content_type": "text/html",
+    "bytes": 30100,
+    "sha256": "305de5991822d4ee77305021f9a6222a8f0724beff60daca6948069696e28b74",
+    "retrieved_on": "2026-10-10",
+    "content_reviewed": true
+  },
+  {
+    "name": "txfranchise",
+    "url": "https://comptroller.texas.gov/taxes/franchise/",
+    "final_url": "https://comptroller.texas.gov/taxes/franchise/",
+    "status": 200,
+    "content_type": "text/html; charset=UTF-8",
+    "bytes": 137836,
+    "sha256": "907a5040fe9fd42d64b30d96d6d6fa9f83b7536419967a90a9c92c884d240576",
+    "retrieved_on": "2026-10-10",
+    "content_reviewed": true
+  },
+  {
+    "name": "txpir",
+    "url": "https://comptroller.texas.gov/taxes/franchise/pir-oir-filing-req.php",
+    "final_url": "https://comptroller.texas.gov/taxes/franchise/pir-oir-filing-req.php",
+    "status": 200,
+    "content_type": "text/html; charset=UTF-8",
+    "bytes": 127201,
+    "sha256": "98a7a2b1cb619ccb35b3b8937ec29165d2a3a90fc955dc14e4c98e64e4015591",
+    "retrieved_on": "2026-10-10",
+    "content_reviewed": true
+  },
+  {
+    "name": "txdue",
+    "url": "https://comptroller.texas.gov/taxes/franchise/filing-requirements.php",
+    "final_url": "https://comptroller.texas.gov/taxes/franchise/filing-requirements.php",
+    "status": 200,
+    "content_type": "text/html; charset=UTF-8",
+    "bytes": 124242,
+    "sha256": "3f3cdc7393dacc3e7cb82420db4997c763dfb5f57fb352eaef7b922bd60042c5",
+    "retrieved_on": "2026-10-10",
+    "content_reviewed": true
+  },
+  {
+    "name": "txexpress",
+    "url": "https://www.sos.state.tx.us/express.shtml",
+    "final_url": "https://www.sos.state.tx.us/express.shtml",
+    "status": 200,
+    "content_type": "text/html",
+    "bytes": 27315,
+    "sha256": "2497942f4919bf64d5384aec020852838a348acb1dd81f093abc69d2c1deb82b",
+    "retrieved_on": "2026-10-10",
+    "content_reviewed": true
+  },
+  {
+    "name": "txpayments",
+    "url": "https://www.sos.state.tx.us/corp/options.shtml",
+    "final_url": "https://www.sos.state.tx.us/corp/options.shtml",
+    "status": 200,
+    "content_type": "text/html",
+    "bytes": 21443,
+    "sha256": "59e64f6a37028b85bc6c9234e609b32b4a974bcaadac84cf03e3f583ba606e4a",
+    "retrieved_on": "2026-10-10",
+    "content_reviewed": true
+  },
+  {
+    "name": "tx9",
+    "url": "https://tcss.legis.texas.gov/resources/BO/htm/BO.9.htm",
+    "final_url": "https://tcss.legis.texas.gov/resources/BO/htm/BO.9.htm",
+    "status": 200,
+    "bytes": 74333,
+    "content_type": "text/html",
+    "sha256": "c86d30bf716acfcdeb20eb425d4c20cd9dc9cb3c366cc0ccd639ee51a75f6f18",
+    "retrieved_on": "2026-10-10",
+    "content_reviewed": true
+  },
+  {
+    "name": "tx5",
+    "url": "https://tcss.legis.texas.gov/resources/BO/htm/BO.5.htm",
+    "final_url": "https://tcss.legis.texas.gov/resources/BO/htm/BO.5.htm",
+    "status": 200,
+    "bytes": 88386,
+    "content_type": "text/html",
+    "sha256": "499cbf9b38c583b877e57b17ad452b4384b5e472772903dc099e8cb6dc46835d",
+    "retrieved_on": "2026-10-10",
+    "content_reviewed": true
+  },
+  {
+    "name": "tx153",
+    "url": "https://tcss.legis.texas.gov/resources/BO/htm/BO.153.htm",
+    "final_url": "https://tcss.legis.texas.gov/resources/BO/htm/BO.153.htm",
+    "status": 200,
+    "bytes": 168269,
+    "content_type": "text/html",
+    "sha256": "bae2140734acf9a0c72abe26e44f07e9771b9ae7b26937282c7a8b9707ecdb80",
+    "retrieved_on": "2026-10-10",
+    "content_reviewed": true
+  },
+  {
+    "name": "tx171",
+    "url": "https://tcss.legis.texas.gov/resources/TX/htm/TX.171.htm",
+    "final_url": "https://tcss.legis.texas.gov/resources/TX/htm/TX.171.htm",
+    "status": 200,
+    "bytes": 383676,
+    "content_type": "text/html",
+    "sha256": "c2991f08337f8ab379317645feb06ae09a49b24b103e07e0e5d7fb900774064e",
+    "retrieved_on": "2026-10-10",
+    "content_reviewed": true
+  },
+  {
+    "name": "tx111",
+    "url": "https://tcss.legis.texas.gov/resources/TX/htm/TX.111.htm",
+    "final_url": "https://tcss.legis.texas.gov/resources/TX/htm/TX.111.htm",
+    "status": 200,
+    "bytes": 209983,
+    "content_type": "text/html",
+    "sha256": "b5f640cd58dc93b5afaecbeede04c6e8112b6fafb7720cc639e853a79c0f03a4",
+    "retrieved_on": "2026-10-10",
+    "content_reviewed": true
+  }
+]

@@ -1,0 +1,79 @@
+[
+  {
+    "name": "wy17",
+    "url": "https://wyoleg.gov/statutes/compress/title17.pdf",
+    "final_url": "https://wyoleg.gov/statutes/compress/title17.pdf",
+    "status": 200,
+    "content_type": "application/pdf",
+    "bytes": 2488815,
+    "sha256": "f0fd7eb843b83bb60095bad496330f8dfd46ff7051dff8d1bec822650a3671f6",
+    "retrieved_on": "2026-10-10",
+    "content_reviewed": true
+  },
+  {
+    "name": "wyprofit",
+    "url": "https://sos.wyo.gov/Forms/Business/FPROF/FP-CertificateAuthority.pdf",
+    "final_url": "https://sos.wyo.gov/Forms/Business/FPROF/FP-CertificateAuthority.pdf",
+    "status": 200,
+    "content_type": "application/pdf",
+    "bytes": 611845,
+    "sha256": "6fa90d2d6c4b3c31e5fb3729a4840f5119890cbb8b7c659e0dae607462264c85",
+    "retrieved_on": "2026-10-10",
+    "content_reviewed": true
+  },
+  {
+    "name": "wyllc",
+    "url": "https://sos.wyo.gov/Forms/Business/FLLC/FLLC-CertificateAuthority.pdf",
+    "final_url": "https://sos.wyo.gov/Forms/Business/FLLC/FLLC-CertificateAuthority.pdf",
+    "status": 200,
+    "content_type": "application/pdf",
+    "bytes": 696036,
+    "sha256": "8143419e6f96bd787de264f00207d6fab2544d910c190962dbd003c6b319316c",
+    "retrieved_on": "2026-10-10",
+    "content_reviewed": true
+  },
+  {
+    "name": "wylp",
+    "url": "https://sos.wyo.gov/Forms/Business/FLP/FLP-CertificateRegistration.pdf",
+    "final_url": "https://sos.wyo.gov/Forms/Business/FLP/FLP-CertificateRegistration.pdf",
+    "status": 200,
+    "content_type": "application/pdf",
+    "bytes": 604273,
+    "sha256": "37f6677cc60e65387a0696e5e1f2e159f51bc45ef3d1cdd2368cbb885a39e548",
+    "retrieved_on": "2026-10-10",
+    "content_reviewed": true
+  },
+  {
+    "name": "wyfees",
+    "url": "https://sos.wyo.gov/Business/docs/BusinessFees.pdf",
+    "final_url": "https://sos.wyo.gov/Business/docs/BusinessFees.pdf",
+    "status": 200,
+    "content_type": "application/pdf",
+    "bytes": 481502,
+    "sha256": "bbaefb74edfa885839a01317dfb79006e81d200e47b6d876ded223eadc97bc8b",
+    "retrieved_on": "2026-10-10",
+    "content_reviewed": true
+  },
+  {
+    "name": "wyfaqbus",
+    "url": "https://sos.wyo.gov/faqs.aspx?root=BUS",
+    "final_url": "https://sos.wyo.gov/faqs.aspx?root=BUS",
+    "status": 200,
+    "content_type": "text/html; charset=utf-8",
+    "bytes": 111163,
+    "sha256": "ff8b0738de6c51cb80c50aef04b9daa837b60be6c7a89d839e208c340f08ca5f",
+    "retrieved_on": "2026-10-10",
+    "content_reviewed": true
+  },
+  {
+    "name": "wyfaqra",
+    "url": "https://sos.wyo.gov/faqs.aspx?root=RAO",
+    "final_url": "https://sos.wyo.gov/faqs.aspx?root=RAO",
+    "status": 200,
+    "content_type": "text/html; charset=utf-8",
+    "bytes": 66391,
+    "sha256": "fa09c1ec04fc78624b3c635aa7c5c2030e52a4b1879665b0c84cdf945aa6bcbd",
+    "retrieved_on": "2026-10-10",
+    "content_reviewed": true
+  }
+]

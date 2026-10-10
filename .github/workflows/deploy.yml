@@ -1,0 +1,136 @@
+name: Deploy static guides
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: cloudflare-pages-production
+  cancel-in-progress: false
+
+jobs:
+  build:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    outputs:
+      project_name: ${{ steps.config.outputs.project_name }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: pyproject.toml
+      - name: Install project and verification tools
+        run: python -m pip install -e '.[dev]'
+      - name: Verify tests and code style
+        run: |
+          python -m pytest
+          ruff check src tests
+          ruff format --check src tests
+      - name: Validate publishing configuration
+        id: config
+        env:
+          PAGES_PROJECT: ${{ vars.CLOUDFLARE_PAGES_PROJECT_NAME || 'us-new-entities' }}
+          PUBLIC_SITE_URL: ${{ vars.PUBLIC_SITE_URL }}
+        run: |
+          python - <<'PY'
+          import ipaddress
+          import os
+          import re
+          from urllib.parse import urlsplit
+
+          from us_new_entities.geo.redirect import validate_public_site_url
+
+          project = os.environ['PAGES_PROJECT']
+          if not re.fullmatch(r'[a-z0-9](?:[a-z0-9-]{0,56}[a-z0-9])?', project):
+              raise SystemExit('CLOUDFLARE_PAGES_PROJECT_NAME must be a lowercase DNS slug, at most 58 characters.')
+          origin = validate_public_site_url(
+              os.environ.get('PUBLIC_SITE_URL') or f'https://{project}.pages.dev'
+          )
+          parsed = urlsplit(origin)
+          hostname = parsed.hostname
+          if parsed.port not in (None, 443):
+              raise SystemExit('PUBLIC_SITE_URL must use the default HTTPS port.')
+          try:
+              ipaddress.ip_address(hostname)
+          except ValueError:
+              pass
+          else:
+              raise SystemExit('PUBLIC_SITE_URL must use the deployed Pages hostname or a custom domain.')
+          labels = hostname.split('.')
+          if len(labels) < 2 or any(
+              not re.fullmatch(r'[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?', label)
+              for label in labels
+          ):
+              raise SystemExit('PUBLIC_SITE_URL must contain a valid public DNS hostname.')
+          reserved = ('localhost', 'local', 'test', 'invalid', 'example', 'example.com', 'example.net', 'example.org')
+          if any(hostname == suffix or hostname.endswith('.' + suffix) for suffix in reserved):
+              raise SystemExit('Replace the example PUBLIC_SITE_URL with the deployed Pages origin.')
+          with open(os.environ['GITHUB_OUTPUT'], 'a', encoding='utf-8') as output:
+              output.write(f'project_name={project}\npublic_site_url={origin}\n')
+          PY
+      - name: Generate flat LLC and corporation guides
+        env:
+          PUBLIC_SITE_URL: ${{ steps.config.outputs.public_site_url }}
+          NORTHWEST_AFFILIATE_URL: ${{ vars.NORTHWEST_AFFILIATE_URL || 'https://www.northwestregisteredagent.com/registered-agent' }}
+          HARBOR_AFFILIATE_URL: ${{ vars.HARBOR_AFFILIATE_URL || 'https://www.harborcompliance.com/registered-agent' }}
+        run: |
+          python -m us_new_entities.geo.generator dist \
+            --layout flat --extensionless-urls --entity-type LLC --entity-type C-Corp
+      - name: Verify deployment artifact layout
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          root = Path('dist')
+          expected = {'llms.txt', 'robots.txt'} | {
+              f'{state}-{entity}-foreign-qualification.{extension}'
+              for state in ('ca', 'de', 'fl', 'tx', 'wy')
+              for entity in ('llc', 'c-corp')
+              for extension in ('html', 'md')
+          }
+          actual = {path.name for path in root.iterdir()}
+          if actual != expected or any(
+              not path.is_file() or path.is_symlink() for path in root.iterdir()
+          ):
+              raise SystemExit('Expected exactly 22 regular files at the deployment root.')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: static-guides
+          path: dist/
+          if-no-files-found: error
+          retention-days: 7
+
+  deploy:
+    needs: build
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: static-guides
+          path: dist/
+      - name: Check deployment credentials
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: |
+          if [ -z "$CLOUDFLARE_API_TOKEN" ] || [ -z "$CLOUDFLARE_ACCOUNT_ID" ]; then
+            echo 'Set CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID repository secrets before deploying.'
+            exit 1
+          fi
+      - name: Deploy verified artifact to Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          wranglerVersion: '4'
+          command: pages deploy dist --project-name=${{ needs.build.outputs.project_name }} --branch=main
