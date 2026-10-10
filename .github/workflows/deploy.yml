@@ -118,12 +118,14 @@ jobs:
           fi
       - name: Deploy dist to us-new-entities (main)
         uses: cloudflare/wrangler-action@v3
+        env:
+          WRANGLER_LOG: debug
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           wranglerVersion: '4'
-          # Equivalent CLI: npx wrangler pages deploy dist --project-name=us-new-entities --branch=main
-          command: pages deploy dist --project-name=us-new-entities --branch=main
+          # Equivalent CLI: npx wrangler pages deploy dist --project-name=us-new-entities --branch=main --commit-dirty=true
+          command: pages deploy dist --project-name=us-new-entities --branch=main --commit-dirty=true
       - name: Verify published assets and response headers
         env:
           PUBLIC_SITE_URL: ${{ needs.build.outputs.public_site_url }}
