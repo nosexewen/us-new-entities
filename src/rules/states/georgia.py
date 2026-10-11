@@ -92,12 +92,21 @@ REQUIREMENT = StateRequirement(
         source("Georgia corporation foreign filing rules", "https://rules.sos.ga.gov/gac/590-7-3"),
         source("Georgia LP foreign filing rules", "https://rules.sos.ga.gov/gac/590-7-12"),
     ),
-    version="2026-10-11-official-guidance-review",
+    version="2026-10-11-disclosure-resolution",
+    review_disclosures=(
+        "Noted discrepancy — foreign LLC late-qualification penalty: "
+        "O.C.G.A. § 14-11-711(c) is reproduced as $500 after 30 days plus historical "
+        "fees, without an annual multiplier; this is also the assessment described "
+        "by SOS Rule 590-7-21-.07 and the FAQ. The September 6, 2025 administrative "
+        "fee schedule additionally labels an LLC row $500 per year or part-year. "
+        "Both formulations are disclosed; this fee conflict is resolved by disclosure, "
+        "not by claiming the sources agree. Primary statutory verification remains "
+        "incomplete, and the calculator leaves the assessment unquantified.",
+        "Filing-fee distinction: the statutory base figures are qualification $225 "
+        "and annual registration $50. The administrative schedule adds a $10 service "
+        "charge to each: $235 and $60, respectively, for both online and paper filing.",
+    ),
     verification_issues=(
-        "The September 6, 2025 fee schedule includes a foreign-LLC $500/year or "
-        "part-year penalty row, while the FAQ and Rule 590-7-21-.07 describe $500 "
-        "plus missed charges without annual repetition. Obtain authoritative "
-        "statutory confirmation; the calculator leaves this assessment unquantified.",
         "Primary statutory safe-harbor review remains incomplete: the official Lexis "
         "portal supplied only a contents page. SOS-linked Fastcase LLC § 14-11-702 "
         "text was retrieved, but is a third-party reproduction, not primary-law "

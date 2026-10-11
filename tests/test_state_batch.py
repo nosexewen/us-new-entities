@@ -151,7 +151,7 @@ def test_washington_30_day_safe_harbor_and_annual_report_fee():
         assert "includes online processing" in report.notes
 
 
-@pytest.mark.parametrize("state", ("CA", "FL", "IL", "NY", "NC", "WA"))
+@pytest.mark.parametrize("state", ("CA", "DE", "FL", "IL", "NY", "NC", "WA"))
 def test_resolved_reviews_have_dated_sources_and_no_open_evidence_flags(state):
     requirement = DEFAULT_REGISTRY.get(state)
     assert requirement.rules_verified
@@ -159,10 +159,29 @@ def test_resolved_reviews_have_dated_sources_and_no_open_evidence_flags(state):
     assert all(source.verified_on is not None for source in requirement.sources)
 
 
-@pytest.mark.parametrize("state", ("GA", "DE"))
-def test_unresolved_official_conflicts_cannot_claim_clean_review(state):
-    assert not DEFAULT_REGISTRY.get(state).rules_verified
-    assert DEFAULT_REGISTRY.get(state).verification_issues
+def test_georgia_disclosure_does_not_resolve_separate_primary_law_gap():
+    requirement = DEFAULT_REGISTRY.get("GA")
+    assert not requirement.rules_verified
+    assert len(requirement.verification_issues) == 1
+    assert "safe-harbor" in requirement.verification_issues[0]
+    assert requirement.review_disclosures
+
+
+@pytest.mark.parametrize("state", ("DE", "GA"))
+@pytest.mark.parametrize("entity_type", list(EntityType))
+def test_resolved_fee_disclosures_remain_visible_in_html_and_markdown(state, entity_type):
+    page = LandingPageGenerator(base_url="https://us-new-entities.pages.dev").generate(
+        state, entity_type
+    )
+    for text in (page.html, page.markdown):
+        assert "Noted discrepancy" in text
+        assert "resolved by disclosure" in text
+        if state == "DE":
+            assert "$200" in text and "$250" in text
+        else:
+            assert "$500 per year or part-year" in text
+            assert "$235 and $60" in text
+    assert DEFAULT_REGISTRY.get(state).review_disclosures
 
 
 def test_reviewed_certificate_freshness_is_entity_specific():

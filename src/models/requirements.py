@@ -338,6 +338,7 @@ class StateRequirement:
     version: str = "2026-10-reference"
     notes: tuple[str, ...] = field(default_factory=tuple)
     verification_issues: tuple[str, ...] = ()
+    review_disclosures: tuple[str, ...] = ()
 
     def __post_init__(self) -> None:
         object.__setattr__(self, "state", normalize_state(self.state))
@@ -350,6 +351,7 @@ class StateRequirement:
         object.__setattr__(self, "sources", tuple(self.sources))
         object.__setattr__(self, "notes", tuple(self.notes))
         object.__setattr__(self, "verification_issues", tuple(self.verification_issues))
+        object.__setattr__(self, "review_disclosures", tuple(self.review_disclosures))
         if not self.sources:
             raise ValueError("State rules need source provenance")
 

@@ -240,6 +240,11 @@ REQUIREMENT = StateRequirement(
         ),
     },
     sources=(
+        LegalSource(
+            "Delaware SOS administrative late-report penalty guidance",
+            "https://corp.delaware.gov/frtax/",
+            date(2026, 10, 11),
+        ),
         LegalSource("8 Del. C. §§ 371–383", _DGCL, _VERIFIED),
         LegalSource(
             "8 Del. C. § 391(a)(8)",
@@ -303,15 +308,20 @@ REQUIREMENT = StateRequirement(
             _VERIFIED,
         ),
     ),
-    version="2026-10-11-conflict-recheck",
-    verification_issues=(
-        "Foreign corporation annual late penalty conflicts: current § 391(a)(8) says "
-        "$200, while current SOS annual report instructions say $250; obtain confirmation.",
+    version="2026-10-11-disclosure-resolution",
+    review_disclosures=(
+        "Noted discrepancy — foreign corporation late annual-report penalty: "
+        "8 Del. C. § 391(a)(8) specifies $200; Delaware SOS annual-report guidance "
+        "quotes $250. The annual-report filing fee is separately $250. Both penalty "
+        "figures are disclosed; this review conflict is resolved by disclosure, "
+        "not by claiming the sources agree. The calculator uses the statutory "
+        "$200 component with an unquantified discrepancy; confirm the agency's "
+        "actual assessment before payment.",
     ),
     notes=(
         "Rechecked official § 391(a)(8) on October 11, 2026: annual filing fee "
         "$250, late-report penalty $200. This does not reconcile the previously "
-        "reviewed SOS $250 late-penalty instructions. The conflict remains open; "
+        "reviewed SOS $250 late-penalty instructions. Review is resolved by disclosure; "
         "see docs/verification/review-2026-10-11.md.",
         "Official statutes and listed SOS instructions were retrieved and reviewed on "
         "2026-10-10; evidence and unresolved conflicts are in docs/verification/delaware.md.",

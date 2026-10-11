@@ -394,7 +394,11 @@ class LandingPageGenerator:
             ),
         ]
         status_text = (
-            "Official sources reviewed; see dated citations below."
+            (
+                "Official sources reviewed; noted discrepancies are disclosed below."
+                if requirement.review_disclosures
+                else "Official sources reviewed; see dated citations below."
+            )
             if requirement.rules_verified
             else (
                 "Source review is partial or unresolved; check "
@@ -433,6 +437,7 @@ class LandingPageGenerator:
             *obligations,
             rule.good_standing_evidence,
             status_text,
+            *requirement.review_disclosures,
             *requirement.verification_issues,
             *options.notes,
         ]
