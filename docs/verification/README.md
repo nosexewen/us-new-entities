@@ -1,6 +1,16 @@
 # State rule source verification
 
 Latest batch review date: **2026-10-11** (original five states: October 10).
+
+[Batch eight](batch8-2026-10-11.md) adds Rhode Island, South Carolina, South Dakota,
+Tennessee and Utah: 45 populated states, five coming-soon states, and ten new
+LLC/C-Corp guides. Tennessee retains a primary statutory review limitation; the
+other four new states have reviewed primary-law and agency evidence for the stated
+scope. [Retrieval records](batch8-2026-10-11-retrievals.json) distinguish official
+law, agency guidance and secondary statutory compilations.
+
+The original-state table and baseline discussion below are historical; subsequent
+batch/review logs and current rule flags record later conflict resolutions.
 The [next-batch evidence](batch-2026-10-11.md) covers Georgia, Illinois, New York,
 North Carolina, and Washington, including open review issues.
 A source is reviewed only after relevant
