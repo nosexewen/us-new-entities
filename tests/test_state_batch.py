@@ -63,7 +63,7 @@ def test_populated_batch_pages_replace_placeholders_with_source_backed_rules(sta
     assert "Guide coming soon." not in page.html
     assert 'content="noindex, follow"' not in page.html
     assert "2026-10-11" in page.html
-    assert DEFAULT_REGISTRY.get(state).rules_verified == (state != "GA")
+    assert DEFAULT_REGISTRY.get(state).rules_verified
 
 
 @pytest.mark.parametrize("entity_type", list(EntityType))
@@ -151,7 +151,7 @@ def test_washington_30_day_safe_harbor_and_annual_report_fee():
         assert "includes online processing" in report.notes
 
 
-@pytest.mark.parametrize("state", ("CA", "DE", "FL", "IL", "NY", "NC", "WA"))
+@pytest.mark.parametrize("state", ("CA", "DE", "FL", "GA", "IL", "NY", "NC", "WA"))
 def test_resolved_reviews_have_dated_sources_and_no_open_evidence_flags(state):
     requirement = DEFAULT_REGISTRY.get(state)
     assert requirement.rules_verified
@@ -159,11 +159,19 @@ def test_resolved_reviews_have_dated_sources_and_no_open_evidence_flags(state):
     assert all(source.verified_on is not None for source in requirement.sources)
 
 
-def test_georgia_disclosure_does_not_resolve_separate_primary_law_gap():
+def test_georgia_accepted_statutory_review_preserves_manual_safe_harbors():
     requirement = DEFAULT_REGISTRY.get("GA")
-    assert not requirement.rules_verified
-    assert len(requirement.verification_issues) == 1
-    assert "safe-harbor" in requirement.verification_issues[0]
+    assert requirement.rules_verified
+    assert not requirement.verification_issues
+    llc = requirement.for_entity(EntityType.LLC)
+    assert "14-11-711(c)(1)–(2)" in llc.qualification_penalty.citation
+    assert "14-11-1101(a)(14)–(15)" in llc.annual_obligations[0].citation
+    assert not llc.threshold.exempt_activities
+    assert (
+        screen("GA", activity=Activity.BANK_ACCOUNT).decision
+        is QualificationDecision.REVIEW_REQUIRED
+    )
+    assert "third-party" in " ".join(requirement.notes)
     assert requirement.review_disclosures
 
 
