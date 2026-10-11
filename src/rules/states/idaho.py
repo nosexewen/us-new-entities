@@ -51,11 +51,12 @@ def _entity(entity: EntityType) -> EntityRequirement:
                     "By close of business on the final day of the registration anniversary month, "
                     "beginning one year after registration."
                 ),
-                fee=None,
-                citation="Idaho Code § 30-21-213",
+                fee=Decimal("0"),
+                citation="Idaho Code § 30-21-213; Idaho SOS business filing guidelines",
                 notes=(
-                    "Confirm the current report charge; an unverified amount is not represented as "
-                    "zero."
+                    "$0 for online annual reports through SOSBiz. Manual paper filings incur "
+                    "a $20 processing fee under Idaho Secretary of State business filing "
+                    "guidelines."
                 ),
             ),
         ),
@@ -111,12 +112,13 @@ REQUIREMENT = StateRequirement(
             "SOS foreign registration FAQ", "https://sos.idaho.gov/business-resources/business-faq/"
         ),
     ),
-    version="2026-10-11-batch3",
+    version="2026-10-11-batch3-idaho-fee-confirmed",
     notes=(
         (
             "The base foreign registration fee is $100. Paper/manual filing adds $20, "
             "totaling $120; optional expedited and payment charges are separate. Annual "
-            "report fee is left unquantified pending explicit current fee confirmation."
+            "reports cost $0 online through SOSBiz; manual paper reports incur a $20 "
+            "processing fee. The annual-report fee limitation is resolved."
         ),
     ),
 )

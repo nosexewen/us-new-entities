@@ -148,8 +148,19 @@ def test_unreviewed_lp_safe_harbors_are_not_inherited_from_llc_or_corporation(st
     assert "LP" in " ".join(DEFAULT_REGISTRY.get(state).review_disclosures)
 
 
-def test_unconfirmed_idaho_report_fee_is_not_reported_as_zero():
-    for entity in TYPES:
-        report = DEFAULT_REGISTRY.get("ID").for_entity(entity).annual_obligations[0]
-        assert report.fee is None
+def test_idaho_online_report_is_free_and_paper_processing_charge_is_disclosed():
+    requirement = DEFAULT_REGISTRY.get("ID")
+    assert requirement.rules_verified and not requirement.verification_issues
+    assert "unquantified" not in " ".join(requirement.notes)
+    for entity in EntityType:
+        report = requirement.for_entity(entity).annual_obligations[0]
+        assert report.fee == Decimal("0")
+        assert "SOSBiz" in report.notes and "$20 processing fee" in report.notes
         assert "final day" in report.due_rule and "one year" in report.due_rule
+        page = LandingPageGenerator(base_url="https://us-new-entities.pages.dev").generate(
+            "ID", entity
+        )
+        for text in (page.html, page.markdown):
+            assert "$0 for online annual reports through SOSBiz" in text
+            assert "$20 processing fee" in text
+            assert "unverified amount" not in text
