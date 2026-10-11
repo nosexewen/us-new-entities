@@ -13,7 +13,7 @@ from us_new_entities.rules.registry import (
 STATES = DEFAULT_REGISTRY.states
 
 
-def test_registry_covers_exactly_fifteen_populated_states():
+def test_registry_covers_exactly_twenty_populated_states():
     assert DEFAULT_REGISTRY.states == (
         "AK",
         "AL",
@@ -21,10 +21,15 @@ def test_registry_covers_exactly_fifteen_populated_states():
         "AZ",
         "CA",
         "CO",
+        "CT",
         "DE",
         "FL",
         "GA",
+        "HI",
+        "IA",
+        "ID",
         "IL",
+        "IN",
         "NC",
         "NY",
         "TX",
