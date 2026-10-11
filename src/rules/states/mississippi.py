@@ -204,19 +204,21 @@ REQUIREMENT = StateRequirement(
             "https://law.justia.com/codes/mississippi/title-79/chapter-4/article-1/subarticle-b/section-79-4-1-22",
         ),
     ),
-    version="2026-10-11-batch5",
+    version="2026-10-11-accepted-statutory-review",
     notes=(
         "Foreign LLC registration and annual reports each cost $250; foreign "
         "for-profit corporate authority costs $500 and annual reports cost $25. "
         "Annual reports must be filed online through the SOS portal. Taxes and "
         "business licenses are separate.",
     ),
-    verification_issues=(
-        "Current statutory text is reviewed through Justia’s 2025 reproduction. "
-        "Primary-publisher verification remains outstanding; the 2010 SOS LLC PDF is "
-        "not accepted as current authority.",
-    ),
+    verification_issues=(),
     review_disclosures=(
+        "Review acceptance: at the user's direction, the reviewed Justia 2025 "
+        "statutory citations are sufficient verification for Mississippi statutory "
+        "rules. The primary review flag is satisfied. Justia remains identified as "
+        "a third-party statutory reproduction; official SOS guidance corroborates "
+        "filing fees and annual reporting. The historical 2010 SOS LLC PDF remains "
+        "excluded as current authority.",
         "LP coverage is limited to the cited filing requirement and fee. Exemptions, "
         "reporting, agent exceptions and sanctions require separate entity-specific "
         "review; an empty report list does not mean no obligations.",

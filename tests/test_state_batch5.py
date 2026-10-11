@@ -40,9 +40,12 @@ def test_batch5_guides_replace_placeholders_and_keep_review_provenance(state, en
         assert "Guide coming soon." not in text
         assert requirement.for_entity(entity).qualification_citation in text
         if state == "MS":
-            assert "Primary-publisher verification remains outstanding" in text
+            assert "The primary review flag is satisfied" in text
+            assert "third-party statutory reproduction" in text
+            assert "Primary-publisher verification remains outstanding" not in text
     assert 'content="noindex, follow"' not in page.html
-    assert requirement.rules_verified == (state != "MS")
+    assert requirement.rules_verified
+    assert not requirement.verification_issues
     assert all(s.verified_on == date(2026, 10, 11) for s in requirement.sources)
 
 
