@@ -8,6 +8,7 @@ from dataclasses import FrozenInstanceError
 from types import SimpleNamespace
 
 import pytest
+import us_new_entities.geo.verify as verification
 from us_new_entities.geo.generator import LandingPageGenerator
 from us_new_entities.geo.verify import (
     SiteVerificationReport,
@@ -16,7 +17,7 @@ from us_new_entities.geo.verify import (
     verify_site,
 )
 from us_new_entities.models import EntityType
-from us_new_entities.rules.registry import DEFAULT_REGISTRY
+from us_new_entities.rules.registry import DEFAULT_REGISTRY, RulesRegistry
 
 BASE = "https://us-new-entities.pages.dev"
 PAGE = "ca-llc-foreign-qualification.html"
@@ -72,7 +73,7 @@ def test_current_production_artifact_contract_passes_without_network(site):
         report.files = 0
 
 
-def test_all_50_states_have_reviewed_guides_or_explicit_placeholders(site):
+def test_all_50_states_have_active_llc_and_corporate_guides(site):
     generator = LandingPageGenerator(
         base_url=BASE,
         layout="flat",
@@ -92,18 +93,38 @@ def test_all_50_states_have_reviewed_guides_or_explicit_placeholders(site):
     assert state_headings[0] == "Alabama"
     assert state_headings[-1] == "Wyoming"
     assert directory_path.read_text().count("<a href=") == 100
-    assert "Guide coming soon" in directory_path.read_text()
+    assert "Guide coming soon" not in directory_path.read_text()
     assert len({route[1:3] for route in report.routes}) == 50
     assert not any(route.startswith("/dc-") for route in report.routes)
+    for route in report.routes:
+        source = (site / (route[1:] + ".html")).read_text()
+        assert "Guide coming soon." not in source
+        assert "noindex, follow" not in source
+        assert "GovernmentService" in source
+
+
+def test_partial_registry_placeholders_still_disclose_missing_review(site, monkeypatch):
+    partial = RulesRegistry(
+        DEFAULT_REGISTRY.get(st) for st in DEFAULT_REGISTRY.states if st != "MD"
+    )
+    generator = LandingPageGenerator(
+        base_url=BASE,
+        layout="flat",
+        entity_types=(EntityType.LLC, EntityType.C_CORP),
+        extensionless_urls=True,
+        include_coming_soon=True,
+        registry=partial,
+    )
+    generator.write_site(site, overwrite=True)
+    monkeypatch.setattr(verification, "DEFAULT_REGISTRY", partial)
+    assert verify_site(site, base_url=BASE, include_coming_soon=True).ok
     placeholder = site / "md-llc-foreign-qualification.html"
     source = placeholder.read_text()
     assert "Guide coming soon." in source
     assert "noindex, follow" in source
     graph = json.loads(SCRIPT.search(source)[2])
     assert graph["@type"] == "WebPage"
-    assert "Offer" not in graph
-    assert "GovernmentService" not in source
-    assert "GovernmentService" in (site / PAGE).read_text()
+    assert "Offer" not in graph and "GovernmentService" not in source
     placeholder.write_text(source.replace("Guide coming soon.", "Guide available."))
     assert "placeholder" in codes(verify_site(site, base_url=BASE, include_coming_soon=True))
 

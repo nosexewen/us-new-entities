@@ -13,7 +13,7 @@ from us_new_entities.rules.registry import (
 STATES = DEFAULT_REGISTRY.states
 
 
-def test_registry_covers_exactly_forty_nine_populated_states():
+def test_registry_covers_exactly_fifty_populated_states():
     assert DEFAULT_REGISTRY.states == (
         "AK",
         "AL",
@@ -34,6 +34,7 @@ def test_registry_covers_exactly_forty_nine_populated_states():
         "KY",
         "LA",
         "MA",
+        "MD",
         "ME",
         "MI",
         "MN",
@@ -102,6 +103,7 @@ def test_each_state_type_has_a_complete_rule_and_source_provenance(state, entity
         ("texas", "TX"),
         ("Florida", "FL"),
         ("wyoming", "WY"),
+        ("Maryland", "MD"),
     ],
 )
 def test_registry_lookup_accepts_full_names(name, state):
@@ -110,7 +112,7 @@ def test_registry_lookup_accepts_full_names(name, state):
 
 def test_registry_does_not_default_to_another_states_rules():
     with pytest.raises(UnsupportedJurisdictionError, match="MD"):
-        DEFAULT_REGISTRY.get("Maryland")
+        RulesRegistry([]).get("Maryland")
     with pytest.raises(ValueError):
         DEFAULT_REGISTRY.get("ZZ")
     with pytest.raises(UnsupportedJurisdictionError):

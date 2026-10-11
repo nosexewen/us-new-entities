@@ -36,6 +36,7 @@ _AGENCIES = {
     "WY": ("Wyoming Secretary of State", "https://sos.wyo.gov/"),
     "GA": ("Georgia Secretary of State", "https://sos.ga.gov/"),
     "IL": ("Illinois Secretary of State", "https://www.ilsos.gov/"),
+    "MD": ("Maryland Department of Assessments and Taxation", "https://dat.maryland.gov/"),
     "NY": ("New York Department of State", "https://dos.ny.gov/"),
     "NC": ("North Carolina Secretary of State", "https://www.sosnc.gov/"),
     "WA": ("Washington Secretary of State", "https://www.sos.wa.gov/"),
@@ -310,8 +311,8 @@ class LandingPageGenerator:
             + (
                 "The agent must satisfy the in-state physical-office requirement."
                 if requirement.registered_agent.private_appointment_required
-                else "New York designates the Secretary of State as statutory agent; "
-                "a separate private registered agent is optional."
+                else "For this filing, a separate private registered agent is optional. "
+                + requirement.registered_agent.notes
             )
         )
         graph = {

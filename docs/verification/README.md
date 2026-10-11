@@ -2,9 +2,17 @@
 
 Latest batch review date: **2026-10-11** (original five states: October 10).
 
+[Batch ten](batch10-2026-10-11.md) adds Maryland, completing **all 50 state
+LLC/C-Corp rule sets and 100 active guides**. No state remains coming soon.
+[Maryland retrieval records](batch10-2026-10-11-retrievals.json) document official
+statutes and current SDAT forms: $100 base foreign filings, ordinary $300 Form 1
+annual fees/April 15 deadlines, 60-day certificate freshness, entity-specific
+nonregistration sanctions, interstate registration and optional Department agent
+service. Exceptions and fact-dependent amounts remain disclosed.
+
 [Batch nine](batch9-2026-10-11.md) adds Vermont, Virginia, West Virginia and
-Wisconsin: **49 populated states**, one coming-soon state (Maryland), and eight
-new LLC/C-Corp guides. [Retrieval records](batch9-2026-10-11-retrievals.json)
+Wisconsin: at that batch, **49 populated states**, one coming-soon state
+(Maryland), and eight new LLC/C-Corp guides. [Retrieval records](batch9-2026-10-11-retrievals.json)
 document official legislative and operational evidence, including Virginia's
 disclosed annual corporate fee discrepancy and West Virginia's July 2026
 conditional biennial election. Variable or conflicting assessments remain manual.

@@ -169,34 +169,37 @@ offers. `llms.txt` lists canonical guide URLs; `robots.txt` allows GPTBot,
 OAI-SearchBot, PerplexityBot, and other crawlers. Generating files does not deploy
 a site or perform a browser redirect.
 
-The default layout covers all three entity types in all ten populated states, creating 30
-guides and 63 files, including the root directory and two crawler files:
+The default layout covers all three entity types in all 50 populated states, creating 150
+guides and 303 files, including the root directory and two crawler files:
 
 ```sh
 .venv/bin/python -m us_new_entities.geo.generator site
 ```
 
 For example, the default nested output includes `site/states/ca/llc/index.html`
-and `index.md`. To build the twenty populated LLC/C-Corp guides as flat files in `dist/`:
+and `index.md`. To build the 100 populated LLC/C-Corp guides as flat files in `dist/`:
 
 ```sh
 .venv/bin/python -m us_new_entities.geo.generator dist \
   --layout flat --entity-type LLC --entity-type C-Corp --overwrite
 ```
 
-This writes twenty HTML files such as `dist/ca-llc-foreign-qualification.html`, twenty
-matching Markdown files, `llms.txt`, and `robots.txt`, plus root `index.html` (43 files total). Omit
+This writes 100 HTML files such as `dist/ca-llc-foreign-qualification.html`, 100
+matching Markdown files, `llms.txt`, and `robots.txt`, plus root `index.html` (203 files total). Omit
 `--overwrite` to refuse replacement of existing outputs. `--base-url` accepts an
 explicit HTTPS site origin and overrides the configured public URL for that run.
 
-To populate all 50 states, add `--include-coming-soon`. Source-backed guides remain
-available for CA, DE, FL, GA, IL, NC, NY, TX, WA, and WY; the other 40 states receive clearly labeled
-coming-soon pages without legal rules, prices, or offers. These placeholders use
-`WebPage` structured data and `noindex, follow` while awaiting review. DC is excluded.
-The LLC/C-Corp deployment creates 100 HTML pages, 100 matching Markdown files, and
-root `index.html` and the two crawler files (203 files total). Discovery entries distinguish placeholders
-from reviewed guides. The production workflow enables this option automatically.
-Pass `--include-coming-soon` to the static verifier for this expanded output:
+Source-backed LLC/C-Corp guides now cover **all 50 states**; DC is excluded.
+The deployment creates 100 active HTML guides, 100 matching Markdown files, root
+`index.html`, and two crawler files (203 files total). LP entries in later batches
+retain explicit filing-only scope disclosures and do not claim full LLC/corporate
+review. See [verification logs](docs/verification/README.md) for evidence and any
+entity-specific limitations.
+
+`--include-coming-soon` remains available for partial custom registries: missing
+states receive disclosed `WebPage` placeholders with `noindex, follow` and no legal
+prices or offers. With the complete default registry, it produces the same 100
+active guides. The production workflow retains this option. Build and verify with:
 
 ```sh
 python -m us_new_entities.geo.generator dist --layout flat --extensionless-urls \
@@ -329,7 +332,7 @@ Verify the generated deployment before publishing:
   --base-url https://us-new-entities.pages.dev --include-coming-soon
 ```
 
-The checker requires 203 flat files with `--include-coming-soon` (43 without it),
+The checker requires 203 flat files for the complete default LLC/C-Corp registry,
 validates the root state directory, HTML head metadata and
 JSON-LD graphs, resolves local links and extensionless routes to existing files,
 and checks discovery links and crawler rules. It exits unsuccessfully on errors.

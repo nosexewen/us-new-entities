@@ -13,6 +13,7 @@ from us_new_entities.models import (
     QualificationDecision,
     RegisteredAgent,
 )
+from us_new_entities.rules import RulesRegistry
 from us_new_entities.scrapers import (
     BaseRegistryAdapter,
     ComplianceFlag,
@@ -241,7 +242,10 @@ def test_explicit_qualification_and_agent_facts_avoid_duplicate_remedies():
 def test_unknown_or_unimplemented_target_is_rejected(target):
     with pytest.raises(RecordValidationError) as captured:
         CSVRegistryAdapter().normalize(
-            record(), target_state=target, presence=BusinessPresence(frozenset({Activity.OFFICE}))
+            record(),
+            target_state=target,
+            presence=BusinessPresence(frozenset({Activity.OFFICE})),
+            registry=RulesRegistry([]),
         )
     assert captured.value.issues[0].code == "invalid_audit_context"
 

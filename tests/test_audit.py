@@ -13,7 +13,11 @@ from us_new_entities.models import (
     QualificationDecision,
     RegisteredAgent,
 )
-from us_new_entities.rules.registry import DEFAULT_REGISTRY, UnsupportedJurisdictionError
+from us_new_entities.rules.registry import (
+    DEFAULT_REGISTRY,
+    RulesRegistry,
+    UnsupportedJurisdictionError,
+)
 
 STATES = ("CA", "DE", "TX", "FL", "WY")
 AS_OF = date(2026, 10, 10)
@@ -315,7 +319,9 @@ def test_registered_agent_address_must_be_physical_and_in_target_state(target, f
 
 def test_unimplemented_jurisdiction_fails_closed():
     with pytest.raises(UnsupportedJurisdictionError, match="MD"):
-        audit("MD", {Activity.BANK_ACCOUNT})
+        ComplianceAudit(
+            entity_for("MD"), "MD", BusinessPresence({Activity.BANK_ACCOUNT}), as_of=AS_OF
+        ).evaluate(RulesRegistry([]))
 
 
 @pytest.mark.parametrize("invalid_date", [datetime(2026, 1, 1), "2026-01-01"])
