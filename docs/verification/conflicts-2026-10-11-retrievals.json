@@ -1,0 +1,62 @@
+{
+  "reviewed_on": "2026-10-11",
+  "method": "Firecrawl live scrape, maxAge=0",
+  "records": [
+    {
+      "key": "de",
+      "url": "https://corp.delaware.gov/frtax/",
+      "status": 200,
+      "scrape_id": "01a1288f-dcd5-72aa-842d-5db50f6ca2a0",
+      "markdown_sha256": "7b0348c8fa669e98269421c3383c8f590049dc5c28234a9da4529c8577e7f76f",
+      "markdown_length": 5432
+    },
+    {
+      "key": "ga",
+      "url": "https://sos.ga.gov/how-to-guide/how-file-annual-registration",
+      "status": 200,
+      "scrape_id": "01a1288f-83d9-736e-a8e6-cf0be35542c8",
+      "markdown_sha256": "2268cd2a2e4b516723044627165a742745d8dd1bca64d4ff3b430ee6102af6e3",
+      "markdown_length": 8657
+    },
+    {
+      "key": "gafaq",
+      "url": "https://sos.ga.gov/page/business-division-faq",
+      "status": 200,
+      "scrape_id": "01a1288f-b056-7108-b0c6-043b556ce29f",
+      "markdown_sha256": "e20358d5ed35f68f89ebcefa7b135892f59c45786c13067fbbe8c22a68798db6",
+      "markdown_length": 67899
+    },
+    {
+      "key": "gafee",
+      "url": "https://sos.ga.gov/how-to-guide/filing-fees-and-expedited-processing-document-filings",
+      "status": 200,
+      "scrape_id": "01a12890-6528-7468-8852-8cabba29def2",
+      "markdown_sha256": "91b9c47331bc523e5f155121a3360dfd67c5920bc80501bcbb6cdf963df65854",
+      "markdown_length": 7194
+    },
+    {
+      "key": "decode",
+      "url": "https://delcode.delaware.gov/title8/c001/sc18/index.html",
+      "status": 200,
+      "scrape_id": "01a12890-3a2f-71f3-9cdd-30feddb8fbcf",
+      "markdown_sha256": "3f3e8b7ebd3627cbf3b5e04e4d5e2686ce9219f112b26d0bd1a1f0d8af1d86eb",
+      "markdown_length": 30596
+    },
+    {
+      "key": "galexis",
+      "url": "https://advance.lexis.com/container?config=00JAAzZDgzNzU2ZC05MDA0LTRmMDItYjkzMS0xOGY3MjE3OWNlODIKAFBvZENhdGFsb2fcIFfJnJ2IC8XZi1AYM4Ne",
+      "status": 200,
+      "scrape_id": "01a12890-8fb0-7218-bde0-e602b7b20f34",
+      "markdown_sha256": "df3aeb1fb0dded710a5670167606cb0807ece8a79a5c01dbc739709a0b541009",
+      "markdown_length": 12548
+    },
+    {
+      "key": "gapdf",
+      "url": "https://sos.ga.gov/sites/default/files/forms/Reference%20-%20Filing%20Fees_0.pdf",
+      "status": 200,
+      "scrape_id": "01a12890-cab0-74b9-b66e-6730232dd03b",
+      "markdown_sha256": "1e6bdd485835a50418178c1cd1906a217aedf7abfa321edd7d0dccc15a6372d4",
+      "markdown_length": 12001
+    }
+  ]
+}
