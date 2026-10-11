@@ -1,8 +1,8 @@
-"""Bounded validation for the 22-file Cloudflare Pages production site.
+"""Bounded validation for flat Cloudflare Pages guides and optional coming-soon pages.
 
 Checks the generated contract, rather than every HTML or Schema.org rule. External
 source links are accepted over HTTPS without fetching them. Optional live checks
-read only this site's 22 assets and compare their bytes with the verified build.
+read this site's assets and compare their bytes with the verified build.
 """
 
 import argparse
@@ -16,6 +16,8 @@ from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import unquote, urljoin, urlsplit
 
+from ..models.entity import STATE_NAMES
+from ..rules import DEFAULT_REGISTRY
 from .redirect import get_public_site_url, validate_public_site_url
 
 _STEMS = tuple(
@@ -365,8 +367,9 @@ def verify_site(
     *,
     base_url: str | None = None,
     check_live: bool = False,
+    include_coming_soon: bool = False,
 ) -> SiteVerificationReport:
-    """Check the fixed ten-guide flat deployment; optionally compare all live assets.
+    """Check reviewed guides and optional 50-state coverage; optionally check live assets.
 
     Live checks run only after local success, use verified TLS and a ten-second
     request timeout, perform no retries, and stop at the first failure.
@@ -376,7 +379,20 @@ def verify_site(
     def issue(file: str, code: str, message: str) -> None:
         errors.append(VerificationIssue(file, code, message))
 
-    routes = tuple("/" + stem for stem in _STEMS)
+    stems = (
+        tuple(
+            f"{state.lower()}-{entity}-foreign-qualification"
+            for state in sorted(set(STATE_NAMES) - {"DC"})
+            for entity in ("llc", "c-corp")
+        )
+        if include_coming_soon
+        else _STEMS
+    )
+    expected_files = frozenset(
+        [stem + suffix for stem in stems for suffix in (".html", ".md")]
+        + ["llms.txt", "robots.txt"]
+    )
+    routes = tuple("/" + stem for stem in stems)
     try:
         origin = get_public_site_url() if base_url is None else validate_public_site_url(base_url)
     except (ValueError, OSError):
@@ -413,12 +429,12 @@ def verify_site(
             )
         else:
             files.add(entry.name)
-    for name in sorted(_EXPECTED_FILES - files):
+    for name in sorted(expected_files - files):
         issue(name, "missing_file", "Required production asset is missing")
-    for name in sorted(files - _EXPECTED_FILES):
+    for name in sorted(files - expected_files):
         issue(name, "extra_file", "Unexpected production asset")
     content: dict[str, str] = {}
-    for filename in sorted(files & _EXPECTED_FILES):
+    for filename in sorted(files & expected_files):
         try:
             with (root / filename).open("rb") as stream:
                 data = stream.read(_MAX_FILE_BYTES + 1)
@@ -428,7 +444,7 @@ def verify_site(
         except (OSError, UnicodeError, ValueError):
             issue(filename, "invalid_content", "Asset must be readable UTF-8 within the size limit")
     documents: dict[str, _Document] = {}
-    for stem in _STEMS:
+    for stem in stems:
         filename = stem + ".html"
         if filename not in content:
             continue
@@ -479,8 +495,32 @@ def verify_site(
             continue
         try:
             graph = _load_json(document.json_scripts[0][1])
-            for problem in _schema_errors(graph, canonical, _text(" ".join(document.visible))):
-                issue(filename, "json_ld_schema", problem)
+            visible = _text(" ".join(document.visible))
+            if include_coming_soon and stem[:2].upper() not in DEFAULT_REGISTRY.states:
+                if (
+                    not isinstance(graph, dict)
+                    or graph.get("@context") != "https://schema.org"
+                    or graph.get("@type") != "WebPage"
+                    or graph.get("@id") != canonical
+                    or graph.get("url") != canonical
+                    or len(document.titles) != 1
+                    or graph.get("name") != document.titles[0][1]
+                    or not graph.get("description")
+                    or graph.get("description") not in visible
+                    or "Guide coming soon." not in visible
+                    or "have not yet been reviewed" not in visible
+                    or any(
+                        n.get("@type") in {"Offer", "GovernmentService"} for n in _objects(graph)
+                    )
+                    or not any(
+                        a.get("name") == "robots" and a.get("content") == "noindex, follow"
+                        for a in metas
+                    )
+                ):
+                    issue(filename, "placeholder", "Coming-soon page must disclose missing review")
+            else:
+                for problem in _schema_errors(graph, canonical, visible):
+                    issue(filename, "json_ld_schema", problem)
             markdown = content.get(stem + ".md", "")
             scripts = _JSON_SCRIPT.findall(markdown)
             if len(scripts) != 1 or _load_json(scripts[0]) != graph:
@@ -516,11 +556,11 @@ def verify_site(
     if "llms.txt" in content:
         discovered = _MD_LINK.findall(content["llms.txt"])
         expected_urls = {origin + route for route in routes}
-        if len(discovered) != 10 or set(discovered) != expected_urls:
+        if len(discovered) != len(routes) or set(discovered) != expected_urls:
             issue(
                 "llms.txt",
                 "discovery",
-                "Discovery must link each of the ten canonical routes exactly once",
+                "Discovery must link each canonical route exactly once",
             )
     if "robots.txt" in content:
         for agent in ("*", "GPTBot", "OAI-SearchBot", "PerplexityBot"):
@@ -541,7 +581,7 @@ def verify_site(
         for problem in failures:
             issue("deployment", "live_asset", problem)
         if not failures:
-            checks = len(_EXPECTED_FILES)
+            checks = len(expected_files)
     return SiteVerificationReport(len(files), len(documents), routes, tuple(errors), checks)
 
 
@@ -550,8 +590,14 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("output_dir", type=Path)
     parser.add_argument("--base-url")
     parser.add_argument("--check-live", action="store_true")
+    parser.add_argument("--include-coming-soon", action="store_true")
     args = parser.parse_args(argv)
-    report = verify_site(args.output_dir, base_url=args.base_url, check_live=args.check_live)
+    report = verify_site(
+        args.output_dir,
+        base_url=args.base_url,
+        check_live=args.check_live,
+        include_coming_soon=args.include_coming_soon,
+    )
     if not report.ok:
         for error in report.errors:
             message = f"{error.file}: {error.code}: {error.message}"

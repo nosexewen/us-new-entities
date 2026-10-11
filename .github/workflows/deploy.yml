@@ -79,11 +79,12 @@ jobs:
           HARBOR_AFFILIATE_URL: ${{ vars.HARBOR_AFFILIATE_URL || 'https://www.harborcompliance.com/registered-agent' }}
         run: |
           python -m us_new_entities.geo.generator dist \
-            --layout flat --extensionless-urls --entity-type LLC --entity-type C-Corp
+            --layout flat --extensionless-urls --entity-type LLC --entity-type C-Corp \
+            --include-coming-soon
       - name: Verify static assets, schemas, and extensionless routes
         env:
           PUBLIC_SITE_URL: ${{ steps.config.outputs.public_site_url }}
-        run: python -m us_new_entities.geo.verify dist --base-url "$PUBLIC_SITE_URL"
+        run: python -m us_new_entities.geo.verify dist --base-url "$PUBLIC_SITE_URL" --include-coming-soon
       - uses: actions/upload-artifact@v4
         with:
           name: static-guides
@@ -132,7 +133,7 @@ jobs:
           PUBLIC_SITE_URL: ${{ needs.build.outputs.public_site_url }}
         run: |
           for attempt in 1 2 3 4 5; do
-            if python -m us_new_entities.geo.verify dist --base-url "$PUBLIC_SITE_URL" --check-live; then
+            if python -m us_new_entities.geo.verify dist --base-url "$PUBLIC_SITE_URL" --include-coming-soon --check-live; then
               exit 0
             fi
             if [ "$attempt" -lt 5 ]; then

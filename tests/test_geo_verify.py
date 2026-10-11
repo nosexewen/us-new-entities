@@ -71,6 +71,34 @@ def test_current_production_artifact_contract_passes_without_network(site):
         report.files = 0
 
 
+def test_all_50_states_have_reviewed_guides_or_explicit_placeholders(site):
+    generator = LandingPageGenerator(
+        base_url=BASE,
+        layout="flat",
+        entity_types=(EntityType.LLC, EntityType.C_CORP),
+        extensionless_urls=True,
+        include_coming_soon=True,
+    )
+    generator.write_site(site, overwrite=True)
+    report = verify_site(site, base_url=BASE, include_coming_soon=True)
+    assert report.ok, report.errors
+    assert report.files == 202
+    assert report.pages == 100
+    assert len({route[1:3] for route in report.routes}) == 50
+    assert not any(route.startswith("/dc-") for route in report.routes)
+    placeholder = site / "ny-llc-foreign-qualification.html"
+    source = placeholder.read_text()
+    assert "Guide coming soon." in source
+    assert "noindex, follow" in source
+    graph = json.loads(SCRIPT.search(source)[2])
+    assert graph["@type"] == "WebPage"
+    assert "Offer" not in graph
+    assert "GovernmentService" not in source
+    assert "GovernmentService" in (site / PAGE).read_text()
+    placeholder.write_text(source.replace("Guide coming soon.", "Guide available."))
+    assert "placeholder" in codes(verify_site(site, base_url=BASE, include_coming_soon=True))
+
+
 def test_default_origin_is_read_from_current_environment(site, monkeypatch):
     monkeypatch.setenv("PUBLIC_SITE_URL", BASE)
     assert verify_site(site).ok

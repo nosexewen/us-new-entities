@@ -184,6 +184,21 @@ matching Markdown files, `llms.txt`, and `robots.txt` (22 files total). Omit
 `--overwrite` to refuse replacement of existing outputs. `--base-url` accepts an
 explicit HTTPS site origin and overrides the configured public URL for that run.
 
+To populate all 50 states, add `--include-coming-soon`. The reviewed guides remain
+available for CA, DE, FL, TX, and WY; the other 45 states receive clearly labeled
+coming-soon pages without legal rules, prices, or offers. These placeholders use
+`WebPage` structured data and `noindex, follow` while awaiting review. DC is excluded.
+The LLC/C-Corp deployment creates 100 HTML pages, 100 matching Markdown files, and
+the two crawler files (202 files total). Discovery entries distinguish placeholders
+from reviewed guides. The production workflow enables this option automatically.
+Pass `--include-coming-soon` to the static verifier for this expanded output:
+
+```sh
+python -m us_new_entities.geo.generator dist --layout flat --extensionless-urls \
+  --entity-type LLC --entity-type C-Corp --include-coming-soon --overwrite
+python -m us_new_entities.geo.verify dist --include-coming-soon
+```
+
 ### Site and referral configuration
 
 The built-in default templates, also provided in [.env.example](.env.example), are:

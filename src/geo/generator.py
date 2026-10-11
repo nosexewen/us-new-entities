@@ -13,6 +13,7 @@ from decimal import Decimal
 from pathlib import Path
 
 from ..models import EntityType, LegalSource, normalize_state
+from ..models.entity import STATE_NAMES
 from ..rules import DEFAULT_REGISTRY, RulesRegistry
 from .redirect import AffiliateDestination, Provider, build_affiliate_url, get_public_site_url
 from .styles import GUIDE_STYLES
@@ -81,6 +82,7 @@ class LandingPageGenerator:
         layout: str = "nested",
         entity_types: Iterable[EntityType | str] | None = None,
         extensionless_urls: bool = False,
+        include_coming_soon: bool = False,
     ) -> None:
         if layout not in ("nested", "flat"):
             raise ValueError("layout must be nested or flat")
@@ -89,6 +91,7 @@ class LandingPageGenerator:
         if extensionless_urls and layout != "flat":
             raise ValueError("extensionless_urls requires the flat layout")
         self.layout = layout
+        self.include_coming_soon = include_coming_soon
         self.extensionless_urls = extensionless_urls
         self.entity_types = tuple(
             EntityType(entity) for entity in (EntityType if entity_types is None else entity_types)
@@ -572,9 +575,58 @@ class LandingPageGenerator:
     def _pages(self) -> tuple[LandingPage, ...]:
         return tuple(
             self.generate(state, entity)
-            for state in self.registry.states
+            if state in self.registry.states
+            else self._coming_soon(state, entity)
+            for state in (
+                sorted(set(STATE_NAMES) - {"DC"})
+                if self.include_coming_soon
+                else self.registry.states
+            )
             for entity in self.entity_types
         )
+
+    def _coming_soon(self, state: str, entity: EntityType) -> LandingPage:
+        slug = _ENTITY_SLUGS[entity]
+        path = (
+            f"{state.lower()}-{slug}-foreign-qualification.html"
+            if self.layout == "flat"
+            else f"states/{state.lower()}/{slug}/"
+        )
+        canonical = (
+            self.base_url + "/" + (path.removesuffix(".html") if self.extensionless_urls else path)
+        )
+        title = f"{STATE_NAMES[state]} {entity.value} foreign qualification — guide coming soon"
+        notice = (
+            "Guide coming soon. State-specific requirements, filing fees, processing times, "
+            "and registered-agent information have not yet been reviewed for this guide. "
+            "Consult the state's official business filing agency for current requirements."
+        )
+        graph = {
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "@id": canonical,
+            "url": canonical,
+            "name": title,
+            "description": notice,
+        }
+        rendered = "\n".join(
+            [
+                '<!doctype html><html lang="en"><head><meta charset="utf-8">',
+                '<meta name="viewport" content="width=device-width, initial-scale=1">',
+                '<meta name="robots" content="noindex, follow">',
+                f"<title>{html.escape(title)}</title>",
+                f'<link rel="canonical" href="{html.escape(canonical, quote=True)}">',
+                f"<style>{GUIDE_STYLES}</style>",
+                _script(graph),
+                "</head><body><main>",
+                f"<h1>{html.escape(title)}</h1>",
+                '<section class="callout" aria-label="Guide status">',
+                f"<p>{html.escape(notice)}</p></section>",
+                "</main></body></html>",
+            ]
+        )
+        markdown = f"# {title}\n\n{notice}\n\n{_script(graph)}\n"
+        return LandingPage(state, entity, path, canonical, markdown, rendered, graph)
 
     def llms_txt(self) -> str:
         lines = [
@@ -592,7 +644,11 @@ class LandingPageGenerator:
         ]
         lines.extend(
             f"- [{page.state} {page.entity_type.value}]({page.canonical_url}): "
-            "foreign qualification and agent requirements"
+            + (
+                "guide coming soon; state-specific information has not yet been reviewed"
+                if page.json_ld.get("@type") == "WebPage"
+                else "foreign qualification and agent requirements"
+            )
             for page in self._pages()
         )
         return "\n".join(lines) + "\n"
@@ -649,6 +705,7 @@ def main() -> None:
     parser.add_argument("output", nargs="?", default="site")
     parser.add_argument("--base-url", default=None)
     parser.add_argument("--overwrite", action="store_true")
+    parser.add_argument("--include-coming-soon", action="store_true")
     parser.add_argument("--layout", choices=("nested", "flat"), default="nested")
     parser.add_argument(
         "--extensionless-urls",
@@ -666,6 +723,7 @@ def main() -> None:
         layout=args.layout,
         entity_types=args.entity_type,
         extensionless_urls=args.extensionless_urls,
+        include_coming_soon=args.include_coming_soon,
     ).write_site(args.output, overwrite=args.overwrite)
     print(f"Generated {len(paths)} files in {Path(args.output).resolve()}")
 
