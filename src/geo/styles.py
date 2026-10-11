@@ -46,4 +46,16 @@ tbody tr:nth-child(even) { background: #f9fafb; }
   background: #f9fafb;
   font-size: 0.875rem;
 }
+.state-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+  gap: 1rem;
+  list-style: none;
+  padding: 0;
+}
+.state-grid > li { margin: 0; }
+.state-card { border: 1px solid #e2e8f0; border-radius: 8px; padding: 1rem; }
+.state-card h3 { margin: 0; }
+.state-card ul { margin-bottom: 0; }
+.guide-status { color: #4b5563; font-size: 0.875rem; }
 """.strip()

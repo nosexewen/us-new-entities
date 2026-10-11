@@ -96,6 +96,17 @@ def test_all_twenty_two_assets_use_sorted_get_routes_and_match_exact_bytes(asset
     )
 
 
+def test_root_index_is_checked_at_root_without_redirect(assets):
+    root, opener = assets
+    source = b"<!doctype html><html><body>State directory</body></html>"
+    (root / "index.html").write_bytes(source)
+    opener.responses[ORIGIN + "/"] = FakeResponse(source)
+    assert health.verify_live_assets(root, ORIGIN) == ()
+    urls = [request.full_url for request, _ in opener.calls]
+    assert ORIGIN + "/" in urls
+    assert ORIGIN + "/index" not in urls
+
+
 @pytest.mark.parametrize("media_type", ["text/plain", "text/markdown", "text/x-markdown"])
 def test_markdown_accepts_supported_text_media_types(assets, media_type):
     root, opener = assets

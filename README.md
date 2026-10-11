@@ -165,7 +165,7 @@ OAI-SearchBot, PerplexityBot, and other crawlers. Generating files does not depl
 a site or perform a browser redirect.
 
 The default layout covers all three entity types in all five states, creating 15
-guides and 32 files, including the two crawler files:
+guides and 33 files, including the root directory and two crawler files:
 
 ```sh
 .venv/bin/python -m us_new_entities.geo.generator site
@@ -180,7 +180,7 @@ and `index.md`. To build the ten LLC/C-Corp guides as flat files in `dist/`:
 ```
 
 This writes ten HTML files such as `dist/ca-llc-foreign-qualification.html`, ten
-matching Markdown files, `llms.txt`, and `robots.txt` (22 files total). Omit
+matching Markdown files, `llms.txt`, and `robots.txt`, plus root `index.html` (23 files total). Omit
 `--overwrite` to refuse replacement of existing outputs. `--base-url` accepts an
 explicit HTTPS site origin and overrides the configured public URL for that run.
 
@@ -189,7 +189,7 @@ available for CA, DE, FL, TX, and WY; the other 45 states receive clearly labele
 coming-soon pages without legal rules, prices, or offers. These placeholders use
 `WebPage` structured data and `noindex, follow` while awaiting review. DC is excluded.
 The LLC/C-Corp deployment creates 100 HTML pages, 100 matching Markdown files, and
-the two crawler files (202 files total). Discovery entries distinguish placeholders
+root `index.html` and the two crawler files (203 files total). Discovery entries distinguish placeholders
 from reviewed guides. The production workflow enables this option automatically.
 Pass `--include-coming-soon` to the static verifier for this expanded output:
 

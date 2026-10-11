@@ -376,10 +376,10 @@ def test_write_site_generates_fifteen_markdown_pages_html_and_discovery(tmp_path
     generator = LandingPageGenerator(base_url=SITE_URL)
     output = tmp_path / "site"
     written = generator.write_site(output)
-    assert len(written) == 32
-    assert len(set(written)) == 32
+    assert len(written) == 33
+    assert len(set(written)) == 33
     assert len(list(output.rglob("*.md"))) == 15
-    html_pages = list(output.rglob("index.html"))
+    html_pages = list((output / "states").rglob("index.html"))
     assert len(html_pages) == 15
     assert (output / "llms.txt").read_text() == generator.llms_txt()
     assert (output / "robots.txt").read_text() == generator.robots_txt()
@@ -398,11 +398,11 @@ def test_flat_layout_writes_ten_selected_guides_and_matching_discovery_files(tmp
     )
     output = tmp_path / "dist"
     written = generator.write_site(output)
-    assert len(written) == 22
-    assert len(set(written)) == 22
-    assert len(list(output.glob("*.html"))) == 10
+    assert len(written) == 23
+    assert len(set(written)) == 23
+    assert len(list(output.glob("*.html"))) == 11
     assert len(list(output.glob("*.md"))) == 10
-    assert not list(output.rglob("index.html"))
+    assert (output / "index.html").is_file()
     assert all(path.parent == output for path in written)
     expected_urls = set()
     for state in STATES:
@@ -438,8 +438,8 @@ def test_extensionless_flat_urls_match_canonicals_schema_and_discovery_for_ten_p
     )
     output = tmp_path / "dist"
     written = generator.write_site(output)
-    assert len(written) == 22
-    assert len(list(output.glob("*.html"))) == 10
+    assert len(written) == 23
+    assert len(list(output.glob("*.html"))) == 11
     assert len(list(output.glob("*.md"))) == 10
     expected_urls = set()
     for state in STATES:
@@ -504,7 +504,7 @@ def test_cli_extensionless_flag_writes_selected_flat_files_with_served_canonical
         text=True,
         check=True,
     )
-    assert "Generated 22 files" in result.stdout
+    assert "Generated 23 files" in result.stdout
     html = ParsedHTML((output / "ca-llc-foreign-qualification.html").read_text())
     assert html.canonical_urls == [SITE_URL + "/ca-llc-foreign-qualification"]
     assert (output / "llms.txt").read_text().count(SITE_URL + "/") == 10
@@ -558,7 +558,7 @@ def test_entity_selection_can_be_a_one_time_iterable_of_known_type_strings(tmp_p
         entity_types=iter(("LLC", "C-Corp")),
     )
     assert generator.llms_txt().count(SITE_URL + "/") == 10
-    assert len(generator.write_site(tmp_path / "dist")) == 22
+    assert len(generator.write_site(tmp_path / "dist")) == 23
     assert generator.llms_txt().count(SITE_URL + "/") == 10
 
 

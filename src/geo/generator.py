@@ -660,6 +660,48 @@ class LandingPageGenerator:
             for agent in ("GPTBot", "OAI-SearchBot", "PerplexityBot", "*")
         )
 
+    def directory_html(self) -> str:
+        """Render an alphabetical directory linking only to pages in this build."""
+        pages: dict[str, list[LandingPage]] = {}
+        for page in self._pages():
+            pages.setdefault(page.state, []).append(page)
+        cards = []
+        for state in sorted(pages, key=lambda code: STATE_NAMES[code]):
+            name = html.escape(STATE_NAMES[state])
+            status = "Reviewed guide" if state in self.registry.states else "Guide coming soon"
+            links = "\n".join(
+                f'<li><a href="{html.escape(page.canonical_url, quote=True)}">'
+                f"{html.escape(page.entity_type.value)} guide</a></li>"
+                for page in pages[state]
+            )
+            cards.append(
+                f'<li class="state-card"><h3>{name}</h3>'
+                f'<p class="guide-status">{status}</p><ul>{links}</ul></li>'
+            )
+        title = "US statutory entity and foreign qualification directory"
+        return "\n".join(
+            [
+                '<!doctype html><html lang="en"><head><meta charset="utf-8">',
+                '<meta name="viewport" content="width=device-width, initial-scale=1">',
+                f"<title>{title}</title>",
+                '<meta name="description" content="Browse state guides to US business entity '
+                'statutory requirements, foreign qualification, and registered agents.">',
+                f'<link rel="canonical" href="{html.escape(self.base_url, quote=True)}/">',
+                f"<style>{GUIDE_STYLES}</style>",
+                "</head><body><main><header>",
+                f"<h1>{title}</h1>",
+                "<p>Find state-specific guides to foreign qualification, filing fees, "
+                "registered agents, and ongoing compliance for US business entities.</p>",
+                "<p>Choose a state and entity type below. Coming-soon guides are labeled; "
+                "their state-specific information has not yet been reviewed.</p>",
+                '</header><nav aria-labelledby="state-directory">',
+                '<h2 id="state-directory">Browse by state</h2>',
+                '<ul class="state-grid">',
+                *cards,
+                "</ul></nav></main></body></html>",
+            ]
+        )
+
     def write_site(self, output_dir: str | Path, *, overwrite: bool = False) -> tuple[Path, ...]:
         if type(overwrite) is not bool:
             raise ValueError("overwrite must be boolean")
@@ -679,6 +721,7 @@ class LandingPageGenerator:
                 files[directory / "index.md"] = page.markdown
         files[root / "llms.txt"] = self.llms_txt()
         files[root / "robots.txt"] = self.robots_txt()
+        files[root / "index.html"] = self.directory_html()
         # Preflight the entire output set before writing any file.
         for path in files:
             if not path.resolve().is_relative_to(root):

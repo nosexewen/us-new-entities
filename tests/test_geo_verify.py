@@ -62,8 +62,8 @@ def mutate_graph(site, mutate):
 def test_current_production_artifact_contract_passes_without_network(site):
     report = verify_site(site, base_url=BASE)
     assert report.ok, report.errors
-    assert report.files == 22
-    assert report.pages == 10
+    assert report.files == 23
+    assert report.pages == 11
     assert len(report.routes) == 10
     assert "/ca-llc-foreign-qualification" in report.routes
     assert report.live_checks == 0
@@ -82,8 +82,16 @@ def test_all_50_states_have_reviewed_guides_or_explicit_placeholders(site):
     generator.write_site(site, overwrite=True)
     report = verify_site(site, base_url=BASE, include_coming_soon=True)
     assert report.ok, report.errors
-    assert report.files == 202
-    assert report.pages == 100
+    assert report.files == 203
+    assert report.pages == 101
+    directory_path = site / "index.html"
+    state_headings = re.findall(r"<h3>(.*?)</h3>", directory_path.read_text())
+    assert len(state_headings) == 50
+    assert state_headings == sorted(state_headings)
+    assert state_headings[0] == "Alabama"
+    assert state_headings[-1] == "Wyoming"
+    assert directory_path.read_text().count("<a href=") == 100
+    assert "Guide coming soon" in directory_path.read_text()
     assert len({route[1:3] for route in report.routes}) == 50
     assert not any(route.startswith("/dc-") for route in report.routes)
     placeholder = site / "ny-llc-foreign-qualification.html"
@@ -102,6 +110,15 @@ def test_all_50_states_have_reviewed_guides_or_explicit_placeholders(site):
 def test_default_origin_is_read_from_current_environment(site, monkeypatch):
     monkeypatch.setenv("PUBLIC_SITE_URL", BASE)
     assert verify_site(site).ok
+
+
+def test_directory_requires_complete_links_and_valid_html(site):
+    path = site / "index.html"
+    source = path.read_text()
+    path.write_text(source.replace(f'{BASE}/ca-llc-foreign-qualification"', f'{BASE}/missing"'))
+    assert {"directory", "broken_link"} <= codes(verify_site(site, base_url=BASE))
+    path.write_text(source.replace("</nav>", ""))
+    assert "invalid_html" in codes(verify_site(site, base_url=BASE))
 
 
 @pytest.mark.parametrize(
@@ -308,7 +325,7 @@ def test_live_validation_is_opt_in_and_follows_local_success(site, monkeypatch):
     assert verify_site(site, base_url=BASE).ok
     assert calls == []
     report = verify_site(site, base_url=BASE, check_live=True)
-    assert report.ok and report.live_checks == 22
+    assert report.ok and report.live_checks == 23
     assert calls == [(site, BASE)]
     (site / "llms.txt").unlink()
     assert not verify_site(site, base_url=BASE, check_live=True).ok
@@ -328,7 +345,7 @@ def test_cli_module_reports_success_and_nonzero_failure(site):
     command = [sys.executable, "-m", "us_new_entities.geo.verify", str(site), "--base-url", BASE]
     result = subprocess.run(command, capture_output=True, text=True, check=False)
     assert result.returncode == 0
-    assert "Verified 22 files, 10 pages and 10 extensionless routes" in result.stdout
+    assert "Verified 23 files, 11 pages and 10 extensionless routes" in result.stdout
     (site / "robots.txt").unlink()
     result = subprocess.run(command, capture_output=True, text=True, check=False)
     assert result.returncode == 1

@@ -315,7 +315,7 @@ def _resolve_link(
     ):
         return None
     path = unquote(target.path)
-    filename = path.removeprefix("/")
+    filename = path.removeprefix("/") or "index.html"
     if filename not in files and filename + ".html" in files:
         filename += ".html"
     if filename not in files:
@@ -390,7 +390,7 @@ def verify_site(
     )
     expected_files = frozenset(
         [stem + suffix for stem in stems for suffix in (".html", ".md")]
-        + ["llms.txt", "robots.txt"]
+        + ["llms.txt", "robots.txt", "index.html"]
     )
     routes = tuple("/" + stem for stem in stems)
     try:
@@ -444,11 +444,11 @@ def verify_site(
         except (OSError, UnicodeError, ValueError):
             issue(filename, "invalid_content", "Asset must be readable UTF-8 within the size limit")
     documents: dict[str, _Document] = {}
-    for stem in stems:
+    for stem in (*stems, "index"):
         filename = stem + ".html"
         if filename not in content:
             continue
-        canonical = origin + "/" + stem
+        canonical = origin + "/" + ("" if stem == "index" else stem)
         document = _Document(content[filename])
         documents[filename] = document
         for problem in document.problems:
@@ -490,6 +490,13 @@ def verify_site(
                 "canonical",
                 "Canonical must match this page's extensionless production route",
             )
+        if stem == "index":
+            directory_links = [a.get("href") for t, a, _ in document.tags if t == "a"]
+            if len(directory_links) != len(stems) or set(directory_links) != {
+                origin + "/" + guide for guide in stems
+            }:
+                issue(filename, "directory", "Directory must link every guide exactly once")
+            continue
         if len(document.json_scripts) != 1 or not document.json_scripts[0][0]:
             issue(filename, "json_ld_script", "Exactly one JSON-LD script must appear in the head")
             continue
@@ -564,8 +571,10 @@ def verify_site(
             )
     if "robots.txt" in content:
         for agent in ("*", "GPTBot", "OAI-SearchBot", "PerplexityBot"):
-            targets = routes + tuple(
-                "/" + name for name in sorted(files) if not name.endswith(".html")
+            targets = (
+                ("/",)
+                + routes
+                + tuple("/" + name for name in sorted(files) if not name.endswith(".html"))
             )
             if any(not _robots_allows(content["robots.txt"], agent, route) for route in targets):
                 issue(

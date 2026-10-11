@@ -51,6 +51,8 @@ def verify_live_assets(root: Path, base_url: str) -> tuple[str, ...]:
         except OSError:
             return (f"{name}: could not read the local asset",)
         route = path.stem if path.suffix == ".html" else name
+        if name == "index.html":
+            route = ""
         request = Request(
             origin + "/" + quote(route, safe="-_."),
             headers={"Accept-Encoding": "identity"},
