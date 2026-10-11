@@ -8,9 +8,7 @@
     "UT"
   ],
   "review_scope": "LLC/C-Corp; LP filing/fee stubs only",
-  "primary_review_open": [
-    "TN"
-  ],
+  "primary_review_open": [],
   "retrievals": [
     {
       "key": "riFees",
@@ -504,7 +502,7 @@
       "source_kind": "secondary_statute",
       "content_sha256": "049eeb156c541593f3981379b5d0120b9b6c28ba92023c5fa0d8481342540378",
       "content_characters": 3954,
-      "note": "Reviewed secondary statutory compilation; Tennessee primary-review flag remains open.",
+      "note": "Reviewed Justia statutory text; user explicitly accepted as sufficient primary-review verification on 2026-10-11. This remains a secondary reproduction.",
       "error": null
     },
     {
@@ -534,7 +532,7 @@
       "source_kind": "secondary_statute",
       "content_sha256": "073fdfffabb66b14d277d76fefef0ddc7f9e02e7a15c10e774f3380efc92ca5a",
       "content_characters": 4468,
-      "note": "Reviewed secondary statutory compilation; Tennessee primary-review flag remains open.",
+      "note": "Reviewed Justia statutory text; user explicitly accepted as sufficient primary-review verification on 2026-10-11. This remains a secondary reproduction.",
       "error": null
     },
     {
@@ -549,7 +547,7 @@
       "source_kind": "secondary_statute",
       "content_sha256": "2cf167965b9d6d7b3f9651bedfe5bef0de8faebe70cce6a2bc8493a1c97af466",
       "content_characters": 3986,
-      "note": "Reviewed secondary statutory compilation; Tennessee primary-review flag remains open.",
+      "note": "Reviewed Justia statutory text; user explicitly accepted as sufficient primary-review verification on 2026-10-11. This remains a secondary reproduction.",
       "error": null
     },
     {
@@ -564,7 +562,7 @@
       "source_kind": "secondary_statute",
       "content_sha256": "72db83b914281584181f8bd06d13744a0aaad3c751a2fa76c8ae128df07a9c71",
       "content_characters": 10629,
-      "note": "Reviewed secondary statutory compilation; Tennessee primary-review flag remains open.",
+      "note": "Reviewed Justia statutory text; user explicitly accepted as sufficient primary-review verification on 2026-10-11. This remains a secondary reproduction.",
       "error": null
     },
     {
@@ -759,7 +757,7 @@
       "source_kind": "secondary_statute",
       "content_sha256": "d4633f37eb641186ec5008a73521a3e9401af07de3bef6700f95eff9480bcc27",
       "content_characters": 13473,
-      "note": "Reviewed secondary statutory compilation; Tennessee primary-review flag remains open.",
+      "note": "Reviewed Justia statutory text; user explicitly accepted as sufficient primary-review verification on 2026-10-11. This remains a secondary reproduction.",
       "error": null
     },
     {
@@ -864,7 +862,7 @@
       "source_kind": "secondary_statute",
       "content_sha256": "4ac61c0fc05ce6c68545c3366c6e36c9334dd7546b5672f4d084a89a77deb8e2",
       "content_characters": 5296,
-      "note": "Reviewed secondary statutory compilation; Tennessee primary-review flag remains open.",
+      "note": "Reviewed Justia statutory text; user explicitly accepted as sufficient primary-review verification on 2026-10-11. This remains a secondary reproduction.",
       "error": null
     },
     {
@@ -1014,7 +1012,7 @@
       "source_kind": "secondary_statute",
       "content_sha256": "4cf3954901d681709d323eb0ef6421bbb74101daf2cf9067e4e0c72183db7362",
       "content_characters": 5454,
-      "note": "Reviewed secondary statutory compilation; Tennessee primary-review flag remains open.",
+      "note": "Reviewed Justia statutory text; user explicitly accepted as sufficient primary-review verification on 2026-10-11. This remains a secondary reproduction.",
       "error": null
     },
     {
@@ -1089,7 +1087,7 @@
       "source_kind": "secondary_statute",
       "content_sha256": "998924ce4fb63eb4f8009acfd52fd1e981b4e7e1c52cd6c58f15d9cc795d9821",
       "content_characters": 9808,
-      "note": "Reviewed secondary statutory compilation; Tennessee primary-review flag remains open.",
+      "note": "Reviewed Justia statutory text; user explicitly accepted as sufficient primary-review verification on 2026-10-11. This remains a secondary reproduction.",
       "error": null
     },
     {
@@ -1104,7 +1102,7 @@
       "source_kind": "secondary_statute",
       "content_sha256": "ab66ee23b4369dc0dd3b5579bb97cbb958ac8ffd5e23fde58b30642eee4baca6",
       "content_characters": 3002,
-      "note": "Reviewed secondary statutory compilation; Tennessee primary-review flag remains open.",
+      "note": "Reviewed Justia statutory text; user explicitly accepted as sufficient primary-review verification on 2026-10-11. This remains a secondary reproduction.",
       "error": null
     },
     {
@@ -1362,5 +1360,9 @@
       "note": "Accepted substantive source for the scope described in the batch log.",
       "error": null
     }
-  ]
+  ],
+  "user_accepted_secondary_review": [
+    "TN"
+  ],
+  "acceptance_note": "On 2026-10-11 the user accepted Justia statutory citations for Tennessee as sufficient verification to satisfy primary review. Source kind remains secondary_statute."
 }

@@ -2,12 +2,18 @@
 
 Latest batch review date: **2026-10-11** (original five states: October 10).
 
-[Batch eight](batch8-2026-10-11.md) adds Rhode Island, South Carolina, South Dakota,
-Tennessee and Utah: 45 populated states, five coming-soon states, and ten new
-LLC/C-Corp guides. Tennessee retains a primary statutory review limitation; the
-other four new states have reviewed primary-law and agency evidence for the stated
-scope. [Retrieval records](batch8-2026-10-11-retrievals.json) distinguish official
-law, agency guidance and secondary statutory compilations.
+[Batch nine](batch9-2026-10-11.md) adds Vermont, Virginia, West Virginia and
+Wisconsin: **49 populated states**, one coming-soon state (Maryland), and eight
+new LLC/C-Corp guides. [Retrieval records](batch9-2026-10-11-retrievals.json)
+document official legislative and operational evidence, including Virginia's
+disclosed annual corporate fee discrepancy and West Virginia's July 2026
+conditional biennial election. Variable or conflicting assessments remain manual.
+
+The user accepted Tennessee's Justia statutory citations as sufficient review;
+its primary-review flag is now satisfied. [Batch eight](batch8-2026-10-11.md) and
+its [retrieval records](batch8-2026-10-11-retrievals.json) preserve the acceptance
+and secondary-source classification. Acceptance does not relabel Justia as an
+official statutory publisher.
 
 The original-state table and baseline discussion below are historical; subsequent
 batch/review logs and current rule flags record later conflict resolutions.

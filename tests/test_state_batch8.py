@@ -41,9 +41,10 @@ def test_ten_active_guides_have_citations_and_carry_review_status(state, entity)
         assert "Guide coming soon." not in content
         assert r.for_entity(entity).qualification_citation in content
         if state == "TN":
-            assert "Primary statutory review remains open" in content
+            assert "user accepted" in content
+            assert "Primary statutory review remains open" not in content
     assert 'content="noindex, follow"' not in page.html
-    assert r.rules_verified is (state != "TN")
+    assert r.rules_verified and not r.verification_issues
     assert r.sources_verified
     assert all(s.verified_on == date(2026, 10, 11) for s in r.sources)
 
@@ -139,7 +140,8 @@ def test_tennessee_member_fees_penalty_formulas_and_month_freshness_differ():
     for rule in (llc, corp):
         assert "two calendar months" in rule.good_standing_evidence
         assert "April 1" in rule.annual_obligations[0].due_rule
-    assert not r.rules_verified and "Justia" in r.verification_issues[0]
+    assert r.rules_verified and not r.verification_issues
+    assert any("user accepted" in text and "Justia" in text for text in r.review_disclosures)
 
 
 @pytest.mark.parametrize("entity", TYPES)
@@ -198,4 +200,5 @@ def test_cited_sources_have_substantive_retrieval_records_and_secondary_labels()
             assert row["reviewed_on"] == "2026-10-11"
             if "law.justia.com" in source.url:
                 assert state == "TN" and row["source_kind"] == "secondary_statute"
-    assert manifest["primary_review_open"] == ["TN"]
+    assert manifest["primary_review_open"] == []
+    assert manifest["user_accepted_secondary_review"] == ["TN"]

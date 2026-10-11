@@ -316,7 +316,7 @@ def test_approved_affiliate_destinations_are_used_for_visible_provider_links():
     assert "affiliate" in page.markdown.lower()
 
 
-@pytest.mark.parametrize("state", ["VT", "Vermont"])
+@pytest.mark.parametrize("state", ["MD", "Maryland"])
 def test_generator_rejects_states_without_rules(state):
     with pytest.raises(UnsupportedJurisdictionError):
         LandingPageGenerator(base_url=SITE_URL).generate(state, EntityType.LLC)

@@ -75,7 +75,11 @@ from .states import (  # noqa: E402
     tennessee,
     texas,
     utah,
+    vermont,
+    virginia,
     washington,
+    west_virginia,
+    wisconsin,
     wyoming,
 )
 
@@ -125,7 +129,11 @@ DEFAULT_REGISTRY = RulesRegistry(
         tennessee,
         texas,
         utah,
+        vermont,
+        virginia,
         washington,
+        west_virginia,
+        wisconsin,
         wyoming,
     )
 )

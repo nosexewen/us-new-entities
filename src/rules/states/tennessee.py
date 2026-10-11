@@ -249,7 +249,7 @@ REQUIREMENT = StateRequirement(
             "https://sos.tn.gov/businesses/pages/create-an-account-in-tncab-to-file-an-annual-report",
         ),
     ),
-    version="2026-10-11-batch8",
+    version="2026-10-11-justia-accepted",
     notes=(
         "Foreign LLC registration is $50 per member existing at filing, minimum $300 "
         "and maximum $3,000. Annual LLC reports use the member-based $300–$3,000 "
@@ -260,13 +260,12 @@ REQUIREMENT = StateRequirement(
         "LLC rules cover the Revised LLC Act; legacy entities governed by the older "
         "Act require entity-specific review.",
     ),
-    verification_issues=(
-        "Primary statutory review remains open: Tennessee Code text was reviewed "
-        "through the 2025 Justia compilation, with current SOS forms and fees as "
-        "official operational evidence. Independent mirror citations have not been "
-        "accepted as primary verification for Tennessee.",
-    ),
+    verification_issues=(),
     review_disclosures=(
+        "On 2026-10-11 the user accepted the reviewed Justia Tennessee statutory "
+        "citations as sufficient verification to satisfy primary review. These "
+        "remain secondary reproductions; official SOS operational evidence and "
+        "the conservative calendar-month screening limitation remain documented.",
         "LP coverage is limited to the cited filing requirement and fee. Exemptions, "
         "reporting, agent exceptions and sanctions require separate entity-specific "
         "review; an empty report list does not mean no obligations.",
