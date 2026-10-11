@@ -95,7 +95,7 @@ def test_all_50_states_have_reviewed_guides_or_explicit_placeholders(site):
     assert "Guide coming soon" in directory_path.read_text()
     assert len({route[1:3] for route in report.routes}) == 50
     assert not any(route.startswith("/dc-") for route in report.routes)
-    placeholder = site / "nj-llc-foreign-qualification.html"
+    placeholder = site / "oh-llc-foreign-qualification.html"
     source = placeholder.read_text()
     assert "Guide coming soon." in source
     assert "noindex, follow" in source
