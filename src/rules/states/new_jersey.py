@@ -239,13 +239,13 @@ REQUIREMENT = StateRequirement(
         "separately after business registration; qualification does not settle tax "
         "nexus.",
     ),
-    verification_issues=(
-        "Statutory provisions were reviewed in Justia reproductions; current "
-        "primary-publisher statutory verification remains outstanding. The "
-        "legislative gateway supplied navigation only, and a bill reprint was not "
-        "treated as enacted current law.",
-    ),
+    verification_issues=(),
     review_disclosures=(
+        "At the user's direction on 2026-10-11, the cited Justia statutory "
+        "reproductions are accepted as sufficient verification for New Jersey. "
+        "The primary review flag is satisfied by that acceptance; Justia remains "
+        "a secondary publisher. Legislative gateway navigation and a bill reprint "
+        "were not accepted as enacted current statutory text.",
         "LP coverage is limited to the cited filing requirement and fee. Exemptions, "
         "reporting, agent exceptions and sanctions require separate entity-specific "
         "review; an empty report list does not mean no obligations.",

@@ -42,7 +42,7 @@ def test_batch6_active_guides_preserve_provenance_and_open_review_flags(state, e
         for issue in requirement.verification_issues:
             assert issue in text
     assert 'content="noindex, follow"' not in page.html
-    assert requirement.rules_verified is (state not in ("NJ", "NM"))
+    assert requirement.rules_verified is (state != "NM")
     assert all(s.verified_on == date(2026, 10, 11) for s in requirement.sources)
 
 
@@ -148,7 +148,9 @@ def test_new_mexico_reporting_and_penalties_do_not_cross_entity_types():
     assert "fourth month" in report.due_rule
     assert "30 days" in corp.initial_report
     assert not llc.annual_obligations
-    assert "Confirm LLC ongoing requirements" in llc.threshold.notes
+    assert "no periodic or annual report requirement" in llc.threshold.notes
+    assert "periodic-report fee is $0" in llc.threshold.notes
+    assert "one-time $50" in llc.threshold.notes
     assert "up to $200" in llc.qualification_penalty.description
     assert "$200 for each offense" in corp.qualification_penalty.description
     for rule in (llc, corp):
@@ -192,3 +194,34 @@ def test_nevada_corporate_publication_is_separate_from_lists_and_licenses():
     assert "two issues" in publication.notes and "$100" in publication.notes
     assert len(requirement.for_entity(EntityType.LLC).annual_obligations) == 2
     assert "$11,125" in corporate[0].notes
+
+
+@pytest.mark.parametrize("state", ["NJ", "NM"])
+def test_accepted_justia_review_is_disclosed_without_changing_publisher_provenance(state):
+    requirement = DEFAULT_REGISTRY.get(state)
+    assert not any("primary" in issue.lower() for issue in requirement.verification_issues)
+    for entity in TYPES:
+        page = LandingPageGenerator(base_url="https://us-new-entities.pages.dev").generate(
+            state, entity
+        )
+        for text in (page.html, page.markdown):
+            assert "The primary review flag is satisfied" in text
+            assert "secondary publisher" in text
+    assert any("law.justia.com" in source.url for source in requirement.sources)
+
+
+def test_new_mexico_llc_reporting_resolution_keeps_foreign_fee_and_corporate_report():
+    requirement = DEFAULT_REGISTRY.get("NM")
+    llc = requirement.for_entity(EntityType.LLC)
+    assert llc.filing_fee == Decimal("100")
+    assert not llc.annual_obligations
+    assert llc.initial_report is None
+    assert not any("report" in issue.lower() for issue in requirement.verification_issues)
+    page = LandingPageGenerator(base_url="https://us-new-entities.pages.dev").generate(
+        "NM", EntityType.LLC
+    )
+    for text in (page.html, page.markdown):
+        assert "$0 periodic-report fee" in text
+        assert "formation filing is $50" in text
+        assert "foreign registration is $100" in text
+    assert requirement.for_entity(EntityType.C_CORP).annual_obligations[0].fee == Decimal("25")

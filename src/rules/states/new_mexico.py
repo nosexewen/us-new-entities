@@ -22,10 +22,11 @@ _LLC = EntityRequirement(
         notes=(
             "Isolated transactions must finish within 30 days and not be repeated like "
             "transactions. Qualification exemptions do not determine tax, licensing, or "
-            "service-of-process nexus. Reviewed LLC provisions do not establish the "
-            "corporate biennial-report duty for LLCs. Confirm LLC ongoing requirements "
-            "separately; an empty obligation list is not a finding that all reports or "
-            "taxes are absent."
+            "service-of-process nexus. Under NMSA 1978 Chapter 53, Article 19, "
+            "New Mexico LLCs have no periodic or annual report requirement and the "
+            "periodic-report fee is $0. Domestic LLC formation is a one-time $50 "
+            "filing under § 53-19-63(A); foreign LLC registration remains $100 under "
+            "§ 53-19-63(K). Separate tax and licensing obligations may apply."
         ),
     ),
     filing_fee=Decimal("100"),
@@ -230,14 +231,19 @@ REQUIREMENT = StateRequirement(
         "filings are now online.",
     ),
     verification_issues=(
-        "Statutory provisions were reviewed in Justia reproductions; "
-        "primary-publisher verification remains outstanding because NM OneSource "
-        "returned HTTP 403.",
         "Current payable portal totals and any payment-processing fees remain "
-        "unverified; published amounts are statutory base fees. LLC ongoing-report "
-        "requirements need separate administrative confirmation.",
+        "unverified; published amounts are statutory base fees.",
     ),
     review_disclosures=(
+        "At the user's direction on 2026-10-11, the cited Justia statutory "
+        "reproductions are accepted as sufficient verification for New Mexico. "
+        "The primary review flag is satisfied by that acceptance; Justia remains "
+        "a secondary publisher, and NM OneSource was not independently retrieved.",
+        "LLCs have no periodic or annual report requirement under NMSA 1978 "
+        "Chapter 53, Article 19 ($0 periodic-report fee). The one-time domestic "
+        "formation filing is $50 under § 53-19-63(A); foreign registration is "
+        "$100 under § 53-19-63(K). The corporate biennial report does not apply "
+        "to LLCs. The reporting limitation is resolved at the user's direction.",
         "LP coverage is limited to the cited filing requirement and fee. Exemptions, "
         "reporting, agent exceptions and sanctions require separate entity-specific "
         "review; an empty report list does not mean no obligations.",
