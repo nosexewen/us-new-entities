@@ -237,7 +237,7 @@ def test_explicit_qualification_and_agent_facts_avoid_duplicate_remedies():
     assert ComplianceFlag.REGISTERED_AGENT_APPOINTMENT not in normalized.flags
 
 
-@pytest.mark.parametrize("target", ["XX", "Ohio"])
+@pytest.mark.parametrize("target", ["XX", "Rhode Island"])
 def test_unknown_or_unimplemented_target_is_rejected(target):
     with pytest.raises(RecordValidationError) as captured:
         CSVRegistryAdapter().normalize(

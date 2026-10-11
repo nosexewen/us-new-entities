@@ -314,8 +314,8 @@ def test_registered_agent_address_must_be_physical_and_in_target_state(target, f
 
 
 def test_unimplemented_jurisdiction_fails_closed():
-    with pytest.raises(UnsupportedJurisdictionError, match="OH"):
-        audit("OH", {Activity.BANK_ACCOUNT})
+    with pytest.raises(UnsupportedJurisdictionError, match="RI"):
+        audit("RI", {Activity.BANK_ACCOUNT})
 
 
 @pytest.mark.parametrize("invalid_date", [datetime(2026, 1, 1), "2026-01-01"])
