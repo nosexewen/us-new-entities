@@ -13,11 +13,25 @@ from ...models import (
 from ._shared import annual, source, unresolved_penalty
 
 _ROOT = "https://www.ncleg.gov/EnactedLegislation/Statutes/HTML/ByChapter/"
-_CHAPTERS = {EntityType.LLC: "57D", EntityType.C_CORP: "55", EntityType.LP: "59"}
+_SOS = "https://www.sosnc.gov/webfiles/documents/forms/Business_Registration/"
+_APPLICATIONS = {
+    EntityType.LLC: (
+        "L-09",
+        "limited_liability_companies/application_for_certificate_of_authority.pdf",
+    ),
+    EntityType.C_CORP: (
+        "B-09",
+        "business_Corporations/application_of_certificate_of_authority.pdf",
+    ),
+    EntityType.LP: (
+        "LP-04",
+        "limited_partnerships/Application_for_Registration_as_a_foreign_limited_partnership.pdf",
+    ),
+}
 
 
 def _entity(entity: EntityType) -> EntityRequirement:
-    chapter = _CHAPTERS[entity]
+    identifier, application = _APPLICATIONS[entity]
     citation = {
         EntityType.LLC: "N.C. Gen. Stat. §§ 57D-7-01–57D-7-03",
         EntityType.C_CORP: "N.C. Gen. Stat. §§ 55-15-01–55-15-03",
@@ -70,8 +84,8 @@ def _entity(entity: EntityType) -> EntityRequirement:
                 "Application for registration as foreign limited partnership"
                 if entity == EntityType.LP
                 else "Application for Certificate of Authority",
-                citation,
-                _ROOT + f"Chapter_{chapter}.html",
+                identifier,
+                _SOS + application,
             ),
         ),
         qualification_penalty=unresolved_penalty(citation, penalty),
@@ -83,12 +97,13 @@ def _entity(entity: EntityType) -> EntityRequirement:
             "separate tax obligations and entity-specific revocation rules still apply.",
         ),
         good_standing_evidence=(
-            "Deliver authenticated home-jurisdiction evidence of existence with the "
-            "corporation/LLC application. Confirm SOS requirements for freshness; "
-            "no unreviewed 90-day limit is assumed."
+            "Attach an original authenticated home-jurisdiction Certificate of Existence "
+            "or similar document less than six months old; a photocopy is not accepted "
+            "(B-09 item 10; L-09 item 8)."
             if entity != EntityType.LP
-            else "Review the current foreign LP application and home-jurisdiction record "
-            "requirements; §§ 59-902 and 59-1106 govern registration and its $50 fee."
+            else "LP-04 does not request an attached home-jurisdiction existence certificate. "
+            "Supply the formation, general-partner and limited-partner-record information "
+            "required by the form and § 59-902; registration fee is $50."
         ),
     )
 
@@ -107,11 +122,22 @@ REQUIREMENT = StateRequirement(
             f"North Carolina General Statutes Chapter {chapter}", _ROOT + f"Chapter_{chapter}.html"
         )
         for chapter in ("55", "55D", "57D", "59")
+    )
+    + tuple(
+        source(f"North Carolina SOS application {identifier}", _SOS + path)
+        for identifier, path in _APPLICATIONS.values()
+    )
+    + (
+        source(
+            "North Carolina SOS forms and fees",
+            "https://www.sosnc.gov/forms/by_title/_Business_Registration",
+        ),
     ),
-    version="2026-10-11-official-statute-review",
-    verification_issues=(
-        "The SOS filing portal blocked automated review. Statutory fees are shown; "
-        "portal service charges, application freshness requirements, and processing "
-        "queues must be confirmed before filing.",
+    version="2026-10-11-official-forms-review",
+    notes=(
+        "Quoted filing fees are standard paper application fees confirmed by current "
+        "SOS downloads. Optional electronic payment and expedited-service charges are "
+        "excluded, not treated as zero. No queue duration is promised. Six-calendar-month "
+        "isolated transactions remain manual because the model accepts days, not months.",
     ),
 )

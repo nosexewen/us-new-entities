@@ -86,8 +86,10 @@ def _entity(entity: EntityType) -> EntityRequirement:
             "a reliable forwarding address; a private registered agent is optional.",
             "A foreign corporation already conducting New York business must obtain "
             "State Tax Commission consent for its authority application.",
-            "Separate New York tax filings and beneficial-ownership reporting must be "
-            "reviewed independently of qualification and biennial statements.",
+            "Tax nexus and regulated-activity consents are separate from qualification. "
+            "Effective January 1, 2026, New York beneficial-owner disclosures apply to "
+            "nonexempt LLCs formed under foreign-country law; an LLC formed in another "
+            "US state is outside that reporting class (DOS beneficial-owner guidance).",
         ),
         good_standing_evidence="Attach a home-jurisdiction Certificate of Existence "
         "dated within one year; obtain any required agency consent for regulated activities.",
@@ -113,6 +115,10 @@ REQUIREMENT = StateRequirement(
         ),
         source("New York DOS biennial statements", _BIENNIAL),
         source(
+            "New York DOS 2026 beneficial-owner disclosure scope",
+            _DOS + "beneficial-owner-disclosure",
+        ),
+        source(
             "New York DOS foreign LLC publication",
             _DOS + "certificate-publication-foreign-limited-liability-company-0",
         ),
@@ -129,9 +135,9 @@ REQUIREMENT = StateRequirement(
         source("New York foreign LP unauthorized-business consequences", _SENATE + "PTR/121-907"),
     ),
     version="2026-10-11-official-source-review",
-    verification_issues=(
-        "Qualification screening does not decide tax nexus. Newspaper costs, tax "
-        "consents, and current LLC transparency/reporting obligations require separate "
-        "review; they are not included in the authority application fee.",
+    notes=(
+        "Newspaper prices are variable third-party costs, not missing government fee data. "
+        "Tax nexus, required agency consents and special publication exceptions depend "
+        "on the applicant; ordinary entity rules do not determine those facts.",
     ),
 )

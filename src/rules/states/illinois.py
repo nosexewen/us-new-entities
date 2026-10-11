@@ -105,8 +105,13 @@ def _entity(entity: EntityType) -> EntityRequirement:
             "Attach home-jurisdiction certified articles as amended, authenticated within "
             "90 days, for a foreign corporation."
             if entity == EntityType.C_CORP
-            else "Confirm home-jurisdiction certification requirements in the current "
-            "entity-specific application; restore domestic existence before foreign filing."
+            else "Attach a Certificate of Good Standing or Existence authenticated within "
+            "60 days (LLC 45.5 item 13)."
+            if entity == EntityType.LLC
+            else "Attach a current, recently authenticated Certificate of Existence "
+            "(LP 902 items 3 and 9; no numeric age limit stated for the partnership). "
+            "An entity general partner not registered/qualified in Illinois must also "
+            "supply an original Certificate of Good Standing dated within 30 days (item 8)."
         ),
     )
 
@@ -129,6 +134,8 @@ REQUIREMENT = StateRequirement(
         source("Illinois SOS LP forms and fees", _SOS + "publications/business-services/lp.html"),
         source("Illinois foreign corporation authority application", _PDF + "bca1315.pdf"),
         source("Illinois foreign LLC admission application", _PDF + "llc455.pdf"),
+        source("Illinois foreign LP authority application", _PDF + "lp902.pdf"),
+        source("Illinois foreign corporation franchise-tax worksheet", _PDF + "bca1405f.pdf"),
         source("Illinois LLC Act", _LLC_ACT),
         source(
             "Illinois corporation unauthorized-business sanctions", _ILGA + "080500050K13.70.htm"
@@ -143,9 +150,18 @@ REQUIREMENT = StateRequirement(
         source("Illinois LP unauthorized-business consequences", _ILGA + "080502150K907.htm"),
     ),
     version="2026-10-11-official-source-review",
-    verification_issues=(
-        "Corporate franchise-tax exemptions, historical allocation, late-payment "
-        "calculations, and LLC/LP certificate freshness must be confirmed from the "
-        "current filing instructions; sanctions remain unquantified in the calculator.",
+    notes=(
+        "Foreign corporate report BCA 14.05: allocate paid-in capital using "
+        "(Illinois property + Illinois business)/(total property + total business), "
+        "or the permitted 100% election. Annual tax is 0.001 times allocated capital "
+        "($25 minimum before exemption), less $10,000 for filing periods from January "
+        "1, 2025, floored at zero. Earlier exemptions: $30 in 2020, $1,000 in "
+        "2021–2023, $5,000 in 2024. The separate annual report fee remains $75.",
+        "BCA 14.05 late assessment: 10% of tax due plus 2% per month or fraction "
+        "($1 minimum interest); neither is computed when no tax is due. If late, "
+        "use the greater of reported and SOS-record paid-in capital. Allocation "
+        "users file on paper. Historical and initial franchise-tax amounts require "
+        "their applicable filing-period worksheet and applicant inputs; the calculator "
+        "does not substitute a universal total for these documented formulas.",
     ),
 )

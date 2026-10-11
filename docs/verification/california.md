@@ -1,5 +1,10 @@
 # California source verification
 
+**Follow-up:** [October 11 evidence review](review-2026-10-11.md) resolves
+California/Florida retrieval gaps and Illinois/New York/North Carolina/Washington
+flags. Georgia and Delaware retain documented issues. Findings below record the
+earlier review history.
+
 Review/retrieval date: **2026-10-10**. The sources below were fetched through the
 configured proxy with TLS verification enabled, returned HTTP 200, and their
 relevant text was read. SHA-256 values identify the original response bytes,

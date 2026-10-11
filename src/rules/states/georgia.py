@@ -60,8 +60,9 @@ def _entity(entity: EntityType, citation: str, identifier: str) -> EntityRequire
             "Foreign corporations must attach an original certificate of existence/good "
             "standing from the home jurisdiction dated no more than 90 days before filing."
             if entity == EntityType.C_CORP
-            else "The SOS guide does not list a home-state existence certificate for this "
-            "entity type; confirm the current application requirements before submission."
+            else "No certified home-state existence certificate is required under "
+            "Georgia Rule 590-7-21-.07(1)(a) (LLC) or 590-7-12-.08(1)(a) (LP). "
+            "Maintain home-state qualification and current filings."
         ),
     )
 
@@ -83,13 +84,27 @@ REQUIREMENT = StateRequirement(
         source("Georgia SOS foreign entity registration guide", _GUIDE),
         source("Georgia SOS business division FAQ", _FAQ),
         source("Georgia SOS annual-registration guide", _ANNUAL),
+        source("Georgia LLC foreign filing rules", "https://rules.sos.ga.gov/gac/590-7-21"),
+        source("Georgia corporation foreign filing rules", "https://rules.sos.ga.gov/gac/590-7-3"),
+        source("Georgia LP foreign filing rules", "https://rules.sos.ga.gov/gac/590-7-12"),
     ),
     version="2026-10-11-official-guidance-review",
     verification_issues=(
         "The current registration guide quotes $235 including $10 service charge. "
         "Annual-registration guidance quotes $60 while older SOS fee schedules/FAQ "
         "show lower online amounts; verify the filing channel's current total.",
-        "Primary statutory safe-harbor text has not been reviewed in this batch; "
-        "exempt activities and isolated transactions require manual review.",
+        "Primary statutory safe-harbor review remains incomplete: the official Lexis "
+        "portal supplied only a contents page. SOS-linked Fastcase LLC § 14-11-702 "
+        "text was retrieved, but is a third-party reproduction, not primary-law "
+        "verification. Exempt activities and isolated transactions remain manual.",
+    ),
+    notes=(
+        "October 11 live annual-guide table explicitly lists $60 for both online and "
+        "paper filing. The portal landing page supplies no fee quote without choosing "
+        "an entity; its $20 amendment notice also conflicts with the guide's $30. "
+        "These inconsistencies remain disclosed rather than assumed superseded.",
+        "Official administrative rules independently confirm the $500 LLC/corporate "
+        "late-qualification assessment after 30 days, additional charges and "
+        "LLC/LP certificate exceptions; numeric historical totals still need applicant facts.",
     ),
 )

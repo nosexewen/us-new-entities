@@ -56,13 +56,15 @@ def _entity(entity: EntityType) -> EntityRequirement:
         annual_obligations=(
             annual(
                 "Annual report",
-                "Use the SOS-record annual expiration date; a report may be filed "
+                "Last day of the original formation/registration month, using the "
+                "SOS-record expiration date; a report may be filed "
                 "within 180 days before expiration.",
                 "70",
                 "RCW 23.95.255; Washington SOS annual-report instructions",
                 "$25 delinquency fee when status is Delinquent. The annual-report "
                 "instructions say the listed online report fee includes online processing; "
-                "confirm the channel quote. Missing reports/agent can terminate registration.",
+                "WAC 434-112-085(7)(p) independently sets the $70 report fee. "
+                "Missing reports/agent can terminate registration.",
             ),
         ),
         consequences=(
@@ -90,12 +92,26 @@ REQUIREMENT = StateRequirement(
         source("Washington SOS foreign LLC registration instructions", _LLC),
         source("Washington SOS foreign LP registration instructions", _LP),
         source("Washington SOS annual-report instructions", _ANNUAL),
+        source(
+            "Washington filing fee regulation",
+            "https://apps.leg.wa.gov/WAC/default.aspx?cite=434-112-085",
+        ),
+        source(
+            "Washington priority-service regulation",
+            "https://apps.leg.wa.gov/WAC/default.aspx?cite=434-112-080",
+        ),
+        source(
+            "Washington SOS annual expiration and filing window",
+            "https://www.sos.wa.gov/corporations-charities/business-entities/maintain-business-compliance/annual-reports",
+        ),
     ),
     version="2026-10-11-official-source-review",
-    verification_issues=(
-        "The $180 foreign registration fee excludes online processing charges. The "
-        "annual-report instructions list $70 including online processing. Confirm "
-        "the current channel total and annual expiration "
-        "date in the SOS record; processing time is not guaranteed.",
+    notes=(
+        "The $180 fee is standard paper foreign registration under WAC "
+        "434-112-085(7)(b), plus applicable back fees. Optional online processing "
+        "charges are excluded from that quote. WAC 434-112-080 lists $100 expedited "
+        "service within three working days, $150 same-day front-counter service "
+        "subject to hours and quantity, and 15-business-day nonexpedited mailed-paper "
+        "processing. These service rules do not guarantee acceptance of a defective filing.",
     ),
 )

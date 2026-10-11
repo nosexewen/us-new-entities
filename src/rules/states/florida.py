@@ -24,6 +24,7 @@ _LP = _STATUTES + "0600-0699/0620/0620.html"
 _FORMS = "https://dos.fl.gov/sunbiz/forms/"
 _REPORTS = "https://dos.fl.gov/sunbiz/manage-business/efile/annual-report/"
 _VERIFIED = date(2026, 10, 10)
+_GUIDANCE_REVIEWED = date(2026, 10, 11)
 _PROPERTY_TRIGGERS = frozenset(
     {
         Activity.OFFICE,
@@ -258,18 +259,43 @@ REQUIREMENT = StateRequirement(
         LegalSource(
             "Fla. Stat. §§ 620.1109, 620.1114, 620.1210, 620.1902–620.1909", _LP, _VERIFIED
         ),
-        LegalSource("Florida Division of Corporations foreign entity forms", _FORMS),
-        LegalSource("Florida Division of Corporations annual reports", _REPORTS),
+        LegalSource(
+            "Florida Division of Corporations foreign entity forms", _FORMS, _GUIDANCE_REVIEWED
+        ),
+        LegalSource(
+            "Florida foreign LLC application CR2E027",
+            "https://files.floridados.gov/media/702554/cr2e027.pdf",
+            _GUIDANCE_REVIEWED,
+        ),
+        LegalSource(
+            "Florida foreign profit corporation application CR2E007",
+            "https://form.sunbiz.org/pdf/cr2e007.pdf",
+            _GUIDANCE_REVIEWED,
+        ),
+        LegalSource(
+            "Florida foreign LP application CR2E056",
+            "https://form.sunbiz.org/pdf/cr2e056.pdf",
+            _GUIDANCE_REVIEWED,
+        ),
+        LegalSource(
+            "Florida document processing dates",
+            "https://dos.fl.gov/sunbiz/document-processing-dates/",
+            _GUIDANCE_REVIEWED,
+        ),
+        LegalSource(
+            "Florida Division of Corporations annual reports", _REPORTS, _GUIDANCE_REVIEWED
+        ),
     ),
-    version="2026-10-10-live",
-    verification_issues=(
-        "Current Florida SOS form PDFs, filing guidance, expedited availability, and "
-        "processing windows remain unreviewed because dos.fl.gov serves a Cloudflare challenge. "
-        "Statutory fees and annual deadlines were verified against the official 2026 statutes.",
-    ),
+    version="2026-10-11-official-forms-review",
     notes=(
+        "SOS forms pages process filings in receipt order. No paid expedited turnaround "
+        "is quoted by this guide. The queue updated October 9, 2026 listed foreign "
+        "registrations and LP filings received September 29; this is an observation, "
+        "not a guaranteed processing duration. Use current form cover-letter courier "
+        "addresses; the older LP instruction page names a superseded building.",
         "The official 2026 Florida statutes were retrieved and reviewed on 2026-10-10; "
-        "evidence is recorded in docs/verification/florida.md. SOS guidance dates remain unset.",
+        "SOS forms and instructions were reviewed October 11, 2026. Evidence: "
+        "docs/verification/review-2026-10-11.md.",
         "The initial 2025 PDF mirror at https://github.com/caavme/US-Florida-Statutes-2025/tree/"
         "819709012f33e42b6c381915c0191e4c0daceb72 is historical provenance only.",
         "Initial fees include registered-agent designation filing fees, but not the "

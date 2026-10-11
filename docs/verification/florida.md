@@ -1,5 +1,10 @@
 # Florida rule verification
 
+**Follow-up:** [October 11 evidence review](review-2026-10-11.md) resolves
+California/Florida retrieval gaps and Illinois/New York/North Carolina/Washington
+flags. Georgia and Delaware retain documented issues. Findings below record the
+earlier review history.
+
 Reviewed on 2026-10-10 against the official live **2026 Florida Statutes**, chapters 605, 607, and 620. Relevant source content was read; the successful HTTP responses alone were not treated as proof. The earlier 2025 independent PDF mirror is historical provenance only.
 
 ## Verified statutory findings

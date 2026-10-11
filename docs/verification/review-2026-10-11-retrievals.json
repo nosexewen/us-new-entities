@@ -1,0 +1,501 @@
+{
+  "retrieved_on": "2026-10-11",
+  "method": "Firecrawl live scrape, maxAge=0; failed/empty retrievals are not verification",
+  "records": [
+    {
+      "key": "CORP15909.02",
+      "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=15909.02.",
+      "status": 200,
+      "scrape_id": "01a12883-b0a5-763b-8e4a-e7287d12a00b",
+      "markdown_length": 6794,
+      "markdown_sha256": "ede0c96d69e392e6380e23537a3a214b5a67b7c43c62d27472979d8c62576057",
+      "content_available": true
+    },
+    {
+      "key": "CORP15909.07",
+      "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=15909.07.",
+      "status": 200,
+      "scrape_id": "01a12884-03cc-77d9-9565-5358bd300ae0",
+      "markdown_length": 6764,
+      "markdown_sha256": "0258cc34f7cbd461102612d8903d422a62d543a0f5890f0eb79d6d9fd6a39453",
+      "content_available": true
+    },
+    {
+      "key": "CORP15909.08",
+      "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=15909.08.",
+      "status": 200,
+      "scrape_id": "01a12884-41f7-708b-9073-1e2a914fb57b",
+      "markdown_length": 4989,
+      "markdown_sha256": "1a9291d063a8d56c06be9abed8f3b6feb7f20cc37a518abb3d75f5a6db162723",
+      "content_available": true
+    },
+    {
+      "key": "CORP17708.02",
+      "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=17708.02.",
+      "status": 200,
+      "scrape_id": "01a12883-0d0b-7187-be5c-7b40146c57ed",
+      "markdown_length": 8232,
+      "markdown_sha256": "fdbca22759bf04631e5bdbd04de4cc1f6dd74a0a2878897043eff8571815765f",
+      "content_available": true
+    },
+    {
+      "key": "CORP17708.03",
+      "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=17708.03.",
+      "status": 200,
+      "scrape_id": "01a12883-3960-7528-b257-ef6e7f4d87f9",
+      "markdown_length": 7999,
+      "markdown_sha256": "0051782ae69a78919076da231264fc08d9022308f5e94525858db4a16ebfb78a",
+      "content_available": true
+    },
+    {
+      "key": "CORP17708.07",
+      "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=17708.07.",
+      "status": 200,
+      "scrape_id": "01a12883-555d-76b9-a327-2779eaba00ef",
+      "markdown_length": 5819,
+      "markdown_sha256": "bfc0f705358f1b9646589d2087a79690da406d7c2d66db3107c72c30ca0d27dd",
+      "content_available": true
+    },
+    {
+      "key": "CORP17708.09",
+      "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=17708.09.",
+      "status": 200,
+      "scrape_id": "01a12883-83ce-76ee-b782-ddd4bf6d0179",
+      "markdown_length": 4892,
+      "markdown_sha256": "39cbcb4b4ac44a05da72db507ae858011faffb012222406663f4955eec6e15e2",
+      "content_available": true
+    },
+    {
+      "key": "CORP2105",
+      "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=2105.",
+      "status": 200,
+      "scrape_id": "01a12882-b037-71fb-afdd-120c64cbb671",
+      "markdown_length": 7770,
+      "markdown_sha256": "7ff8628fd90a88b0e8fda7dfd5a51ba73d5b31669b3f1ceb322e254bdcda1e2e",
+      "content_available": true
+    },
+    {
+      "key": "CORP2203",
+      "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=2203.",
+      "status": 200,
+      "scrape_id": "01a12882-dc31-7428-8f1d-483683efda06",
+      "markdown_length": 6491,
+      "markdown_sha256": "2278c40af6f1e8c283c8a25f2d44d33a8f14e0c15447cc7d744657dd0eaa6dcb",
+      "content_available": true
+    },
+    {
+      "key": "GOV12186",
+      "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=GOV&sectionNum=12186.",
+      "status": 200,
+      "scrape_id": "01a12884-29a8-75bd-a472-3f89650ce0dd",
+      "markdown_length": 7192,
+      "markdown_sha256": "5e2a4d8c28cd8f143d9e50c391d7ade6077ff1092d07f89bbfe3e1b9309b8451",
+      "content_available": true
+    },
+    {
+      "key": "GOV12188",
+      "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=GOV&sectionNum=12188.",
+      "status": 200,
+      "scrape_id": "01a12884-71e1-76e0-839f-29f823116801",
+      "markdown_length": 6988,
+      "markdown_sha256": "ad4e04c228cd4f1350b2a1c979739087624b1c55875520e7d8b64cca5e916c66",
+      "content_available": true
+    },
+    {
+      "key": "GOV12190",
+      "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=GOV&sectionNum=12190.",
+      "status": 200,
+      "scrape_id": "01a12884-8af8-71d8-aa48-9de2d4e7be49",
+      "markdown_length": 6912,
+      "markdown_sha256": "3c3393ebbb348c01b85f706a3b496500181670202ff256f2beb1f1e1f25aaf8b",
+      "content_available": true
+    },
+    {
+      "key": "ca",
+      "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=191.",
+      "status": 200,
+      "scrape_id": "01a12881-c7f9-73d8-ba22-8348b22d26fb",
+      "markdown_length": 10398,
+      "markdown_sha256": "e1d4a915a51624bf309bbaa8116510f64a4728f51c239986bfa877b9cd1966bd",
+      "content_available": true
+    },
+    {
+      "key": "caLP",
+      "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CORP&sectionNum=15909.03.",
+      "status": 200,
+      "scrape_id": "01a12886-67f7-7568-b101-4552850e55de",
+      "markdown_length": 5519,
+      "markdown_sha256": "fcd5d5f7e8dc4aca69db801d4fc0a7ac4101af98f622e55d86b167f88937af1a",
+      "content_available": true
+    },
+    {
+      "key": "cartc35",
+      "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?sectionNum=19135.&lawCode=RTC",
+      "status": 200,
+      "scrape_id": "01a12886-c3fd-778b-8cb5-b9e22ac744d6",
+      "markdown_length": 5628,
+      "markdown_sha256": "5caedbd9efef58c4d8e3317e671cac41abd2dce58cce109bddb46f6d05db7837",
+      "content_available": true
+    },
+    {
+      "key": "cartc41",
+      "url": "https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?sectionNum=19141.&lawCode=RTC",
+      "status": 200,
+      "scrape_id": "01a12886-9772-7559-8de9-9f3e3e0f350e",
+      "markdown_length": 5809,
+      "markdown_sha256": "541edc3a1e1256df8b0c9a83bac8883140dafc9373adc57861a1f49c1a2ab9c1",
+      "content_available": true
+    },
+    {
+      "key": "de",
+      "url": "https://delcode.delaware.gov/title8/c001/sc16/index.html",
+      "status": 200,
+      "scrape_id": "01a12881-dee4-74e8-afab-a0f42d627222",
+      "markdown_length": 37911,
+      "markdown_sha256": "852443ea2e7210d61c75436561cb08f87d6008453f36a760ed0434254b0bfee4",
+      "content_available": true
+    },
+    {
+      "key": "depay",
+      "url": null,
+      "status": null,
+      "scrape_id": null,
+      "markdown_length": 0,
+      "markdown_sha256": null,
+      "content_available": false
+    },
+    {
+      "key": "depay2",
+      "url": null,
+      "status": null,
+      "scrape_id": null,
+      "markdown_length": 0,
+      "markdown_sha256": null,
+      "content_available": false
+    },
+    {
+      "key": "destat",
+      "url": "https://delcode.delaware.gov/title8/c001/sc18/index.html",
+      "status": 200,
+      "scrape_id": "01a12883-5935-7307-8e05-02e49338232e",
+      "markdown_length": 30596,
+      "markdown_sha256": "3f3e8b7ebd3627cbf3b5e04e4d5e2686ce9219f112b26d0bd1a1f0d8af1d86eb",
+      "content_available": true
+    },
+    {
+      "key": "fl",
+      "url": "https://dos.fl.gov/sunbiz/forms/limited-liability-company/",
+      "status": 200,
+      "scrape_id": "01a12881-a28c-72ed-9a19-f5ae17c36bc6",
+      "markdown_length": 9308,
+      "markdown_sha256": "8bd3b81334ac5b79b3ba5e740a7b3e58c1af5306683433f66e1cc90d6c116c7a",
+      "content_available": true
+    },
+    {
+      "key": "flcorp",
+      "url": "https://dos.fl.gov/sunbiz/forms/corporations/",
+      "status": 200,
+      "scrape_id": "01a12883-881e-712d-b534-7731d81ecab0",
+      "markdown_length": 10104,
+      "markdown_sha256": "a92ec25264c6e1606adc384b1518a490d0b1fed8900315ba538d91e4221d191d",
+      "content_available": true
+    },
+    {
+      "key": "flcpdf",
+      "url": "https://form.sunbiz.org/pdf/cr2e007.pdf",
+      "status": 200,
+      "scrape_id": "01a12885-595c-77fc-9117-486bad544ea1",
+      "markdown_length": 6679,
+      "markdown_sha256": "a7057ab319f05338875be3d7e2840d1a88e1eb6b7056c7c352baf12372d04139",
+      "content_available": true
+    },
+    {
+      "key": "flforms",
+      "url": "https://dos.fl.gov/sunbiz/forms/",
+      "status": 200,
+      "scrape_id": "01a12883-b79f-74c8-9941-8a5367737e6c",
+      "markdown_length": 3945,
+      "markdown_sha256": "b8504cfdaf6ad130c7ae9cc0caeee79829e1ced9019a977e8c6dc40eb1a4348f",
+      "content_available": true
+    },
+    {
+      "key": "fllp",
+      "url": "https://dos.fl.gov/sunbiz/forms/partnerships/",
+      "status": 200,
+      "scrape_id": "01a12883-a263-7149-be07-2b9131312e31",
+      "markdown_length": 7625,
+      "markdown_sha256": "d3f93f9a8f79bbdb244a0d0cee53ee98f097bec8835dd706fc66fe25338e5b66",
+      "content_available": true
+    },
+    {
+      "key": "fllppdf",
+      "url": "https://form.sunbiz.org/pdf/cr2e056.pdf",
+      "status": 200,
+      "scrape_id": "01a12885-830d-7010-bcd2-ae49e404e9a7",
+      "markdown_length": 7232,
+      "markdown_sha256": "5d62d3bdcda677c27ef48f1e1562839b474d3a0ff36b337d6dc2be3456de0001",
+      "content_available": true
+    },
+    {
+      "key": "flpdf",
+      "url": "https://files.floridados.gov/media/702554/cr2e027.pdf",
+      "status": 200,
+      "scrape_id": "01a12882-d399-758f-82cb-4024351de344",
+      "markdown_length": 8198,
+      "markdown_sha256": "2db10de339e81bd3c9fc870a92a5e0d962ec207b2a3eb8c0fffec09d9b04be2d",
+      "content_available": true
+    },
+    {
+      "key": "flprocess",
+      "url": "https://dos.fl.gov/sunbiz/document-processing-dates/",
+      "status": 200,
+      "scrape_id": "01a12883-70ae-7408-a850-96adf2e95679",
+      "markdown_length": 1744,
+      "markdown_sha256": "23cf226db3556a28161cab69ae922a5f2539aa1d74f0f8dd1af28924b76e2d1c",
+      "content_available": true
+    },
+    {
+      "key": "flreport2",
+      "url": "https://dos.fl.gov/sunbiz/manage-business/efile/annual-report/",
+      "status": 200,
+      "scrape_id": "01a12885-021c-7179-8dd1-1a719612653e",
+      "markdown_length": 10227,
+      "markdown_sha256": "a2c00fb6b43c26b8d474eea803ef91747e9470959b374f78065319d98ba13b05",
+      "content_available": true
+    },
+    {
+      "key": "flreports",
+      "url": null,
+      "status": null,
+      "scrape_id": null,
+      "markdown_length": 0,
+      "markdown_sha256": null,
+      "content_available": false
+    },
+    {
+      "key": "ga",
+      "url": "https://ecorp.sos.ga.gov/oneClickAR",
+      "status": 200,
+      "scrape_id": "01a12881-7835-70bd-8984-4e2997f27c36",
+      "markdown_length": 4921,
+      "markdown_sha256": "c4a6a4912f24028c08c5f2c5381ae58eff97b961482b3b3fcd795356a3df2154",
+      "content_available": true
+    },
+    {
+      "key": "ga2026",
+      "url": null,
+      "status": null,
+      "scrape_id": null,
+      "markdown_length": 0,
+      "markdown_sha256": null,
+      "content_available": false
+    },
+    {
+      "key": "gaaccess",
+      "url": "https://advance.lexis.com/container?config=00JAAzZDgzNzU2ZC05MDA0LTRmMDItYjkzMS0xOGY3MjE3OWNlODIKAFBvZENhdGFsb2fcIFfJnJ2IC8XZi1AYM4Ne",
+      "status": 200,
+      "scrape_id": "01a12885-b512-7069-a379-be77f92f86b5",
+      "markdown_length": 12548,
+      "markdown_sha256": "e4401b6fedef1ccb100321640f32283f69a31e82bbd004343bb854e93abf372b",
+      "content_available": true
+    },
+    {
+      "key": "gaannual",
+      "url": "https://sos.ga.gov/how-to-guide/how-file-annual-registration",
+      "status": 200,
+      "scrape_id": "01a12887-b137-740c-8a04-4280e82005bc",
+      "markdown_length": 8657,
+      "markdown_sha256": "2268cd2a2e4b516723044627165a742745d8dd1bca64d4ff3b430ee6102af6e3",
+      "content_available": true
+    },
+    {
+      "key": "gacorp",
+      "url": "https://rules.sos.ga.gov/gac/590-7-3",
+      "status": 200,
+      "scrape_id": "01a12888-580d-71fb-91da-20d8a16d94d8",
+      "markdown_length": 10981,
+      "markdown_sha256": "f21c2e3f0ec4ee40e1b4a099b577dd6a7a91edcd8694daedcc62b416bb4ef71a",
+      "content_available": true
+    },
+    {
+      "key": "galexis",
+      "url": "https://lexisnexis.com/hottopics/gacode/",
+      "status": 404,
+      "scrape_id": "01a12884-93d3-76af-9e0f-1c9c9d0cb1ba",
+      "markdown_length": 153,
+      "markdown_sha256": "d36654a29ad5b4dbc0f502cbedf50c3d444b317e9c7c9ab9ed3287c3d347ebee",
+      "content_available": true
+    },
+    {
+      "key": "galp",
+      "url": "https://rules.sos.ga.gov/gac/590-7-12",
+      "status": 200,
+      "scrape_id": "01a12888-8779-70de-a830-b1a8923586fc",
+      "markdown_length": 10177,
+      "markdown_sha256": "4d6686c66dd70cd020a4b00f5be63a2118331e75b6a34fbb0460d4bca4e5d0b1",
+      "content_available": true
+    },
+    {
+      "key": "garules",
+      "url": "https://rules.sos.ga.gov/gac/590-7-21",
+      "status": 200,
+      "scrape_id": "01a12884-6793-7268-b8bb-40fda8b9bf9a",
+      "markdown_length": 9458,
+      "markdown_sha256": "8fb5f8189abba3b712f125990e5273cf2da7400daa98cf0e7dc9c6794b4c21f2",
+      "content_available": true
+    },
+    {
+      "key": "gatypes",
+      "url": "https://rules.sos.ga.gov/gac/590-7",
+      "status": 200,
+      "scrape_id": "01a12887-85de-76fa-895b-b0f07b94060b",
+      "markdown_length": 3447,
+      "markdown_sha256": "e8967cab19a05ea015dd3a44d2552d944acb4975d710d065aaa25de529543338",
+      "content_available": true
+    },
+    {
+      "key": "ilannual",
+      "url": "https://www.ilsos.gov/content/dam/publications/pdf_publications/bca1405d.pdf",
+      "status": 200,
+      "scrape_id": "01a12882-765e-71c8-b223-8a4c68ef8194",
+      "markdown_length": 12917,
+      "markdown_sha256": "b4fcf4ce07e8c13474e4b23dd245f09dcc5aa85d351b619c1af2be8f2efdd369",
+      "content_available": true
+    },
+    {
+      "key": "ilcorp",
+      "url": "https://www.ilsos.gov/content/dam/publications/pdf_publications/bca1315.pdf",
+      "status": 200,
+      "scrape_id": "01a12882-4c40-7078-971e-80cd7d2b89e3",
+      "markdown_length": 4380,
+      "markdown_sha256": "40f4b6da4da364004b272734edbed40142fd5303af33ddd38493465d19548bd4",
+      "content_available": true
+    },
+    {
+      "key": "ilforeign",
+      "url": "https://www.ilsos.gov/content/dam/publications/pdf_publications/bca1405f.pdf",
+      "status": 200,
+      "scrape_id": "01a12884-a917-7295-88c8-9181eea9fbda",
+      "markdown_length": 13563,
+      "markdown_sha256": "1b4c589b00d359c3f58d1029cd2ae35361fce5d6522a022a5a96799218ca61ad",
+      "content_available": true
+    },
+    {
+      "key": "illlc",
+      "url": "https://www.ilsos.gov/content/dam/publications/pdf_publications/llc455.pdf",
+      "status": 200,
+      "scrape_id": "01a12881-f22f-769e-9b90-11ee3785ccdc",
+      "markdown_length": 4707,
+      "markdown_sha256": "fa4b3eecf187ce2553d32bc307c7755a2f9341d2fefb48695cc0eaee5ac6fc63",
+      "content_available": true
+    },
+    {
+      "key": "illp",
+      "url": "https://www.ilsos.gov/content/dam/publications/pdf_publications/lp902.pdf",
+      "status": 200,
+      "scrape_id": "01a12882-1db0-719b-9a09-c5b8ece102a1",
+      "markdown_length": 3829,
+      "markdown_sha256": "1eadd01880af42b79707cb35883aedcef704ab87140d570269d2e8dc262ac780",
+      "content_available": true
+    },
+    {
+      "key": "iltax",
+      "url": null,
+      "status": null,
+      "scrape_id": null,
+      "markdown_length": 0,
+      "markdown_sha256": null,
+      "content_available": false
+    },
+    {
+      "key": "nccorp",
+      "url": "https://www.sosnc.gov/webfiles/documents/forms/Business_Registration/business_Corporations/application_of_certificate_of_authority.pdf",
+      "status": 200,
+      "scrape_id": "01a12885-e7ca-74fb-8696-33fab5e2cb83",
+      "markdown_length": 6629,
+      "markdown_sha256": "afe011db8d678b5651f318909b01ca2f4fe8d2e8c827c6f82119637a78b5ddaa",
+      "content_available": true
+    },
+    {
+      "key": "ncfees",
+      "url": "https://www.sosnc.gov/divisions/business_registration/fee_schedule",
+      "status": 404,
+      "scrape_id": "01a12888-b43f-747b-8bff-6d6fd3f56d87",
+      "markdown_length": 62,
+      "markdown_sha256": "826339a295ac877e497ccda5472005ee45da8a7de203140baf33ebd660932e40",
+      "content_available": true
+    },
+    {
+      "key": "ncforms",
+      "url": "https://www.sosnc.gov/forms/by_title/_Business_Registration",
+      "status": 200,
+      "scrape_id": "01a12884-4acf-75fa-b2b0-7714cff7808d",
+      "markdown_length": 55991,
+      "markdown_sha256": "6a10f68b8d567f433f2ad324f1761e9fbcb57baa45b57cf1c55cb3c80e571719",
+      "content_available": true
+    },
+    {
+      "key": "ncllc",
+      "url": "https://www.sosnc.gov/webfiles/documents/forms/Business_Registration/limited_liability_companies/application_for_certificate_of_authority.pdf",
+      "status": 200,
+      "scrape_id": "01a12886-1494-7469-b839-8f603f6bc2c4",
+      "markdown_length": 8273,
+      "markdown_sha256": "0161a88d3f3d7e961be51fe0bd4b3465454d3701a5c7bc9b822b28921c5b7a07",
+      "content_available": true
+    },
+    {
+      "key": "nclp",
+      "url": "https://www.sosnc.gov/webfiles/documents/forms/Business_Registration/limited_partnerships/Application_for_Registration_as_a_foreign_limited_partnership.pdf",
+      "status": 200,
+      "scrape_id": "01a12886-3e9e-77e3-9cb7-4f7ff4533b8f",
+      "markdown_length": 8471,
+      "markdown_sha256": "184646bd156635c8ef6679d5c391088edd3fc6f01510b5a0225a6743072b780e",
+      "content_available": true
+    },
+    {
+      "key": "ny",
+      "url": "https://dos.ny.gov/beneficial-owner-disclosure",
+      "status": 200,
+      "scrape_id": "01a12881-15da-75b7-b646-3b3e6bbeb89c",
+      "markdown_length": 7319,
+      "markdown_sha256": "ec2b46eed95409bd2b100def5d1bdf1f0f831b9758587ea60d05bf26f2fa3a27",
+      "content_available": true
+    },
+    {
+      "key": "wa",
+      "url": "https://www.sos.wa.gov/corporations-charities/frequently-asked-questions-faqs/fee-schedules-priority-services",
+      "status": 200,
+      "scrape_id": "01a12881-43c0-746d-a389-2680acf724c2",
+      "markdown_length": 135874,
+      "markdown_sha256": "1f76829c72531b8cbd800d7d5417d37a753cd3bee7e9ac68a32582243367aa26",
+      "content_available": true
+    },
+    {
+      "key": "waannual",
+      "url": "https://www.sos.wa.gov/corporations-charities/business-entities/maintain-business-compliance/annual-reports",
+      "status": 200,
+      "scrape_id": "01a12888-dbdd-735f-aeda-877f9963160d",
+      "markdown_length": 125720,
+      "markdown_sha256": "f9c2d3cc5e3546cb31c50ecdef64dce47d76302394c251a39ca1a27df1e0bdd7",
+      "content_available": true
+    },
+    {
+      "key": "wac",
+      "url": "https://apps.leg.wa.gov/WAC/default.aspx?cite=434-112-085",
+      "status": 200,
+      "scrape_id": "01a12882-af3c-730a-b62a-e5ec81baef15",
+      "markdown_length": 9782,
+      "markdown_sha256": "b590867d960bba166fe85c46af03e40d1bcc31fa402804f942b1125fc1741a20",
+      "content_available": true
+    },
+    {
+      "key": "waonline",
+      "url": "https://apps.leg.wa.gov/WAC/default.aspx?cite=434-112-080",
+      "status": 200,
+      "scrape_id": "01a12884-1d91-70fd-8f35-07ff38bbc68e",
+      "markdown_length": 5765,
+      "markdown_sha256": "3d8f26364d2bc167477b1b890a037df84f8f6fcd04871815f97812950cf419b4",
+      "content_available": true
+    }
+  ]
+}

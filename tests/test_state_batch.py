@@ -63,7 +63,7 @@ def test_populated_batch_pages_replace_placeholders_with_source_backed_rules(sta
     assert "Guide coming soon." not in page.html
     assert 'content="noindex, follow"' not in page.html
     assert "2026-10-11" in page.html
-    assert DEFAULT_REGISTRY.get(state).verification_issues
+    assert DEFAULT_REGISTRY.get(state).rules_verified == (state != "GA")
 
 
 @pytest.mark.parametrize("entity_type", list(EntityType))
@@ -149,3 +149,41 @@ def test_washington_30_day_safe_harbor_and_annual_report_fee():
         report = DEFAULT_REGISTRY.get("WA").for_entity(entity_type).annual_obligations[0]
         assert report.fee == Decimal("70")
         assert "includes online processing" in report.notes
+
+
+@pytest.mark.parametrize("state", ("CA", "FL", "IL", "NY", "NC", "WA"))
+def test_resolved_reviews_have_dated_sources_and_no_open_evidence_flags(state):
+    requirement = DEFAULT_REGISTRY.get(state)
+    assert requirement.rules_verified
+    assert not requirement.verification_issues
+    assert all(source.verified_on is not None for source in requirement.sources)
+
+
+@pytest.mark.parametrize("state", ("GA", "DE"))
+def test_unresolved_official_conflicts_cannot_claim_clean_review(state):
+    assert not DEFAULT_REGISTRY.get(state).rules_verified
+    assert DEFAULT_REGISTRY.get(state).verification_issues
+
+
+def test_reviewed_certificate_freshness_is_entity_specific():
+    il = DEFAULT_REGISTRY.get("IL")
+    assert "60 days" in il.for_entity(EntityType.LLC).good_standing_evidence
+    assert "90 days" in il.for_entity(EntityType.C_CORP).good_standing_evidence
+    lp = il.for_entity(EntityType.LP).good_standing_evidence
+    assert "no numeric age limit" in lp and "general partner" in lp and "30 days" in lp
+    nc = DEFAULT_REGISTRY.get("NC")
+    for entity_type in (EntityType.LLC, EntityType.C_CORP):
+        assert "less than six months" in nc.for_entity(entity_type).good_standing_evidence
+        assert ".pdf" in nc.for_entity(entity_type).forms[0].url
+    assert "does not request" in nc.for_entity(EntityType.LP).good_standing_evidence
+    ga = DEFAULT_REGISTRY.get("GA")
+    for entity_type in (EntityType.LLC, EntityType.LP):
+        assert "No certified home-state" in ga.for_entity(entity_type).good_standing_evidence
+
+
+def test_illinois_franchise_tax_and_new_york_disclosure_scope_are_documented():
+    assert "$10,000" in " ".join(DEFAULT_REGISTRY.get("IL").notes)
+    assert "2% per month" in " ".join(DEFAULT_REGISTRY.get("IL").notes)
+    ny = DEFAULT_REGISTRY.get("NY").for_entity(EntityType.LLC)
+    assert "foreign-country law" in " ".join(ny.consequences)
+    assert "another US state" in " ".join(ny.consequences)

@@ -244,7 +244,7 @@ REQUIREMENT = StateRequirement(
         LegalSource(
             "8 Del. C. § 391(a)(8)",
             "https://delcode.delaware.gov/title8/c001/sc18/index.html",
-            _VERIFIED,
+            date(2026, 10, 11),
         ),
         LegalSource("6 Del. C. §§ 18-902, 18-907, 18-912", _LLC, _VERIFIED),
         LegalSource("6 Del. C. §§ 17-902, 17-907, 17-912", _LP, _VERIFIED),
@@ -303,12 +303,16 @@ REQUIREMENT = StateRequirement(
             _VERIFIED,
         ),
     ),
-    version="2026-10-10-live",
+    version="2026-10-11-conflict-recheck",
     verification_issues=(
         "Foreign corporation annual late penalty conflicts: current § 391(a)(8) says "
         "$200, while current SOS annual report instructions say $250; obtain confirmation.",
     ),
     notes=(
+        "Rechecked official § 391(a)(8) on October 11, 2026: annual filing fee "
+        "$250, late-report penalty $200. This does not reconcile the previously "
+        "reviewed SOS $250 late-penalty instructions. The conflict remains open; "
+        "see docs/verification/review-2026-10-11.md.",
         "Official statutes and listed SOS instructions were retrieved and reviewed on "
         "2026-10-10; evidence and unresolved conflicts are in docs/verification/delaware.md.",
         "The initial historical DGCL mirror at https://github.com/companymachine/dgcl/tree/"

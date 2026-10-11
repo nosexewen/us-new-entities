@@ -1,7 +1,7 @@
 """California foreign-entity rules, separated by legal entity type.
 
 Official agency guidance, fees, forms and service options were reviewed live.
-Legislative text remains unverified; see docs/verification/california.md.
+Legislative text reviewed October 11, 2026; see docs/verification/review-2026-10-11.md.
 """
 
 from datetime import date
@@ -35,6 +35,7 @@ _LLC_FORMS = f"{_FORMS}/limited-liability-companies-foreign-out-state-or-out-cou
 _LP_FORMS = f"{_FORMS}/limited-partnership-foreign-out-state-or-out-country"
 _SOS = "https://www.sos.ca.gov/business-programs/business-entities"
 _REVIEWED = date(2026, 10, 10)
+_LAW_REVIEWED = date(2026, 10, 11)
 
 _STATEMENT_PENALTY = PenaltyPolicy(
     citation="Cal. Rev. & Tax. Code § 19141; Corp. Code §§ 2204–2206, 17713.09",
@@ -264,16 +265,23 @@ REQUIREMENT = StateRequirement(
     ),
     entity_rules={EntityType.C_CORP: _CORPORATION, EntityType.LLC: _LLC, EntityType.LP: _LP},
     sources=(
-        LegalSource("Cal. Corp. Code § 191", _statute("CORP", "191")),
-        LegalSource("Cal. Corp. Code § 2105", _statute("CORP", "2105")),
-        LegalSource("Cal. Corp. Code § 2203", _statute("CORP", "2203")),
-        LegalSource("Cal. Corp. Code §§ 17708.02–17708.09", _statute("CORP", "17708.07")),
-        LegalSource("Cal. Corp. Code §§ 15909.02–15909.08", _statute("CORP", "15909.07")),
-        LegalSource("Cal. Gov. Code § 12186", _statute("GOV", "12186")),
-        LegalSource("Cal. Gov. Code § 12188", _statute("GOV", "12188")),
-        LegalSource("Cal. Gov. Code § 12190", _statute("GOV", "12190")),
-        LegalSource("Cal. Rev. & Tax. Code § 19141", _statute("RTC", "19141")),
-        LegalSource("Cal. Rev. & Tax. Code § 19135", _statute("RTC", "19135")),
+        LegalSource("Cal. Corp. Code § 191", _statute("CORP", "191"), _LAW_REVIEWED),
+        LegalSource("Cal. Corp. Code § 17708.03", _statute("CORP", "17708.03"), _LAW_REVIEWED),
+        LegalSource("Cal. Corp. Code § 15901.02(ai)", _statute("CORP", "15901.02"), _LAW_REVIEWED),
+        LegalSource("Cal. Corp. Code § 15909.03", _statute("CORP", "15909.03"), _LAW_REVIEWED),
+        LegalSource("Cal. Corp. Code § 2105", _statute("CORP", "2105"), _LAW_REVIEWED),
+        LegalSource("Cal. Corp. Code § 2203", _statute("CORP", "2203"), _LAW_REVIEWED),
+        LegalSource(
+            "Cal. Corp. Code §§ 17708.02–17708.09", _statute("CORP", "17708.07"), _LAW_REVIEWED
+        ),
+        LegalSource(
+            "Cal. Corp. Code §§ 15909.02–15909.08", _statute("CORP", "15909.07"), _LAW_REVIEWED
+        ),
+        LegalSource("Cal. Gov. Code § 12186", _statute("GOV", "12186"), _LAW_REVIEWED),
+        LegalSource("Cal. Gov. Code § 12188", _statute("GOV", "12188"), _LAW_REVIEWED),
+        LegalSource("Cal. Gov. Code § 12190", _statute("GOV", "12190"), _LAW_REVIEWED),
+        LegalSource("Cal. Rev. & Tax. Code § 19141", _statute("RTC", "19141"), _LAW_REVIEWED),
+        LegalSource("Cal. Rev. & Tax. Code § 19135", _statute("RTC", "19135"), _LAW_REVIEWED),
         LegalSource("California SOS foreign corporation forms and fees", _CORP_FORMS, _REVIEWED),
         LegalSource("California SOS foreign LLC forms and fees", _LLC_FORMS, _REVIEWED),
         LegalSource("California SOS foreign LP forms and fees", _LP_FORMS, _REVIEWED),
@@ -313,18 +321,11 @@ REQUIREMENT = StateRequirement(
             _REVIEWED,
         ),
     ),
-    version="2026-10-10-official-guidance-review",
-    verification_issues=(
-        "Primary legislative section/chapter URLs returned HTTP 403; official "
-        "SOS/FTB guidance verifies fees, reporting, agent and tax-sanction facts, "
-        "but statutory safe harbors and daily qualification penalties still "
-        "require primary-law review.",
-    ),
+    version="2026-10-11-official-law-review",
     notes=(
         "Official SOS/FTB guidance, fees, forms and service options were fetched and "
-        "reviewed October 10, 2026. Legislative section and chapter endpoints returned "
-        "HTTP 403; their verified_on remains unset. Statutory safe harbors and daily "
-        "penalties still require primary-law review. Evidence: docs/verification/california.md.",
+        "reviewed October 10, 2026. Legislative text was retrieved and reviewed October "
+        "11, resolving the earlier HTTP 403 gap. Evidence: docs/verification/review-2026-10-11.md.",
         "No penalty changes an entity's domestic-state standing automatically.",
         "Annual tax amounts depend on classification, tax year and exemptions; "
         "do not treat a fixed annual-tax amount as universal.",
