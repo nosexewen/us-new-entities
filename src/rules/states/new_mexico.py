@@ -25,7 +25,9 @@ _LLC = EntityRequirement(
             "service-of-process nexus. Under NMSA 1978 Chapter 53, Article 19, "
             "New Mexico LLCs have no periodic or annual report requirement and the "
             "periodic-report fee is $0. Domestic LLC formation is a one-time $50 "
-            "filing under § 53-19-63(A); foreign LLC registration remains $100 under "
+            "filing under § 53-19-63(A), plus a mandatory approximately $2 electronic "
+            "portal convenience fee assessed at SOS Enterprise checkout (approximately "
+            "$52 total for domestic formation); foreign LLC registration remains $100 under "
             "§ 53-19-63(K). Separate tax and licensing obligations may apply."
         ),
     ),
@@ -227,14 +229,22 @@ REQUIREMENT = StateRequirement(
         "LLC foreign registration has a $100 statutory base fee. Corporate "
         "qualification is $1 per 1,000 authorized shares represented in New Mexico, "
         "at least $200 and at most $1,000; $200 is a minimum, not a flat fee. Confirm "
-        "the actual portal total and processing charges. SOS states that business "
+        "the actual SOS Enterprise checkout amount: the mandatory electronic portal "
+        "convenience fee is approximately $2, separate from statutory filing fees. "
+        "Domestic LLC formation is $50 statutory plus approximately $2 at checkout "
+        "(approximately $52 total). This domestic total does not replace the $100 "
+        "foreign-registration base fee. SOS states that business "
         "filings are now online.",
     ),
-    verification_issues=(
-        "Current payable portal totals and any payment-processing fees remain "
-        "unverified; published amounts are statutory base fees.",
-    ),
+    verification_issues=(),
     review_disclosures=(
+        "Portal-total review is resolved by disclosure at the user's direction on "
+        "2026-10-11. The user supplied the mandatory approximately $2 electronic "
+        "portal convenience fee assessed at SOS Enterprise checkout; it is an "
+        "administrative charge, not the statutory fee in § 53-19-63. Domestic LLC "
+        "formation totals approximately $52 ($50 statutory plus approximately $2). "
+        "Confirm the actual checkout amount; this disclosure is not independent "
+        "verification of a live checkout or a corporate/LP final total.",
         "At the user's direction on 2026-10-11, the cited Justia statutory "
         "reproductions are accepted as sufficient verification for New Mexico. "
         "The primary review flag is satisfied by that acceptance; Justia remains "

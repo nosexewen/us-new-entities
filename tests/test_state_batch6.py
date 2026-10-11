@@ -42,7 +42,7 @@ def test_batch6_active_guides_preserve_provenance_and_open_review_flags(state, e
         for issue in requirement.verification_issues:
             assert issue in text
     assert 'content="noindex, follow"' not in page.html
-    assert requirement.rules_verified is (state != "NM")
+    assert requirement.rules_verified
     assert all(s.verified_on == date(2026, 10, 11) for s in requirement.sources)
 
 
@@ -157,7 +157,7 @@ def test_new_mexico_reporting_and_penalties_do_not_cross_entity_types():
         assert "30 days" in rule.good_standing_evidence
         assert "acceptance" in rule.good_standing_evidence
     assert "minimum" in r.notes[0]
-    assert any("portal totals" in issue for issue in r.verification_issues)
+    assert not r.verification_issues
 
 
 @pytest.mark.parametrize("state", BATCH)
@@ -225,3 +225,22 @@ def test_new_mexico_llc_reporting_resolution_keeps_foreign_fee_and_corporate_rep
         assert "formation filing is $50" in text
         assert "foreign registration is $100" in text
     assert requirement.for_entity(EntityType.C_CORP).annual_obligations[0].fee == Decimal("25")
+
+
+def test_new_mexico_portal_disclosure_resolves_review_without_overwriting_foreign_fee():
+    requirement = DEFAULT_REGISTRY.get("NM")
+    assert requirement.rules_verified
+    assert not requirement.verification_issues
+    assert requirement.for_entity(EntityType.LLC).filing_fee == Decimal("100")
+    assert requirement.for_entity(EntityType.C_CORP).filing_fee == Decimal("200")
+    page = LandingPageGenerator(base_url="https://us-new-entities.pages.dev").generate(
+        "NM", EntityType.LLC
+    )
+    for text in (page.html, page.markdown):
+        assert "mandatory approximately $2 electronic" in text
+        assert "approximately $52 total" in text
+        assert "SOS Enterprise checkout" in text
+        assert "Portal-total review is resolved by disclosure" in text
+        assert "not independent verification of a live checkout" in text
+        assert "§ 53-19-63(A)" in text
+        assert "§ 53-19-63(K)" in text
