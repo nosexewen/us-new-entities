@@ -22,11 +22,8 @@ from .redirect import get_public_site_url, validate_public_site_url
 
 _STEMS = tuple(
     f"{state}-{entity}-foreign-qualification"
-    for state in ("ca", "de", "fl", "tx", "wy")
+    for state in (code.lower() for code in DEFAULT_REGISTRY.states)
     for entity in ("llc", "c-corp")
-)
-_EXPECTED_FILES = frozenset(
-    [stem + suffix for stem in _STEMS for suffix in (".html", ".md")] + ["llms.txt", "robots.txt"]
 )
 _MAX_FILE_BYTES = 2 * 1024 * 1024
 _VOID_TAGS = frozenset(

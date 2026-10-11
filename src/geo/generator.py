@@ -34,6 +34,11 @@ _AGENCIES = {
     "TX": ("Texas Secretary of State", "https://www.sos.state.tx.us/"),
     "FL": ("Florida Division of Corporations", "https://dos.fl.gov/sunbiz/"),
     "WY": ("Wyoming Secretary of State", "https://sos.wyo.gov/"),
+    "GA": ("Georgia Secretary of State", "https://sos.ga.gov/"),
+    "IL": ("Illinois Secretary of State", "https://www.ilsos.gov/"),
+    "NY": ("New York Department of State", "https://dos.ny.gov/"),
+    "NC": ("North Carolina Secretary of State", "https://www.sosnc.gov/"),
+    "WA": ("Washington Secretary of State", "https://www.sos.wa.gov/"),
 }
 
 
@@ -302,7 +307,12 @@ class LandingPageGenerator:
             "Confirm availability, current pricing, and whether filing assistance is included. "
             "Same-day appointment or submission is available only when the provider confirms it; "
             "state acceptance follows the state's review and any applicable expedited cutoff. "
-            "The agent must satisfy the in-state physical-office requirement."
+            + (
+                "The agent must satisfy the in-state physical-office requirement."
+                if requirement.registered_agent.private_appointment_required
+                else "New York designates the Secretary of State as statutory agent; "
+                "a separate private registered agent is optional."
+            )
         )
         graph = {
             "@context": "https://schema.org",
@@ -363,14 +373,14 @@ class LandingPageGenerator:
         comparison = [
             (
                 "Manual mail",
-                "Prepare documents and arrange an eligible agent before filing.",
+                "Prepare documents and confirm the applicable service-of-process designation.",
                 "Mail transit plus state review. " + processing,
                 "Delay can prolong unauthorized-business exposure; "
                 "contracts are not automatically forfeited.",
             ),
             (
                 "State portal / direct filing",
-                "Appoint an agent and submit complete documents.",
+                "Confirm required agent designations and submit complete documents.",
                 processing,
                 "Portal submission is not approval; cure eligibility or status problems first.",
             ),
@@ -668,7 +678,13 @@ class LandingPageGenerator:
         cards = []
         for state in sorted(pages, key=lambda code: STATE_NAMES[code]):
             name = html.escape(STATE_NAMES[state])
-            status = "Reviewed guide" if state in self.registry.states else "Guide coming soon"
+            status = (
+                "Guide — review issues noted"
+                if state in self.registry.states and not self.registry.get(state).rules_verified
+                else "Reviewed guide"
+                if state in self.registry.states
+                else "Guide coming soon"
+            )
             links = "\n".join(
                 f'<li><a href="{html.escape(page.canonical_url, quote=True)}">'
                 f"{html.escape(page.entity_type.value)} guide</a></li>"

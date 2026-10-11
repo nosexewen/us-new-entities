@@ -153,6 +153,9 @@ class ComplianceAudit:
         domestic = self.target_state == self.entity.domestic_state
         filing = False if self.is_qualified or domestic else required
         agent_required = True if domestic or self.is_qualified else required
+        if not state_rule.registered_agent.private_appointment_required:
+            agent_required = False
+            reasons.append(state_rule.registered_agent.notes)
         if domestic:
             reasons.append(
                 "Domestic registered-agent duties still apply without foreign qualification."

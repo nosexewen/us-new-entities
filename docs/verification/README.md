@@ -1,6 +1,9 @@
 # State rule source verification
 
-Current review date: **2026-10-10**. A source is reviewed only after relevant
+Latest batch review date: **2026-10-11** (original five states: October 10).
+The [next-batch evidence](batch-2026-10-11.md) covers Georgia, Illinois, New York,
+North Carolina, and Washington, including open review issues.
+A source is reviewed only after relevant
 official content has been retrieved and read. A successful HTTP status, a
 JavaScript application shell, a challenge page, or an independent historical
 mirror does not establish live statutory or operational verification.

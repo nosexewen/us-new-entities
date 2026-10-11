@@ -127,7 +127,12 @@ fees, agent rules, initial/recurring filing instructions, and enforcement/forfei
 consequences. Consequences that depend on notice, agency action, or a court order
 are descriptive conditions, not automatic transitions of `Entity.status`.
 
-Official source content was reviewed on **2026-10-10**, with these remaining limits:
+Official source content was reviewed on **2026-10-10** for the original batch.
+The **2026-10-11** batch adds Georgia, Illinois, New York, North Carolina, and
+Washington. See [batch evidence and remaining issues](docs/verification/batch-2026-10-11.md).
+New York's private registered agent is optional; the statutory Secretary of State
+designation is still required. The audit and guides preserve that distinction.
+The original batch retains these limits:
 
 | Jurisdiction | Current source review |
 | --- | --- |
@@ -164,28 +169,28 @@ offers. `llms.txt` lists canonical guide URLs; `robots.txt` allows GPTBot,
 OAI-SearchBot, PerplexityBot, and other crawlers. Generating files does not deploy
 a site or perform a browser redirect.
 
-The default layout covers all three entity types in all five states, creating 15
-guides and 33 files, including the root directory and two crawler files:
+The default layout covers all three entity types in all ten populated states, creating 30
+guides and 63 files, including the root directory and two crawler files:
 
 ```sh
 .venv/bin/python -m us_new_entities.geo.generator site
 ```
 
 For example, the default nested output includes `site/states/ca/llc/index.html`
-and `index.md`. To build the ten LLC/C-Corp guides as flat files in `dist/`:
+and `index.md`. To build the twenty populated LLC/C-Corp guides as flat files in `dist/`:
 
 ```sh
 .venv/bin/python -m us_new_entities.geo.generator dist \
   --layout flat --entity-type LLC --entity-type C-Corp --overwrite
 ```
 
-This writes ten HTML files such as `dist/ca-llc-foreign-qualification.html`, ten
-matching Markdown files, `llms.txt`, and `robots.txt`, plus root `index.html` (23 files total). Omit
+This writes twenty HTML files such as `dist/ca-llc-foreign-qualification.html`, twenty
+matching Markdown files, `llms.txt`, and `robots.txt`, plus root `index.html` (43 files total). Omit
 `--overwrite` to refuse replacement of existing outputs. `--base-url` accepts an
 explicit HTTPS site origin and overrides the configured public URL for that run.
 
-To populate all 50 states, add `--include-coming-soon`. The reviewed guides remain
-available for CA, DE, FL, TX, and WY; the other 45 states receive clearly labeled
+To populate all 50 states, add `--include-coming-soon`. Source-backed guides remain
+available for CA, DE, FL, GA, IL, NC, NY, TX, WA, and WY; the other 40 states receive clearly labeled
 coming-soon pages without legal rules, prices, or offers. These placeholders use
 `WebPage` structured data and `noindex, follow` while awaiting review. DC is excluded.
 The LLC/C-Corp deployment creates 100 HTML pages, 100 matching Markdown files, and
@@ -278,7 +283,7 @@ rejection; it does not promise instant foreign qualification.
 
 [.github/workflows/deploy.yml](.github/workflows/deploy.yml) runs on pushes to
 `main` and manual runs on `main`. It installs the project, runs the full pytest
-suite and Ruff checks, builds the ten LLC/C-Corp guides, validates the 22-file
+suite and Ruff checks, builds the 100 LLC/C-Corp pages including placeholders, validates the 203-file
 artifact, then deploys that artifact with Wrangler. Failed build checks prevent
 deployment; post-deployment checks verify the published files and HTTP content types.
 
@@ -310,7 +315,7 @@ Reproduce the deployment export locally, using your actual publishing origin:
 ```sh
 .venv/bin/python -m us_new_entities.geo.generator dist \
   --base-url https://us-new-entities.pages.dev --layout flat --extensionless-urls \
-  --entity-type LLC --entity-type C-Corp --overwrite
+  --entity-type LLC --entity-type C-Corp --include-coming-soon --overwrite
 ```
 
 `--extensionless-urls` requires the flat layout. Omit it for hosts that serve the
@@ -321,10 +326,11 @@ Verify the generated deployment before publishing:
 
 ```sh
 .venv/bin/python -m us_new_entities.geo.verify dist \
-  --base-url https://us-new-entities.pages.dev
+  --base-url https://us-new-entities.pages.dev --include-coming-soon
 ```
 
-The checker requires exactly 22 flat files, validates HTML head metadata and
+The checker requires 203 flat files with `--include-coming-soon` (43 without it),
+validates the root state directory, HTML head metadata and
 JSON-LD graphs, resolves local links and extensionless routes to existing files,
 and checks discovery links and crawler rules. It exits unsuccessfully on errors.
 Add `--check-live` after deployment to also fetch the published assets, check HTTP

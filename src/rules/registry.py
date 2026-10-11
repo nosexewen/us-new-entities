@@ -31,8 +31,31 @@ class RulesRegistry:
             raise UnsupportedJurisdictionError(f"No rules registered for {code}") from exc
 
 
-from .states import california, delaware, florida, texas, wyoming  # noqa: E402
+from .states import (  # noqa: E402
+    california,
+    delaware,
+    florida,
+    georgia,
+    illinois,
+    new_york,
+    north_carolina,
+    texas,
+    washington,
+    wyoming,
+)
 
 DEFAULT_REGISTRY = RulesRegistry(
-    module.REQUIREMENT for module in (california, delaware, florida, texas, wyoming)
+    module.REQUIREMENT
+    for module in (
+        california,
+        delaware,
+        florida,
+        georgia,
+        illinois,
+        new_york,
+        north_carolina,
+        texas,
+        washington,
+        wyoming,
+    )
 )

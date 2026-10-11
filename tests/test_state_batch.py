@@ -1,0 +1,151 @@
+"""Regression cases for the October 11 state batch's entity-specific distinctions."""
+
+from datetime import date
+from decimal import Decimal
+
+import pytest
+from us_new_entities.geo.generator import LandingPageGenerator
+from us_new_entities.models import (
+    Activity,
+    BusinessPresence,
+    ComplianceAudit,
+    Entity,
+    EntityStatus,
+    EntityType,
+    QualificationDecision,
+)
+from us_new_entities.rules import DEFAULT_REGISTRY
+
+BATCH = ("GA", "IL", "NY", "NC", "WA")
+
+
+def screen(state, entity_type=EntityType.LLC, activity=Activity.OFFICE, days=None):
+    return ComplianceAudit(
+        Entity(
+            legal_name="Batch Example",
+            entity_type=entity_type,
+            domestic_state="DE",
+            formation_date=date(2020, 1, 1),
+            sos_entity_id="batch-001",
+            status=EntityStatus.GOOD_STANDING,
+        ),
+        state,
+        BusinessPresence({activity}, isolated_transaction_days=days),
+        as_of=date(2026, 10, 11),
+    ).evaluate()
+
+
+@pytest.mark.parametrize(
+    "state,fees",
+    [
+        ("GA", ("235", "235", "235")),
+        ("IL", ("150", "150", "150")),
+        ("NY", ("250", "225", "200")),
+        ("NC", ("250", "250", "50")),
+        ("WA", ("180", "180", "180")),
+    ],
+)
+def test_batch_base_fees_are_distinct_from_taxes_service_and_publication_charges(state, fees):
+    requirement = DEFAULT_REGISTRY.get(state)
+    for entity_type, amount in zip(
+        (EntityType.LLC, EntityType.C_CORP, EntityType.LP), fees, strict=True
+    ):
+        assert requirement.for_entity(entity_type).filing_fee == Decimal(amount)
+
+
+@pytest.mark.parametrize("state", BATCH)
+@pytest.mark.parametrize("entity_type", list(EntityType))
+def test_populated_batch_pages_replace_placeholders_with_source_backed_rules(state, entity_type):
+    page = LandingPageGenerator(base_url="https://us-new-entities.pages.dev").generate(
+        state, entity_type
+    )
+    assert "GovernmentService" in page.html
+    assert "Guide coming soon." not in page.html
+    assert 'content="noindex, follow"' not in page.html
+    assert "2026-10-11" in page.html
+    assert DEFAULT_REGISTRY.get(state).verification_issues
+
+
+@pytest.mark.parametrize("entity_type", list(EntityType))
+def test_new_york_authority_does_not_require_a_private_agent(entity_type):
+    result = screen("NY", entity_type)
+    assert result.qualification_required
+    assert result.foreign_filing_required
+    assert result.registered_agent_required is False
+    assert result.registered_agent_appointment_required is False
+    assert not any("Appoint an eligible registered agent" in r for r in result.remedies)
+    page = LandingPageGenerator(base_url="https://us-new-entities.pages.dev").generate(
+        "NY", entity_type
+    )
+    assert "a separate private registered agent is optional" in page.html
+
+
+def test_new_york_publication_and_biennial_reporting_are_type_specific():
+    state = DEFAULT_REGISTRY.get("NY")
+    for entity_type in (EntityType.LLC, EntityType.LP):
+        notice = state.for_entity(entity_type).initial_report
+        assert "120 days" in notice and "$50" in notice and "six successive weeks" in notice
+    assert state.for_entity(EntityType.C_CORP).initial_report is None
+    assert not state.for_entity(EntityType.LP).annual_obligations
+    for entity_type in (EntityType.LLC, EntityType.C_CORP):
+        report = state.for_entity(entity_type).annual_obligations[0]
+        assert report.cycle == "biennial" and report.fee == Decimal("9")
+
+
+@pytest.mark.parametrize(
+    "entity_type,limit", [(EntityType.LLC, 120), (EntityType.C_CORP, 120), (EntityType.LP, 30)]
+)
+def test_illinois_isolated_transaction_boundaries_are_entity_specific(entity_type, limit):
+    assert (
+        screen("IL", entity_type, Activity.ISOLATED_TRANSACTION, limit).decision
+        is QualificationDecision.NOT_REQUIRED
+    )
+    assert (
+        screen("IL", entity_type, Activity.ISOLATED_TRANSACTION, limit + 1).decision
+        is QualificationDecision.REVIEW_REQUIRED
+    )
+
+
+def test_illinois_income_producing_property_rule_is_lp_specific():
+    assert screen("IL", EntityType.LP, Activity.INCOME_PRODUCING_PROPERTY).qualification_required
+    assert (
+        screen("IL", EntityType.LLC, Activity.INCOME_PRODUCING_PROPERTY).decision
+        is QualificationDecision.REVIEW_REQUIRED
+    )
+
+
+def test_north_carolina_calendar_month_safe_harbor_is_not_approximated_as_days():
+    assert (
+        screen("NC", activity=Activity.ISOLATED_TRANSACTION, days=180).decision
+        is QualificationDecision.REVIEW_REQUIRED
+    )
+    state = DEFAULT_REGISTRY.get("NC")
+    assert not state.for_entity(EntityType.LP).annual_obligations
+    assert state.for_entity(EntityType.LLC).annual_obligations[0].fee == Decimal("200")
+    assert "$500" in state.for_entity(EntityType.LP).qualification_penalty.description
+    for entity_type in (EntityType.LLC, EntityType.C_CORP):
+        policy = state.for_entity(entity_type).qualification_penalty
+        assert "$10 per day" in policy.description and "$1,000" in policy.description
+        assert policy.estimate(date(2024, 1, 1), date(2026, 1, 1)).exact_amount is None
+
+
+def test_georgia_unreviewed_exemptions_require_manual_review():
+    assert (
+        screen("GA", activity=Activity.BANK_ACCOUNT).decision
+        is QualificationDecision.REVIEW_REQUIRED
+    )
+
+
+def test_washington_30_day_safe_harbor_and_annual_report_fee():
+    assert (
+        screen("WA", activity=Activity.ISOLATED_TRANSACTION, days=30).decision
+        is QualificationDecision.NOT_REQUIRED
+    )
+    assert (
+        screen("WA", activity=Activity.ISOLATED_TRANSACTION, days=31).decision
+        is QualificationDecision.REVIEW_REQUIRED
+    )
+    for entity_type in EntityType:
+        report = DEFAULT_REGISTRY.get("WA").for_entity(entity_type).annual_obligations[0]
+        assert report.fee == Decimal("70")
+        assert "includes online processing" in report.notes

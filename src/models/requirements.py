@@ -296,6 +296,11 @@ class RegisteredAgentRequirement:
     physical_in_state_address: bool = True
     po_boxes_allowed: bool = False
     notes: str = "An eligible individual or authorized agent must maintain the registered office."
+    private_appointment_required: bool = True
+
+    def __post_init__(self) -> None:
+        if type(self.private_appointment_required) is not bool:
+            raise ValueError("private_appointment_required must be boolean")
 
 
 @dataclass(frozen=True, slots=True)

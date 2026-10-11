@@ -10,10 +10,10 @@ from us_new_entities.rules.registry import (
     UnsupportedJurisdictionError,
 )
 
-STATES = ("CA", "DE", "FL", "TX", "WY")
+STATES = ("CA", "DE", "FL", "GA", "IL", "NC", "NY", "TX", "WA", "WY")
 
 
-def test_initial_registry_covers_exactly_five_target_states():
+def test_initial_registry_covers_exactly_ten_target_states():
     assert DEFAULT_REGISTRY.states == STATES
 
 
@@ -59,8 +59,8 @@ def test_registry_lookup_accepts_full_names(name, state):
 
 
 def test_registry_does_not_default_to_another_states_rules():
-    with pytest.raises(UnsupportedJurisdictionError, match="NY"):
-        DEFAULT_REGISTRY.get("New York")
+    with pytest.raises(UnsupportedJurisdictionError, match="NJ"):
+        DEFAULT_REGISTRY.get("New Jersey")
     with pytest.raises(ValueError):
         DEFAULT_REGISTRY.get("ZZ")
     with pytest.raises(UnsupportedJurisdictionError):

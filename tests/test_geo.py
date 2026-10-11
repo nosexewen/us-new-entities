@@ -19,7 +19,7 @@ from us_new_entities.rules.registry import (
     UnsupportedJurisdictionError,
 )
 
-STATES = ("CA", "DE", "FL", "TX", "WY")
+STATES = ("CA", "DE", "FL", "GA", "IL", "NC", "NY", "TX", "WA", "WY")
 SITE_URL = "https://entities.example.org"
 REVIEWED = date(2026, 10, 10)
 
@@ -316,7 +316,7 @@ def test_approved_affiliate_destinations_are_used_for_visible_provider_links():
     assert "affiliate" in page.markdown.lower()
 
 
-@pytest.mark.parametrize("state", ["NY", "New York"])
+@pytest.mark.parametrize("state", ["NJ", "New Jersey"])
 def test_generator_rejects_states_without_rules(state):
     with pytest.raises(UnsupportedJurisdictionError):
         LandingPageGenerator(base_url=SITE_URL).generate(state, EntityType.LLC)
@@ -343,7 +343,7 @@ def test_custom_unverified_registry_cannot_claim_live_verification():
     assert "A fee change requires review" in page.markdown
 
 
-def test_discovery_files_expose_all_fifteen_absolute_canonical_pages():
+def test_discovery_files_expose_all_thirty_absolute_canonical_pages():
     generator = LandingPageGenerator(base_url=SITE_URL)
     llms = generator.llms_txt()
     expected_urls = {
@@ -351,9 +351,9 @@ def test_discovery_files_expose_all_fifteen_absolute_canonical_pages():
         for state in STATES
         for entity_type in EntityType
     }
-    assert len(expected_urls) == 15
+    assert len(expected_urls) == 30
     assert all(url in llms for url in expected_urls)
-    assert llms.count(SITE_URL + "/") == 15
+    assert llms.count(SITE_URL + "/") == 30
     robots = generator.robots_txt()
     for agent in ("*", "GPTBot", "OAI-SearchBot", "PerplexityBot"):
         assert f"User-agent: {agent}\nAllow: /" in robots
@@ -372,15 +372,15 @@ def test_default_discovery_urls_use_a_production_https_domain(monkeypatch):
     assert page.canonical_url in generator.llms_txt()
 
 
-def test_write_site_generates_fifteen_markdown_pages_html_and_discovery(tmp_path):
+def test_write_site_generates_thirty_markdown_pages_html_and_discovery(tmp_path):
     generator = LandingPageGenerator(base_url=SITE_URL)
     output = tmp_path / "site"
     written = generator.write_site(output)
-    assert len(written) == 33
-    assert len(set(written)) == 33
-    assert len(list(output.rglob("*.md"))) == 15
+    assert len(written) == 63
+    assert len(set(written)) == 63
+    assert len(list(output.rglob("*.md"))) == 30
     html_pages = list((output / "states").rglob("index.html"))
-    assert len(html_pages) == 15
+    assert len(html_pages) == 30
     assert (output / "llms.txt").read_text() == generator.llms_txt()
     assert (output / "robots.txt").read_text() == generator.robots_txt()
     assert all(path.is_file() and path.is_relative_to(output) for path in written)
@@ -390,7 +390,7 @@ def test_write_site_generates_fifteen_markdown_pages_html_and_discovery(tmp_path
         assert json.loads(parsed.json_scripts[0])["@context"] == "https://schema.org"
 
 
-def test_flat_layout_writes_ten_selected_guides_and_matching_discovery_files(tmp_path):
+def test_flat_layout_writes_twenty_selected_guides_and_matching_discovery_files(tmp_path):
     generator = LandingPageGenerator(
         base_url=SITE_URL,
         layout="flat",
@@ -398,10 +398,10 @@ def test_flat_layout_writes_ten_selected_guides_and_matching_discovery_files(tmp
     )
     output = tmp_path / "dist"
     written = generator.write_site(output)
-    assert len(written) == 23
-    assert len(set(written)) == 23
-    assert len(list(output.glob("*.html"))) == 11
-    assert len(list(output.glob("*.md"))) == 10
+    assert len(written) == 43
+    assert len(set(written)) == 43
+    assert len(list(output.glob("*.html"))) == 21
+    assert len(list(output.glob("*.md"))) == 20
     assert (output / "index.html").is_file()
     assert all(path.parent == output for path in written)
     expected_urls = set()
@@ -421,15 +421,15 @@ def test_flat_layout_writes_ten_selected_guides_and_matching_discovery_files(tmp
     assert generator.generate("CA", EntityType.LLC).relative_path == (
         "ca-llc-foreign-qualification.html"
     )
-    assert len(expected_urls) == 10
+    assert len(expected_urls) == 20
     llms = (output / "llms.txt").read_text()
     assert llms == generator.llms_txt()
     assert all(url in llms for url in expected_urls)
-    assert llms.count(SITE_URL + "/") == 10
+    assert llms.count(SITE_URL + "/") == 20
     assert (output / "robots.txt").read_text() == generator.robots_txt()
 
 
-def test_extensionless_flat_urls_match_canonicals_schema_and_discovery_for_ten_pages(tmp_path):
+def test_extensionless_flat_urls_match_canonicals_schema_and_discovery_for_twenty_pages(tmp_path):
     generator = LandingPageGenerator(
         base_url=SITE_URL,
         layout="flat",
@@ -438,9 +438,9 @@ def test_extensionless_flat_urls_match_canonicals_schema_and_discovery_for_ten_p
     )
     output = tmp_path / "dist"
     written = generator.write_site(output)
-    assert len(written) == 23
-    assert len(list(output.glob("*.html"))) == 11
-    assert len(list(output.glob("*.md"))) == 10
+    assert len(written) == 43
+    assert len(list(output.glob("*.html"))) == 21
+    assert len(list(output.glob("*.md"))) == 20
     expected_urls = set()
     for state in STATES:
         for entity_type in (EntityType.LLC, EntityType.C_CORP):
@@ -462,9 +462,9 @@ def test_extensionless_flat_urls_match_canonicals_schema_and_discovery_for_ten_p
             assert faq["@id"] == expected_url + "#faq"
             expected_urls.add(expected_url)
     llms = (output / "llms.txt").read_text()
-    assert len(expected_urls) == 10
+    assert len(expected_urls) == 20
     assert all(url in llms for url in expected_urls)
-    assert llms.count(SITE_URL + "/") == 10
+    assert llms.count(SITE_URL + "/") == 20
     assert ".html" not in llms
     assert generator.generate("CA", EntityType.LLC).canonical_url == (
         SITE_URL + "/ca-llc-foreign-qualification"
@@ -504,10 +504,10 @@ def test_cli_extensionless_flag_writes_selected_flat_files_with_served_canonical
         text=True,
         check=True,
     )
-    assert "Generated 23 files" in result.stdout
+    assert "Generated 43 files" in result.stdout
     html = ParsedHTML((output / "ca-llc-foreign-qualification.html").read_text())
     assert html.canonical_urls == [SITE_URL + "/ca-llc-foreign-qualification"]
-    assert (output / "llms.txt").read_text().count(SITE_URL + "/") == 10
+    assert (output / "llms.txt").read_text().count(SITE_URL + "/") == 20
 
 
 def test_cli_rejects_extensionless_urls_for_nested_layout_before_writing(tmp_path):
@@ -557,9 +557,9 @@ def test_entity_selection_can_be_a_one_time_iterable_of_known_type_strings(tmp_p
         layout="flat",
         entity_types=iter(("LLC", "C-Corp")),
     )
-    assert generator.llms_txt().count(SITE_URL + "/") == 10
-    assert len(generator.write_site(tmp_path / "dist")) == 23
-    assert generator.llms_txt().count(SITE_URL + "/") == 10
+    assert generator.llms_txt().count(SITE_URL + "/") == 20
+    assert len(generator.write_site(tmp_path / "dist")) == 43
+    assert generator.llms_txt().count(SITE_URL + "/") == 20
 
 
 def test_write_site_collision_preflight_does_not_partially_change_an_existing_site(tmp_path):

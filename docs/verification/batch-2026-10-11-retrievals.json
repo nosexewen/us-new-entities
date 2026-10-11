@@ -1,0 +1,351 @@
+{
+  "review_date": "2026-10-11",
+  "provider": "Firecrawl",
+  "scope": "Official content retrieved and reviewed for the second state batch; metadata is provenance, not proof of a complete rule review.",
+  "documents": [
+    {
+      "key": "NCllc",
+      "url": "https://www.ncleg.gov/EnactedLegislation/Statutes/HTML/ByChapter/Chapter_57D.html",
+      "scrape_id": "01a12865-ab49-72ef-9762-973db3a1ee51",
+      "status": 200,
+      "content_characters": 160512
+    },
+    {
+      "key": "NCcorp",
+      "url": "https://www.ncleg.gov/EnactedLegislation/Statutes/HTML/ByChapter/Chapter_55.html",
+      "scrape_id": "01a12865-d866-7693-9252-9597c26cc457",
+      "status": 200,
+      "content_characters": 445017
+    },
+    {
+      "key": "NClp",
+      "url": "https://www.ncleg.gov/EnactedLegislation/Statutes/HTML/ByChapter/Chapter_59.html",
+      "scrape_id": "01a12866-08fa-74fd-9bc4-88ed14a146a1",
+      "status": 200,
+      "content_characters": 216735
+    },
+    {
+      "key": "NCagents",
+      "url": "https://www.ncleg.gov/EnactedLegislation/Statutes/HTML/ByChapter/Chapter_55D.html",
+      "scrape_id": "01a1286c-c850-70ae-8d6f-4f32d3ebf0fe",
+      "status": 200,
+      "content_characters": 42145
+    },
+    {
+      "key": "NYllc",
+      "url": "https://dos.ny.gov/application-authority-foreign-limited-liability-companies",
+      "scrape_id": "01a12866-3b1c-702b-9654-f507eed2cfbf",
+      "status": 200,
+      "content_characters": 7454
+    },
+    {
+      "key": "NYcorp2",
+      "url": "https://dos.ny.gov/application-authority-foreign-business-corporation",
+      "scrape_id": "01a12866-b893-7080-b81e-558b1ffb54eb",
+      "status": 200,
+      "content_characters": 8754
+    },
+    {
+      "key": "NYlp",
+      "url": "https://dos.ny.gov/application-authority-foreign-limited-partnerships-0",
+      "scrape_id": "01a12866-9931-7390-a5b9-5136d2124a29",
+      "status": 200,
+      "content_characters": 9021
+    },
+    {
+      "key": "NYbiennial",
+      "url": "https://dos.ny.gov/biennial-statements-business-corporations-and-limited-liability-companies",
+      "scrape_id": "01a12866-e968-728f-80ee-2960ca0ac9c8",
+      "status": 200,
+      "content_characters": 15519
+    },
+    {
+      "key": "NYllc803",
+      "url": "https://www.nysenate.gov/legislation/laws/LLC/803",
+      "scrape_id": "01a12867-d7b4-74ab-b4c0-990727c75c95",
+      "status": 200,
+      "content_characters": 2431
+    },
+    {
+      "key": "NYllc302",
+      "url": "https://www.nysenate.gov/legislation/laws/LLC/302",
+      "scrape_id": "01a12868-02d8-76ca-a30e-e10e5169ea78",
+      "status": 200,
+      "content_characters": 3664
+    },
+    {
+      "key": "NYcorp1301",
+      "url": "https://www.nysenate.gov/legislation/laws/BSC/1301",
+      "scrape_id": "01a12868-300e-7354-bd07-7a74f4e0040c",
+      "status": 200,
+      "content_characters": 3680
+    },
+    {
+      "key": "NYcorp305",
+      "url": "https://www.nysenate.gov/legislation/laws/BSC/305",
+      "scrape_id": "01a1286a-7cd9-73c1-b872-cc26da90704a",
+      "status": 200,
+      "content_characters": 3311
+    },
+    {
+      "key": "NYlp104",
+      "url": "https://www.nysenate.gov/legislation/laws/PTR/121-104",
+      "scrape_id": "01a1286a-5834-74f9-be07-553d23332c6e",
+      "status": 200,
+      "content_characters": 3039
+    },
+    {
+      "key": "NYlp902",
+      "url": "https://www.nysenate.gov/legislation/laws/PTR/121-902",
+      "scrape_id": "01a1286d-2268-7385-8f8e-a7d8f3a50c9c",
+      "status": 200,
+      "content_characters": 17260
+    },
+    {
+      "key": "NYlp907",
+      "url": "https://www.nysenate.gov/legislation/laws/PTR/121-907",
+      "scrape_id": "01a12868-8862-747b-8162-c288f500a618",
+      "status": 200,
+      "content_characters": 2745
+    },
+    {
+      "key": "NYllc808",
+      "url": "https://www.nysenate.gov/legislation/laws/LLC/808",
+      "scrape_id": "01a1286a-a838-74de-9c1c-a73a762488f3",
+      "status": 200,
+      "content_characters": 2867
+    },
+    {
+      "key": "NYcorp1312",
+      "url": "https://www.nysenate.gov/legislation/laws/BSC/1312",
+      "scrape_id": "01a1286a-d3d6-740a-84a1-847b871d1eb2",
+      "status": 200,
+      "content_characters": 2426
+    },
+    {
+      "key": "NYpub",
+      "url": "https://dos.ny.gov/certificate-publication-foreign-limited-liability-company-0",
+      "scrape_id": "01a1286b-0242-757b-b86c-c5f8652eb16c",
+      "status": 200,
+      "content_characters": 7527
+    },
+    {
+      "key": "ILforms",
+      "url": "https://www.ilsos.gov/publications/business-services/llc.html",
+      "scrape_id": "01a12866-c321-717f-84c9-06371c11d4aa",
+      "status": 200,
+      "content_characters": 8713
+    },
+    {
+      "key": "ILlpforms",
+      "url": "https://www.ilsos.gov/publications/business-services/lp.html",
+      "scrape_id": "01a12866-dac5-7784-902b-58c08e58c5a8",
+      "status": 200,
+      "content_characters": 4582
+    },
+    {
+      "key": "ILllcform",
+      "url": "https://www.ilsos.gov/content/dam/publications/pdf_publications/llc455.pdf",
+      "scrape_id": "01a12868-e097-769e-ad79-ed4f79bead27",
+      "status": 200,
+      "content_characters": 4707
+    },
+    {
+      "key": "ILcorpform",
+      "url": "https://www.ilsos.gov/content/dam/publications/pdf_publications/bca1315.pdf",
+      "scrape_id": "01a12868-b3ea-7177-9328-fbcbb1eddd74",
+      "status": 200,
+      "content_characters": 4380
+    },
+    {
+      "key": "ILllcstat",
+      "url": "https://www.ilga.gov/legislation/ILCS/details?ActID=2290&ActName=Limited+Liability+Company+Act.&ChapAct=805+ILCS+180%2F",
+      "scrape_id": "01a12867-73fa-7793-9b03-874a86c0fef6",
+      "status": 200,
+      "content_characters": 259395
+    },
+    {
+      "key": "ILcorppenalty",
+      "url": "https://ilga.gov/documents/legislation/ilcs/documents/080500050K13.70.htm",
+      "scrape_id": "01a12867-49c0-770b-9001-d3384d55253b",
+      "status": 200,
+      "content_characters": 2983
+    },
+    {
+      "key": "ILcorp1375",
+      "url": "https://ilga.gov/documents/legislation/ilcs/documents/080500050K13.75.htm",
+      "scrape_id": "01a12869-d417-7727-bf0d-06151dbf04c9",
+      "status": 200,
+      "content_characters": 1987
+    },
+    {
+      "key": "ILlp903",
+      "url": "https://ilga.gov/documents/legislation/ilcs/documents/080502150K903.htm",
+      "scrape_id": "01a12869-fe29-73ff-b3ca-56fde0112e25",
+      "status": 200,
+      "content_characters": 2330
+    },
+    {
+      "key": "ILlp907",
+      "url": "https://ilga.gov/documents/legislation/ilcs/documents/080502150K907.htm",
+      "scrape_id": "01a12869-38c4-74ce-b0bb-3894974ff96d",
+      "status": 200,
+      "content_characters": 1553
+    },
+    {
+      "key": "ILlpannual",
+      "url": "https://ilga.gov/documents/legislation/ilcs/documents/080502150K210.htm",
+      "scrape_id": "01a12869-0c09-754b-bc0f-eb487230895e",
+      "status": 200,
+      "content_characters": 4074
+    },
+    {
+      "key": "ILcorpreport",
+      "url": "https://www.ilsos.gov/departments/business-services/annual-reports/corp-instructions.html",
+      "scrape_id": "01a1286c-f38c-7129-8c4b-1d05feb5c7a2",
+      "status": 200,
+      "content_characters": 1649
+    },
+    {
+      "key": "GAfaq",
+      "url": "https://sos.ga.gov/page/business-division-faq",
+      "scrape_id": "01a12867-dfab-738f-9987-c6dbe253f2e9",
+      "status": 200,
+      "content_characters": 67899
+    },
+    {
+      "key": "WAcode",
+      "url": "https://app.leg.wa.gov/RCW/default.aspx?cite=23.95&full=true",
+      "scrape_id": "01a12867-15f2-73bf-b4a6-bc11d8ed3574",
+      "status": 200,
+      "content_characters": 128875
+    },
+    {
+      "key": "WAannual",
+      "url": "https://www.sos.wa.gov/corporations-charities/business-entities/online-filing-instructions/file-annual-report-multiple-entity-types-online",
+      "scrape_id": "01a12867-ac4f-75c7-b469-8334f890bf57",
+      "status": 200,
+      "content_characters": 135616
+    },
+    {
+      "key": "Georgia",
+      "url": "https://sos.ga.gov/how-to-guide/how-to-guide-register-foreign-entity",
+      "title": "How to Guide: Register a Foreign Entity | Georgia Secretary of State",
+      "scrape_id": "01a12864-6a85-7178-b5c7-101face8e094",
+      "status": 200,
+      "content_characters": 21368
+    },
+    {
+      "key": "Georgia",
+      "url": "https://sos.ga.gov/sites/default/files/forms/Reference%20-%20Filing%20Fees_0.pdf",
+      "title": "[PDF] Corporations Division Filing Fees - Georgia Secretary of State",
+      "scrape_id": "01a12864-6a85-7178-b5c7-16d88dfb33dd",
+      "status": 200,
+      "content_characters": 12500
+    },
+    {
+      "key": "Georgia",
+      "url": "https://sos.ga.gov/page/business-division-faq",
+      "title": "Business Division FAQ | Georgia Secretary of State",
+      "scrape_id": "01a12864-6a85-7178-b5c7-1b125624ca97",
+      "status": 200,
+      "content_characters": 67899
+    },
+    {
+      "key": "Georgia",
+      "url": "https://sos.ga.gov/how-to-guide/how-file-annual-registration",
+      "title": "How to File Annual Registration | Georgia Secretary of State",
+      "scrape_id": "01a12864-6a85-7178-b5c7-1faa3bab1f12",
+      "status": 200,
+      "content_characters": 8657
+    },
+    {
+      "key": "Georgia",
+      "url": "https://sos.ga.gov/how-to-guide/how-guide-register-domestic-entity",
+      "title": "How to Guide: Register a Domestic Entity | Georgia Secretary of State",
+      "scrape_id": "01a12864-6a85-7178-b5c7-23cf4c737483",
+      "status": 200,
+      "content_characters": 26960
+    },
+    {
+      "key": "Illinois",
+      "url": "https://www.ilsos.gov/publications/business-services/lp.html",
+      "title": "Limited Partnership Publications and Forms - ILSOS.gov",
+      "scrape_id": "01a12864-6b15-7649-aa06-a43306fa9f2a",
+      "status": 200,
+      "content_characters": 4582
+    },
+    {
+      "key": "Illinois",
+      "url": "https://www.ilsos.gov/publications/business-services/dfc.html",
+      "title": "Domestic and Foreign Corporations Publications and Forms - ILSOS.gov",
+      "scrape_id": "01a12864-6b15-7649-aa06-aa41ac2d59af",
+      "status": 200,
+      "content_characters": 9133
+    },
+    {
+      "key": "Illinois",
+      "url": "https://www.ilsos.gov/departments/business-services/annual-reports.html",
+      "title": "File an Annual Report - ILSOS.gov",
+      "scrape_id": "01a12864-6b15-7649-aa06-aea2df8f6e50",
+      "status": 200,
+      "content_characters": 2842
+    },
+    {
+      "key": "Illinois",
+      "url": "https://www.ilsos.gov/publications/business-services/llp.html",
+      "title": "Limited Liability Partnership Publications/Forms - ILSOS.gov",
+      "scrape_id": "01a12864-6b15-7649-aa06-b0c09d83a86d",
+      "status": 200,
+      "content_characters": 4256
+    },
+    {
+      "key": "Illinois",
+      "url": "https://www.ilsos.gov/content/dam/publications/pdf_publications/lp210.pdf",
+      "title": "[PDF] Uniform Limited Partnership Act Annual Report - ILSOS.gov",
+      "scrape_id": "01a12864-6b15-7649-aa06-b7f2b90fc25a",
+      "status": 200,
+      "content_characters": 2698
+    },
+    {
+      "key": "Washington",
+      "url": "https://www.sos.wa.gov/corporations-charities/business-entities/online-filing-instructions/register-foreign-non-wa-limited-partnership-lp-or-limited-liability-limited-partnership-lllp-online",
+      "title": "Register a Foreign (Non-WA) Limited Partnership (LP) or Limited Liability ...",
+      "scrape_id": "01a12864-6ad1-75f3-bf64-efe0e62f3372",
+      "status": 200,
+      "content_characters": 155973
+    },
+    {
+      "key": "Washington",
+      "url": "https://www.sos.wa.gov/corporations-charities/business-entities/limited-liability-company-llc-professional-llc-pllc-filing-resource-page",
+      "title": "Limited Liability Company (LLC) & Professional LLC (PLLC) Filing ...",
+      "scrape_id": "01a12864-6ad1-75f3-bf64-f2f1222e67cd",
+      "status": 200,
+      "content_characters": 171257
+    },
+    {
+      "key": "Washington",
+      "url": "https://www.sos.wa.gov/corporations-charities/business-entities/online-filing-instructions/register-foreign-non-wa-limited-liability-company-llc-online",
+      "title": "Register a Foreign (Non-WA) Limited Liability Company (LLC) Online",
+      "scrape_id": "01a12864-6ad1-75f3-bf64-f567fe4907ac",
+      "status": 200,
+      "content_characters": 143597
+    },
+    {
+      "key": "Washington",
+      "url": "https://www.sos.wa.gov/corporations-charities/business-entities/filings-forms-information",
+      "title": "Filings, Forms & Information | WA Secretary of State",
+      "scrape_id": "01a12864-6ad2-72cb-ac07-0c2d5bf3efae",
+      "status": 200,
+      "content_characters": 201448
+    },
+    {
+      "key": "Washington",
+      "url": "https://www.sos.wa.gov/corporations-charities",
+      "title": "Corporations & Charities - Washington Secretary of State - WA.gov",
+      "scrape_id": "01a12864-6ad2-72cb-ac07-106f28f517f3",
+      "status": 200,
+      "content_characters": 125327
+    }
+  ]
+}
