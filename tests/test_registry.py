@@ -10,11 +10,27 @@ from us_new_entities.rules.registry import (
     UnsupportedJurisdictionError,
 )
 
-STATES = ("CA", "DE", "FL", "GA", "IL", "NC", "NY", "TX", "WA", "WY")
+STATES = DEFAULT_REGISTRY.states
 
 
-def test_initial_registry_covers_exactly_ten_target_states():
-    assert DEFAULT_REGISTRY.states == STATES
+def test_registry_covers_exactly_fifteen_populated_states():
+    assert DEFAULT_REGISTRY.states == (
+        "AK",
+        "AL",
+        "AR",
+        "AZ",
+        "CA",
+        "CO",
+        "DE",
+        "FL",
+        "GA",
+        "IL",
+        "NC",
+        "NY",
+        "TX",
+        "WA",
+        "WY",
+    )
 
 
 @pytest.mark.parametrize("state", STATES)

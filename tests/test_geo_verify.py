@@ -16,6 +16,7 @@ from us_new_entities.geo.verify import (
     verify_site,
 )
 from us_new_entities.models import EntityType
+from us_new_entities.rules.registry import DEFAULT_REGISTRY
 
 BASE = "https://us-new-entities.pages.dev"
 PAGE = "ca-llc-foreign-qualification.html"
@@ -62,9 +63,9 @@ def mutate_graph(site, mutate):
 def test_current_production_artifact_contract_passes_without_network(site):
     report = verify_site(site, base_url=BASE)
     assert report.ok, report.errors
-    assert report.files == 43
-    assert report.pages == 21
-    assert len(report.routes) == 20
+    assert report.files == 4 * len(DEFAULT_REGISTRY.states) + 3
+    assert report.pages == 2 * len(DEFAULT_REGISTRY.states) + 1
+    assert len(report.routes) == 2 * len(DEFAULT_REGISTRY.states)
     assert "/ca-llc-foreign-qualification" in report.routes
     assert report.live_checks == 0
     with pytest.raises(FrozenInstanceError):
@@ -325,7 +326,7 @@ def test_live_validation_is_opt_in_and_follows_local_success(site, monkeypatch):
     assert verify_site(site, base_url=BASE).ok
     assert calls == []
     report = verify_site(site, base_url=BASE, check_live=True)
-    assert report.ok and report.live_checks == 43
+    assert report.ok and report.live_checks == 4 * len(DEFAULT_REGISTRY.states) + 3
     assert calls == [(site, BASE)]
     (site / "llms.txt").unlink()
     assert not verify_site(site, base_url=BASE, check_live=True).ok
@@ -345,7 +346,11 @@ def test_cli_module_reports_success_and_nonzero_failure(site):
     command = [sys.executable, "-m", "us_new_entities.geo.verify", str(site), "--base-url", BASE]
     result = subprocess.run(command, capture_output=True, text=True, check=False)
     assert result.returncode == 0
-    assert "Verified 43 files, 21 pages and 20 extensionless routes" in result.stdout
+    assert (
+        f"Verified {4 * len(DEFAULT_REGISTRY.states) + 3} files, "
+        f"{2 * len(DEFAULT_REGISTRY.states) + 1} pages and "
+        f"{2 * len(DEFAULT_REGISTRY.states)} extensionless routes"
+    ) in result.stdout
     (site / "robots.txt").unlink()
     result = subprocess.run(command, capture_output=True, text=True, check=False)
     assert result.returncode == 1

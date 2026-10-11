@@ -175,6 +175,109 @@ def test_georgia_accepted_statutory_review_preserves_manual_safe_harbors():
     assert requirement.review_disclosures
 
 
+@pytest.mark.parametrize(
+    "state,llc_fee,corp_fee",
+    (
+        ("AL", "150", "150"),
+        ("AK", "350", "350"),
+        ("AZ", "150", "175"),
+        ("AR", "300", "300"),
+        ("CO", "100", "100"),
+    ),
+)
+def test_second_batch_filing_fees_and_both_guides_replace_placeholders(state, llc_fee, corp_fee):
+    requirement = DEFAULT_REGISTRY.get(state)
+    for entity_type, fee in ((EntityType.LLC, llc_fee), (EntityType.C_CORP, corp_fee)):
+        rule = requirement.for_entity(entity_type)
+        assert rule.filing_fee == Decimal(fee)
+        assert rule.forms and rule.qualification_citation
+        page = LandingPageGenerator(base_url="https://us-new-entities.pages.dev").generate(
+            state, entity_type
+        )
+        for text in (page.html, page.markdown):
+            assert "Guide coming soon." not in text
+            assert rule.qualification_citation in text
+            assert "2026-10-11" in text
+        assert 'content="noindex, follow"' not in page.html
+    assert all(source.verified_on == date(2026, 10, 11) for source in requirement.sources)
+
+
+@pytest.mark.parametrize("state", ("AZ", "AR"))
+def test_second_batch_llc_isolated_transactions_do_not_inherit_corporate_day_limits(state):
+    assert screen(state, EntityType.LLC, Activity.ISOLATED_TRANSACTION, 31).decision is (
+        QualificationDecision.NOT_REQUIRED
+    )
+    assert screen(state, EntityType.C_CORP, Activity.ISOLATED_TRANSACTION, 30).decision is (
+        QualificationDecision.NOT_REQUIRED
+    )
+    assert screen(state, EntityType.C_CORP, Activity.ISOLATED_TRANSACTION, 31).decision is (
+        QualificationDecision.REVIEW_REQUIRED
+    )
+
+
+@pytest.mark.parametrize("state", ("AK", "CO"))
+@pytest.mark.parametrize("entity_type", (EntityType.LLC, EntityType.C_CORP))
+def test_second_batch_thirty_day_isolated_transaction_boundaries(state, entity_type):
+    assert screen(state, entity_type, Activity.ISOLATED_TRANSACTION, 30).decision is (
+        QualificationDecision.NOT_REQUIRED
+    )
+    assert screen(state, entity_type, Activity.ISOLATED_TRANSACTION, 31).decision is (
+        QualificationDecision.REVIEW_REQUIRED
+    )
+
+
+def test_second_batch_reporting_cycles_and_entity_specific_tax_amounts():
+    for entity in (EntityType.LLC, EntityType.C_CORP):
+        assert not DEFAULT_REGISTRY.get("AL").for_entity(entity).annual_obligations
+        report = DEFAULT_REGISTRY.get("AK").for_entity(entity).annual_obligations[0]
+        assert report.cycle == "biennial" and report.fee == Decimal("200")
+        report = DEFAULT_REGISTRY.get("CO").for_entity(entity).annual_obligations[0]
+        assert report.fee == Decimal("25") and "$50" in report.notes
+    assert not DEFAULT_REGISTRY.get("AK").for_entity(EntityType.LP).annual_obligations
+    assert not DEFAULT_REGISTRY.get("AZ").for_entity(EntityType.LLC).annual_obligations
+    report = DEFAULT_REGISTRY.get("AZ").for_entity(EntityType.C_CORP).annual_obligations[0]
+    assert report.fee == Decimal("45") and "$9" in report.notes
+    ar = DEFAULT_REGISTRY.get("AR")
+    assert ar.for_entity(EntityType.LLC).annual_obligations[0].fee == Decimal("150")
+    assert ar.for_entity(EntityType.C_CORP).annual_obligations[0].fee is None
+    assert "0.3%" in ar.for_entity(EntityType.C_CORP).annual_obligations[0].notes
+
+
+def test_second_batch_conservative_screening_and_source_review_gaps_are_preserved():
+    al = DEFAULT_REGISTRY.get("AL")
+    assert "90 days" in al.for_entity(EntityType.LLC).qualification_penalty.description
+    assert "$25 name reservation" in " ".join(al.notes)
+    assert screen("AL", activity=Activity.BANK_ACCOUNT).decision is (
+        QualificationDecision.REVIEW_REQUIRED
+    )
+    assert "2025" in DEFAULT_REGISTRY.get("CO").registered_agent.citation
+    ar = DEFAULT_REGISTRY.get("AR")
+    assert not ar.rules_verified and "primary" in ar.verification_issues[0]
+    assert "$270" in " ".join(ar.notes)
+    for state in ("AL", "AK", "AZ", "CO"):
+        assert DEFAULT_REGISTRY.get(state).rules_verified
+    for state in ("AK", "AZ", "AR", "CO"):
+        for entity in (EntityType.LLC, EntityType.C_CORP):
+            policy = DEFAULT_REGISTRY.get(state).for_entity(entity).qualification_penalty
+            estimate = policy.estimate(date(2024, 12, 1), date(2026, 1, 1))
+            assert estimate.exact_amount is None and estimate.unresolved
+
+
+def test_second_batch_certificate_requirements_are_not_shared_across_entity_types():
+    ak = DEFAULT_REGISTRY.get("AK")
+    assert (
+        "Attach a home-jurisdiction certificate"
+        in ak.for_entity(EntityType.LLC).good_standing_evidence
+    )
+    assert (
+        "does not list an attached certificate"
+        in ak.for_entity(EntityType.C_CORP).good_standing_evidence
+    )
+    for entity in (EntityType.LLC, EntityType.C_CORP):
+        assert "60 days" in DEFAULT_REGISTRY.get("AZ").for_entity(entity).good_standing_evidence
+        assert "30 days" in DEFAULT_REGISTRY.get("AR").for_entity(entity).good_standing_evidence
+
+
 @pytest.mark.parametrize("state", ("DE", "GA"))
 @pytest.mark.parametrize("entity_type", list(EntityType))
 def test_resolved_fee_disclosures_remain_visible_in_html_and_markdown(state, entity_type):

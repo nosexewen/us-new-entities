@@ -32,7 +32,12 @@ class RulesRegistry:
 
 
 from .states import (  # noqa: E402
+    alabama,
+    alaska,
+    arizona,
+    arkansas,
     california,
+    colorado,
     delaware,
     florida,
     georgia,
@@ -47,6 +52,11 @@ from .states import (  # noqa: E402
 DEFAULT_REGISTRY = RulesRegistry(
     module.REQUIREMENT
     for module in (
+        alabama,
+        alaska,
+        arizona,
+        arkansas,
+        colorado,
         california,
         delaware,
         florida,

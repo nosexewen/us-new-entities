@@ -1,0 +1,843 @@
+{
+  "reviewed_on": "2026-10-11",
+  "scope": [
+    "AL",
+    "AK",
+    "AZ",
+    "AR",
+    "CO"
+  ],
+  "note": "Hashes refer to retrieved markdown. HTTP errors, empty results and index-only pages are not accepted as substantive verification. Justia content remains labeled as a third-party reproduction.",
+  "records": [
+    {
+      "key": "alcode",
+      "requested_url": "https://alison.legislature.state.al.us/code-of-alabama?section=10A-1-7.02",
+      "retrieved_url": "https://alison.legislature.state.al.us/code-of-alabama?section=10A-1-7.02",
+      "http_status": 200,
+      "outcome": "statutory_text",
+      "scrape_id": "01a12903-8edc-7077-9873-8f92270aba3d",
+      "characters": 6401,
+      "markdown_sha256": "0d03453d0327c51b00d790e419e4434818bfc0ee36c3df73e28a41713b957b4b"
+    },
+    {
+      "key": "alfees",
+      "requested_url": "https://sos.alabama.gov/sites/default/files/form-files/FeeSchedule.pdf",
+      "retrieved_url": "https://sos.alabama.gov/sites/default/files/form-files/FeeSchedule.pdf",
+      "http_status": 200,
+      "outcome": "retrieved",
+      "scrape_id": "01a12904-ab6c-73d7-bf14-4603d9cab503",
+      "characters": 11012,
+      "markdown_sha256": "4a43ee22909a6cb0c4d9513b5910b3ea2ed693d19b28e335a41eabe2efc7c52e"
+    },
+    {
+      "key": "alcorp",
+      "requested_url": "https://sos.alabama.gov/business-entities/foreign-corporations",
+      "retrieved_url": "https://sos.alabama.gov/business-entities/foreign-corporations",
+      "http_status": 200,
+      "outcome": "retrieved",
+      "scrape_id": "01a12903-b4b3-74be-a033-ed979fbc665b",
+      "characters": 1839,
+      "markdown_sha256": "6163c311430c35af60c72a4e456c674baa878d266e4f533d24f9f119b47199ae"
+    },
+    {
+      "key": "alannual",
+      "requested_url": "https://sos.alabama.gov/business-entities/annual-reports",
+      "retrieved_url": "https://sos.alabama.gov/business-entities/annual-reports",
+      "http_status": 404,
+      "outcome": "http_error",
+      "scrape_id": "01a12904-0116-7735-bfaa-dcd83ca2ba36",
+      "characters": 243,
+      "markdown_sha256": "4761e39ba1460b50ce9d96a3f43e247236adfc461d97148064ceb31816e68800"
+    },
+    {
+      "key": "akcode",
+      "requested_url": "https://akleg.gov/statutesPDF/Title-10.pdf",
+      "retrieved_url": "https://akleg.gov/statutesPDF/Title-10.pdf",
+      "http_status": 404,
+      "outcome": "http_error",
+      "scrape_id": "01a12903-d933-704b-8ef6-01b2a9ce21dc",
+      "characters": 86,
+      "markdown_sha256": "c42530227382e00d38ae70e8b5dbaa07c140681c535b9cac873ac6002bb5bbb7"
+    },
+    {
+      "key": "akfees",
+      "requested_url": "https://commerce.alaska.gov/web/cbpl/Corporations/CorporationFormsFees.aspx",
+      "retrieved_url": "https://commerce.alaska.gov/web/cbpl/Corporations/CorporationFormsFees.aspx",
+      "http_status": 200,
+      "outcome": "retrieved",
+      "scrape_id": "01a12904-23c1-703a-a54a-fadf9f8a5060",
+      "characters": 73370,
+      "markdown_sha256": "3e2761237413240ef37306069a459f79d2ebefa89bc2bfa5c3a5d4c2824fd0f6"
+    },
+    {
+      "key": "azllc",
+      "requested_url": "https://www.azleg.gov/ars/29/03905.htm",
+      "retrieved_url": "https://www.azleg.gov/ars/29/03905.htm",
+      "http_status": 200,
+      "outcome": "retrieved",
+      "scrape_id": "01a12904-5f70-72e9-b247-79857b55730e",
+      "characters": 1771,
+      "markdown_sha256": "418defa322c1deea8b6034a47009c14d352fa0c2cc5511a909cc7a8d563992d8"
+    },
+    {
+      "key": "azcorp",
+      "requested_url": "https://www.azleg.gov/ars/10/01501.htm",
+      "retrieved_url": "https://www.azleg.gov/ars/10/01501.htm",
+      "http_status": 200,
+      "outcome": "retrieved",
+      "scrape_id": "01a12904-8483-7661-b64b-29198413cab4",
+      "characters": 1819,
+      "markdown_sha256": "17a269e4b0925e80ee7f9134c67ad51023877dad97f8189a4e926adbafddfe5a"
+    },
+    {
+      "key": "azpen",
+      "requested_url": "https://www.azleg.gov/ars/10/01502.htm",
+      "retrieved_url": "https://www.azleg.gov/ars/10/01502.htm",
+      "http_status": 200,
+      "outcome": "retrieved",
+      "scrape_id": "01a12904-d48a-71a8-adda-3c3bbb00c2e4",
+      "characters": 2854,
+      "markdown_sha256": "fd96e765c115dd38ed5d6ade63c358de84174e648baa65a647f46bb7f2aa0740"
+    },
+    {
+      "key": "azllcfees",
+      "requested_url": "https://azcc.gov/docs/default-source/corps-files/fee-schedules/fee-schedule-llcs.pdf",
+      "retrieved_url": "https://azcc.gov/docs/default-source/corps-files/fee-schedules/fee-schedule-llcs.pdf",
+      "http_status": 200,
+      "outcome": "retrieved",
+      "scrape_id": "01a12904-fd82-72fd-88ad-678ab363d4da",
+      "characters": 2964,
+      "markdown_sha256": "f6e32f98db1c7fbb44ac2b994d2d3fc4ee639f820413bc098c4d22fed4a20827"
+    },
+    {
+      "key": "azcorpfees",
+      "requested_url": "https://azcc.gov/docs/default-source/corps-files/fee-schedules/fee-schedule-corporations.pdf",
+      "retrieved_url": "https://azcc.gov/docs/default-source/corps-files/fee-schedules/fee-schedule-corporations.pdf",
+      "http_status": 200,
+      "outcome": "retrieved",
+      "scrape_id": "01a12905-23cb-731f-a86d-429995f672fc",
+      "characters": 4148,
+      "markdown_sha256": "229e4f66af28156728a69d36992f063014a6927f1b24e5387b6b934ec87479d4"
+    },
+    {
+      "key": "azfaq",
+      "requested_url": "https://azcc.gov/faqs",
+      "retrieved_url": "https://azcc.gov/faqs",
+      "http_status": 200,
+      "outcome": "retrieved",
+      "scrape_id": "01a12905-4c0f-7502-9ad8-eaac0d4bb1f3",
+      "characters": 50905,
+      "markdown_sha256": "0ae091f3f68f59bc7deaf93ca462d1a5eb34d495e0d734dfbfd20392cd1fc030"
+    },
+    {
+      "key": "arllc",
+      "requested_url": "https://sos.arkansas.gov/business-commercial-services-bcs/forms-fees/llc/foreign-llc",
+      "retrieved_url": "https://sos.arkansas.gov/business-commercial-services-bcs/forms-fees/llc/foreign-llc",
+      "http_status": 200,
+      "outcome": "retrieved",
+      "scrape_id": "01a12905-7405-74da-9bcf-ca921e156097",
+      "characters": 29635,
+      "markdown_sha256": "87a03838c5a527d96ec45bb8a0bb8f2207d27a3bcac3a552a2e86ec6c5809f05"
+    },
+    {
+      "key": "arcorp",
+      "requested_url": "https://sos.arkansas.gov/business-commercial-services-bcs/forms-fees/corporations/foreign-corporations",
+      "retrieved_url": "https://sos.arkansas.gov/business-commercial-services-bcs/forms-fees/corporations/foreign-corporations",
+      "http_status": 200,
+      "outcome": "retrieved",
+      "scrape_id": "01a12905-8ec9-7029-ab84-8b1d6940ed9b",
+      "characters": 32297,
+      "markdown_sha256": "1330554b657c25db531ae0fc6925b87ede21f746c0fd81cb54945b089bf9b33d"
+    },
+    {
+      "key": "arguide",
+      "requested_url": "https://sos.arkansas.gov/uploads/bcs/DoingBusinessInArkansas2025.pdf",
+      "retrieved_url": "https://sos.arkansas.gov/uploads/bcs/DoingBusinessInArkansas2025.pdf",
+      "http_status": 200,
+      "outcome": "retrieved",
+      "scrape_id": "01a12905-c189-7030-94c8-54ea20427878",
+      "characters": 68619,
+      "markdown_sha256": "7efdff91f070a2a25ff71e8abf752f4600602e1ee222ab0d28e138b87da01471"
+    },
+    {
+      "key": "cocode",
+      "requested_url": "https://leg.colorado.gov/sites/default/files/images/olls/crs2025-title-07.pdf",
+      "retrieved_url": "https://leg.colorado.gov/sites/default/files/images/olls/crs2025-title-07.pdf",
+      "http_status": 404,
+      "outcome": "http_error",
+      "scrape_id": "01a12905-a950-701d-99e5-20be4580e570",
+      "characters": 182,
+      "markdown_sha256": "6e8f841db53664b713126797fce7eb50eea8d9e6d56d9c7842bdf2961d7f1a05"
+    },
+    {
+      "key": "cofees",
+      "requested_url": "https://www.sos.state.co.us/pubs/info_center/fees/business.html",
+      "retrieved_url": "https://www.sos.state.co.us/pubs/info_center/fees/business.html",
+      "http_status": 200,
+      "outcome": "retrieved",
+      "scrape_id": "01a12905-ebd5-75d9-9ed5-8060aadbc5f1",
+      "characters": 9094,
+      "markdown_sha256": "7a2ddf1be3092a66483d1a33ea8ca853dfb45e646da1a4890b78e422713e3553"
+    },
+    {
+      "key": "coreports",
+      "requested_url": "https://sos.state.co.us/pubs/business/FAQs/reports.html",
+      "retrieved_url": "https://sos.state.co.us/pubs/business/FAQs/reports.html",
+      "http_status": 200,
+      "outcome": "retrieved",
+      "scrape_id": "01a12906-1004-76bb-85d6-4f83349510d6",
+      "characters": 6816,
+      "markdown_sha256": "66b76dd6ec5ca58f56494f8154f338067ae7a2ef2f41295b8da5237499f5c96e"
+    },
+    {
+      "key": "cora",
+      "requested_url": "https://sos.state.co.us/pubs/business/RAchanges.html",
+      "retrieved_url": null,
+      "http_status": null,
+      "outcome": "fetch_error",
+      "scrape_id": null,
+      "characters": 0,
+      "markdown_sha256": null
+    },
+    {
+      "key": "coforeign",
+      "requested_url": "https://www.sos.state.co.us/pubs/business/FAQs/foreign.html",
+      "retrieved_url": null,
+      "http_status": null,
+      "outcome": "fetch_error",
+      "scrape_id": null,
+      "characters": 0,
+      "markdown_sha256": null
+    },
+    {
+      "key": "alregister",
+      "requested_url": "https://alison.legislature.state.al.us/code-of-alabama?section=10A-1-7.01",
+      "retrieved_url": "https://alison.legislature.state.al.us/code-of-alabama?section=10A-1-7.01",
+      "http_status": 200,
+      "outcome": "statutory_text",
+      "scrape_id": "01a12905-3976-723e-8e37-a50d68f89b8c",
+      "characters": 7536,
+      "markdown_sha256": "f90f90565df2959cf25c479ddb47f24a18f31533982b4ede0b83f2e931709bdc"
+    },
+    {
+      "key": "alsafe",
+      "requested_url": "https://alison.legislature.state.al.us/code-of-alabama?section=10A-1-7.03",
+      "retrieved_url": "https://alison.legislature.state.al.us/code-of-alabama?section=10A-1-7.03",
+      "http_status": 200,
+      "outcome": "statutory_text",
+      "scrape_id": "01a12905-5099-758e-89fa-708a0b5fb725",
+      "characters": 5957,
+      "markdown_sha256": "be626537da96b25092d5d695cf66be53fdd52af64b81c481f88911f0df7f5474"
+    },
+    {
+      "key": "alpen",
+      "requested_url": "https://alison.legislature.state.al.us/code-of-alabama?section=10A-1-7.23",
+      "retrieved_url": "https://alison.legislature.state.al.us/code-of-alabama?section=10A-1-7.23",
+      "http_status": 200,
+      "outcome": "statutory_text",
+      "scrape_id": "01a12905-6b39-71ea-aa2f-491c22ad211c",
+      "characters": 5767,
+      "markdown_sha256": "7c3967404840811e144028a786d013ca97de6d24ce05323fec2f5c8f3f664233"
+    },
+    {
+      "key": "alnotice",
+      "requested_url": "https://www.sos.alabama.gov/newsroom/secretary-state-wes-allen-applauds-final-passage-legislation-cutting-red-tape-alabama",
+      "retrieved_url": "https://www.sos.alabama.gov/newsroom/secretary-state-wes-allen-applauds-final-passage-legislation-cutting-red-tape-alabama",
+      "http_status": 200,
+      "outcome": "retrieved",
+      "scrape_id": "01a12905-913c-77ff-b8aa-cc58ab8679d5",
+      "characters": 3309,
+      "markdown_sha256": "d4a35f39f44d0a2a4182848508d814a02b3ca59eaf7e31d549ad12cea159568c"
+    },
+    {
+      "key": "akprimary",
+      "requested_url": "https://www.commerce.alaska.gov/web/portals/5/pub/corporationsstatutesandregulations.pdf",
+      "retrieved_url": null,
+      "http_status": null,
+      "outcome": "fetch_error",
+      "scrape_id": null,
+      "characters": 0,
+      "markdown_sha256": null
+    },
+    {
+      "key": "akreports",
+      "requested_url": "https://commerce.alaska.gov/web/cbpl/Corporations/BiennialReportsFAQs",
+      "retrieved_url": "https://commerce.alaska.gov/web/cbpl/Corporations/BiennialReportsFAQs",
+      "http_status": 200,
+      "outcome": "retrieved",
+      "scrape_id": "01a12905-e41a-779c-9de6-3ef68c9cbf1a",
+      "characters": 13205,
+      "markdown_sha256": "1acb303b5862b13657e7699b3322f2a18a333df6900b2c7ca0bf1efca385388f"
+    },
+    {
+      "key": "azreg",
+      "requested_url": "https://www.azleg.gov/ars/29/03902.htm",
+      "retrieved_url": null,
+      "http_status": null,
+      "outcome": "fetch_error",
+      "scrape_id": null,
+      "characters": 0,
+      "markdown_sha256": null
+    },
+    {
+      "key": "azreport",
+      "requested_url": "https://www.azleg.gov/ars/10/01622.htm",
+      "retrieved_url": "https://www.azleg.gov/ars/10/01622.htm",
+      "http_status": 200,
+      "outcome": "retrieved",
+      "scrape_id": "01a12906-117d-7248-bc6d-8b4bd804b808",
+      "characters": 4131,
+      "markdown_sha256": "b16e255b74c50b85ab7ff80b76724ad1e8c11c317b2db65f07ec2b856608d516"
+    },
+    {
+      "key": "aract",
+      "requested_url": "https://arkleg.state.ar.us/Home/FTPDocument?path=/ACTS/2021R/Public/ACT1041.pdf",
+      "retrieved_url": null,
+      "http_status": null,
+      "outcome": "fetch_error",
+      "scrape_id": null,
+      "characters": 0,
+      "markdown_sha256": null
+    },
+    {
+      "key": "arllcsafe",
+      "requested_url": "https://law.justia.com/codes/arkansas/title-4/subtitle-3/chapter-38/subchapter-9/section-4-38-905/",
+      "retrieved_url": null,
+      "http_status": null,
+      "outcome": "fetch_error",
+      "scrape_id": null,
+      "characters": 0,
+      "markdown_sha256": null
+    },
+    {
+      "key": "arllcpen",
+      "requested_url": "https://law.justia.com/codes/arkansas/title-4/subtitle-3/chapter-38/subchapter-9/section-4-38-913/",
+      "retrieved_url": "https://law.justia.com/codes/arkansas/title-4/subtitle-3/chapter-38/subchapter-9/section-4-38-913/",
+      "http_status": 200,
+      "outcome": "retrieved",
+      "scrape_id": "01a12906-9fbf-7169-9ddd-cbd00d5fe776",
+      "characters": 11346,
+      "markdown_sha256": "bafe6c06284db07af016cce0de45f5e9b17528c8214b88801f9fe2f83ef402ed"
+    },
+    {
+      "key": "arcorpsafe",
+      "requested_url": "https://law.justia.com/codes/arkansas/title-4/subtitle-3/chapter-27/subchapter-15/part-a/section-4-27-1501/",
+      "retrieved_url": "https://law.justia.com/codes/arkansas/title-4/subtitle-3/chapter-27/subchapter-15/part-a/section-4-27-1501/",
+      "http_status": 200,
+      "outcome": "retrieved",
+      "scrape_id": "01a12906-79e9-71c6-acc4-b4f2bcd58bc6",
+      "characters": 3418,
+      "markdown_sha256": "ea11ba88e23efd61b1541155082c2db7ee37e76ca79c27be523d97ba667b46a8"
+    },
+    {
+      "key": "arcorppen",
+      "requested_url": "https://law.justia.com/codes/arkansas/title-4/subtitle-3/chapter-27/subchapter-15/part-a/section-4-27-1502/",
+      "retrieved_url": "https://law.justia.com/codes/arkansas/title-4/subtitle-3/chapter-27/subchapter-15/part-a/section-4-27-1502/",
+      "http_status": 200,
+      "outcome": "retrieved",
+      "scrape_id": "01a12906-6202-743e-803c-e159258da84f",
+      "characters": 4977,
+      "markdown_sha256": "f78ef65dcb1f7fd28d0cd7690ba842cd60bc0f1190239c96d06ebe01576a95b6"
+    },
+    {
+      "key": "aklive",
+      "requested_url": "https://www.akleg.gov/basis/statutes.asp#10.50.720",
+      "retrieved_url": null,
+      "http_status": null,
+      "outcome": "navigation_only",
+      "scrape_id": null,
+      "characters": 0,
+      "markdown_sha256": null
+    },
+    {
+      "key": "colive",
+      "requested_url": "https://content.leg.colorado.gov/sites/default/files/images/olls/crs2024-title-07.pdf",
+      "retrieved_url": null,
+      "http_status": null,
+      "outcome": "fetch_error",
+      "scrape_id": null,
+      "characters": 0,
+      "markdown_sha256": null
+    },
+    {
+      "key": "alact",
+      "requested_url": "https://alison.legislature.state.al.us/files/pdf/SearchableInstruments/2024RS/PrintFiles/ACT2024-213.pdf",
+      "retrieved_url": null,
+      "http_status": null,
+      "outcome": "fetch_error",
+      "scrape_id": null,
+      "characters": 0,
+      "markdown_sha256": null
+    },
+    {
+      "key": "azlp",
+      "requested_url": "https://azsos.gov/sites/default/files/docs/bsd_20220107_Foreign_LP_Fontes_rev20240603.pdf",
+      "retrieved_url": "https://azsos.gov/sites/default/files/docs/bsd_20220107_Foreign_LP_Fontes_rev20240603.pdf",
+      "http_status": 200,
+      "outcome": "retrieved",
+      "scrape_id": "01a12906-c500-722d-9942-a4e7d279796f",
+      "characters": 4043,
+      "markdown_sha256": "34cfe7ee2dfcdc324e4792d41cd35a7d3c860ec0b3e35b70969c383ba331db0a"
+    },
+    {
+      "key": "arlp",
+      "requested_url": "https://www.sos.arkansas.gov/business-commercial-services-bcs/forms-fees/partnerships/lp-llp-lllp-foreign",
+      "retrieved_url": "https://www.sos.arkansas.gov/business-commercial-services-bcs/forms-fees/partnerships/lp-llp-lllp-foreign",
+      "http_status": 200,
+      "outcome": "retrieved",
+      "scrape_id": "01a12906-9852-711b-8fea-6d41ed24c71f",
+      "characters": 40014,
+      "markdown_sha256": "732e1a572bdac339098a370e20f963cb2a5ff3c2b853b6fce19decb34f8be359"
+    },
+    {
+      "key": "akchapter",
+      "requested_url": "https://www.akleg.gov/basis/statutes.asp#10.06",
+      "retrieved_url": "https://www.akleg.gov/basis/statutes.asp#10.06",
+      "http_status": 200,
+      "outcome": "navigation_only",
+      "scrape_id": "01a12907-6cec-73fc-ba60-e861e0a15b41",
+      "characters": 20721,
+      "markdown_sha256": "f20b3f60c8829981e58764fd0a574718f9461625987c6a4116089891d3e55272"
+    },
+    {
+      "key": "akllcchapter",
+      "requested_url": "https://law.justia.com/codes/alaska/title-10/chapter-50/",
+      "retrieved_url": "https://law.justia.com/codes/alaska/title-10/chapter-50/",
+      "http_status": 200,
+      "outcome": "index_only",
+      "scrape_id": "01a12907-942d-726d-9791-e3fb2fa79e4b",
+      "characters": 3510,
+      "markdown_sha256": "ece08fc9fe0abc3f817b6c06e98fc7121d12e1e3476da6e4e0c9d7562c5724f0"
+    },
+    {
+      "key": "akcorpchapter",
+      "requested_url": "https://law.justia.com/codes/alaska/title-10/chapter-06/",
+      "retrieved_url": "https://law.justia.com/codes/alaska/title-10/chapter-06/",
+      "http_status": 200,
+      "outcome": "index_only",
+      "scrape_id": "01a12907-cbcc-76e9-9a08-20b75a91c628",
+      "characters": 2929,
+      "markdown_sha256": "08e3974673388cc030e1eb8f25be74f94cb7a3cf575f4a157056d1b4dce6d5ef"
+    },
+    {
+      "key": "cosafe",
+      "requested_url": "https://law.justia.com/codes/colorado/title-7/corporations-and-associations/article-90/part-8/section-7-90-801/",
+      "retrieved_url": "https://law.justia.com/codes/colorado/title-7/corporations-and-associations/article-90/part-8/section-7-90-801/",
+      "http_status": 200,
+      "outcome": "retrieved",
+      "scrape_id": "01a12908-054b-77c8-95cd-f85eb7d55a8a",
+      "characters": 9935,
+      "markdown_sha256": "16285f64ecddbb4792b4f3c86d8c2bd48f44b54d23f81c491b7a65d76ba9f2eb"
+    },
+    {
+      "key": "copen",
+      "requested_url": "https://law.justia.com/codes/colorado/title-7/corporations-and-associations/article-90/part-8/section-7-90-802/",
+      "retrieved_url": "https://law.justia.com/codes/colorado/title-7/corporations-and-associations/article-90/part-8/section-7-90-802/",
+      "http_status": 200,
+      "outcome": "retrieved",
+      "scrape_id": "01a12908-2b69-7638-a869-8663c9ac4758",
+      "characters": 12639,
+      "markdown_sha256": "1caf7949f34b34a2a349de8e72477e5ec4bb66083f109c97e5c57dd3d705a4bc"
+    },
+    {
+      "key": "coraofficial",
+      "requested_url": "https://www.coloradosos.gov/pubs/business/RAchanges.html",
+      "retrieved_url": "https://www.coloradosos.gov/pubs/business/RAchanges.html",
+      "http_status": 200,
+      "outcome": "retrieved",
+      "scrape_id": "01a12908-5120-73cb-8746-15dab07f4a1c",
+      "characters": 3725,
+      "markdown_sha256": "09cedd427d7b89408178edddeefd1af23df30c53981220bef1185c54f20affdb"
+    },
+    {
+      "key": "coforeignofficial",
+      "requested_url": "https://www.coloradosos.gov/pubs/business/FAQs/foreign.html",
+      "retrieved_url": "https://www.coloradosos.gov/pubs/business/FAQs/foreign.html",
+      "http_status": 404,
+      "outcome": "http_error",
+      "scrape_id": "01a12908-9f14-76be-8d6b-37220b679e48",
+      "characters": 940,
+      "markdown_sha256": "761811187e1c6c1731ceb5bc5e8ad088fda6833051c836470175b52a17779766"
+    },
+    {
+      "key": "alagent",
+      "requested_url": "https://alison.legislature.state.al.us/code-of-alabama?section=10A-1-5.31",
+      "retrieved_url": "https://alison.legislature.state.al.us/code-of-alabama?section=10A-1-5.31",
+      "http_status": 200,
+      "outcome": "statutory_text",
+      "scrape_id": "01a12908-7944-709a-be6b-da6254baa3c2",
+      "characters": 7330,
+      "markdown_sha256": "7efc722e968978a3bf4e0ea60c0c55b542e5639db4b510919b8fefaafb15b3c4"
+    },
+    {
+      "key": "alapplication",
+      "requested_url": "https://alison.legislature.state.al.us/code-of-alabama?section=10A-1-7.04",
+      "retrieved_url": "https://alison.legislature.state.al.us/code-of-alabama?section=10A-1-7.04",
+      "http_status": 200,
+      "outcome": "statutory_text",
+      "scrape_id": "01a12908-c6e7-750c-a9ed-4dcf77ffeade",
+      "characters": 10290,
+      "markdown_sha256": "7caed9349261ea3d5833eed6a7a08ae8dba924a3734bf6afacb935d9184bff66"
+    },
+    {
+      "key": "alactivities",
+      "requested_url": "https://alison.legislature.state.al.us/code-of-alabama?section=10A-2A-15.01",
+      "retrieved_url": "https://alison.legislature.state.al.us/code-of-alabama?section=10A-2A-15.01",
+      "http_status": 200,
+      "outcome": "statutory_text",
+      "scrape_id": "01a12909-0db0-77f5-95a8-ddf6011ace2d",
+      "characters": 5635,
+      "markdown_sha256": "a6456e76142968725fc80a2a335c3a831a25660f87235b19c66f358c758eee46"
+    },
+    {
+      "key": "alactions",
+      "requested_url": "https://alison.legislature.state.al.us/code-of-alabama?section=10A-1-7.21",
+      "retrieved_url": "https://alison.legislature.state.al.us/code-of-alabama?section=10A-1-7.21",
+      "http_status": 200,
+      "outcome": "statutory_text",
+      "scrape_id": "01a12908-ecc7-7412-bf31-1c91d0109d0e",
+      "characters": 6922,
+      "markdown_sha256": "dc74ba703bb1e8d9fe89e003c2cdc22b57bb9e4465b50a116e83470e3174c86a"
+    },
+    {
+      "key": "arllcsafe2",
+      "requested_url": "https://law.justia.com/codes/arkansas/2025/title-4/subtitle-3/chapter-38/subchapter-9/section-4-38-905/",
+      "retrieved_url": null,
+      "http_status": null,
+      "outcome": "fetch_error",
+      "scrape_id": null,
+      "characters": 0,
+      "markdown_sha256": null
+    },
+    {
+      "key": "akllcsafe",
+      "requested_url": "https://law.justia.com/codes/alaska/title-10/chapter-50/article-13/section-10-50-720/",
+      "retrieved_url": "https://law.justia.com/codes/alaska/title-10/chapter-50/article-13/section-10-50-720/",
+      "http_status": 200,
+      "outcome": "retrieved",
+      "scrape_id": "01a12908-4d83-71e9-9ffd-ce512ad0a618",
+      "characters": 2918,
+      "markdown_sha256": "8b6eb0b31acabd9813bbc4e49874f5c9a7601bc2a4c02702ef50885d387dd279"
+    },
+    {
+      "key": "akllcpen",
+      "requested_url": "https://law.justia.com/codes/alaska/title-10/chapter-50/article-13/section-10-50-700/",
+      "retrieved_url": "https://law.justia.com/codes/alaska/title-10/chapter-50/article-13/section-10-50-700/",
+      "http_status": 200,
+      "outcome": "retrieved",
+      "scrape_id": "01a12908-94ef-71a9-a249-8225c8eeee1e",
+      "characters": 2532,
+      "markdown_sha256": "e1bf504ca49eca264fa6de8b47b3535c2773c7f6fbbd12ac50794955d91a0f22"
+    },
+    {
+      "key": "akcorpsafe",
+      "requested_url": "https://law.justia.com/codes/alaska/title-10/chapter-06/article-10/section-10-06-718/",
+      "retrieved_url": "https://law.justia.com/codes/alaska/title-10/chapter-06/article-10/section-10-06-718/",
+      "http_status": 200,
+      "outcome": "retrieved",
+      "scrape_id": "01a12908-70a9-7686-82eb-3dbb64bf7e25",
+      "characters": 3574,
+      "markdown_sha256": "9403b90389c1cd1ea073f6114c6f998eaa21473e865f0591326a4219eb1a7110"
+    },
+    {
+      "key": "akcorppen",
+      "requested_url": "https://law.justia.com/codes/alaska/title-10/chapter-06/article-10/section-10-06-725/",
+      "retrieved_url": "https://law.justia.com/codes/alaska/title-10/chapter-06/article-10/section-10-06-725/",
+      "http_status": 200,
+      "outcome": "retrieved",
+      "scrape_id": "01a12908-bbbe-71e9-91a8-4256d042fca5",
+      "characters": 10845,
+      "markdown_sha256": "68d88e6f5310d77b4d48a1eae78c8db834dc9f2d8572cac57fb3c36b134878ca"
+    },
+    {
+      "key": "akformllc",
+      "requested_url": "https://www.commerce.alaska.gov/web/Portals/5/pub/corp0497.pdf",
+      "retrieved_url": "https://www.commerce.alaska.gov/web/Portals/5/pub/corp0497.pdf",
+      "http_status": 200,
+      "outcome": "retrieved",
+      "scrape_id": "01a12908-e861-7389-a255-8bdb5e1d21ff",
+      "characters": 9983,
+      "markdown_sha256": "e8c421176ce78dc0f8103213f8a497d3988d87019d9198fa1b246e9151ec9d2c"
+    },
+    {
+      "key": "akformcorp",
+      "requested_url": "https://www.commerce.alaska.gov/web/Portals/5/pub/08-414.pdf",
+      "retrieved_url": null,
+      "http_status": null,
+      "outcome": "fetch_error",
+      "scrape_id": null,
+      "characters": 0,
+      "markdown_sha256": null
+    },
+    {
+      "key": "akagent",
+      "requested_url": "https://www.commerce.alaska.gov/web/cbpl/Corporations/RegisteredAgentsFAQs",
+      "retrieved_url": "https://www.commerce.alaska.gov/web/cbpl/Corporations/RegisteredAgentsFAQs",
+      "http_status": 200,
+      "outcome": "retrieved",
+      "scrape_id": "01a12909-0d9b-75c9-a80c-a3617c200011",
+      "characters": 15379,
+      "markdown_sha256": "f7e4cd6a373e42d97f16d97869a7d0e36214f1d6d1e12b90e918898e08241cd9"
+    },
+    {
+      "key": "azreg2",
+      "requested_url": "https://azleg.gov/ars/29/03902.htm",
+      "retrieved_url": null,
+      "http_status": null,
+      "outcome": "fetch_error",
+      "scrape_id": null,
+      "characters": 0,
+      "markdown_sha256": null
+    },
+    {
+      "key": "azformsllc",
+      "requested_url": "https://azcc.gov/corporations/forms/llc-forms",
+      "retrieved_url": "https://azcc.gov/corporations/forms/llc-forms",
+      "http_status": 200,
+      "outcome": "retrieved",
+      "scrape_id": "01a12909-7cf5-753f-bd3f-9d0f99067678",
+      "characters": 12591,
+      "markdown_sha256": "aabf7c45172129988bea7e461f58d904a811fb0889572bb875abea19a727bca4"
+    },
+    {
+      "key": "azformscorp",
+      "requested_url": "https://azcc.gov/corporations/forms/corporation-forms",
+      "retrieved_url": "https://azcc.gov/corporations/forms/corporation-forms",
+      "http_status": 200,
+      "outcome": "retrieved",
+      "scrape_id": "01a12909-a2cd-7747-96a2-207a14b1e7aa",
+      "characters": 18594,
+      "markdown_sha256": "cf5d5c81ce278ee789e806f0554c1752412efb342ffbaaf652825d45233286fb"
+    },
+    {
+      "key": "arcform",
+      "requested_url": "https://www.sos.arkansas.gov/uploads/bcs/F-01_2.pdf",
+      "retrieved_url": "https://www.sos.arkansas.gov/uploads/bcs/F-01_2.pdf",
+      "http_status": 200,
+      "outcome": "retrieved",
+      "scrape_id": "01a12909-cfde-70ba-93c4-368f693383cf",
+      "characters": 3921,
+      "markdown_sha256": "c47719a5aab526383254d4466d7fbcfd306dc8074f671103c25a441b6149a3cc"
+    },
+    {
+      "key": "arlform",
+      "requested_url": "https://www.sos.arkansas.gov/uploads/bcs/FL-01_1_1.pdf",
+      "retrieved_url": "https://www.sos.arkansas.gov/uploads/bcs/FL-01_1_1.pdf",
+      "http_status": 200,
+      "outcome": "retrieved",
+      "scrape_id": "01a12909-f6f1-7660-9b6c-e751ab499e12",
+      "characters": 2867,
+      "markdown_sha256": "f25882921197ac5030e04dcbf16f7009f1b6f41c6ab9a11349b0549f71ef58c8"
+    },
+    {
+      "key": "arfranchise",
+      "requested_url": "https://www.sos.arkansas.gov/business-commercial-services-bcs/franchise-tax",
+      "retrieved_url": "https://www.sos.arkansas.gov/business-commercial-services-bcs/franchise-tax",
+      "http_status": 200,
+      "outcome": "retrieved",
+      "scrape_id": "01a1290a-2377-76cf-b7d6-0b2f6bd9d407",
+      "characters": 34345,
+      "markdown_sha256": "e4fd7b8c7738e7f4020182f9f821b4d0379b67e90d1a9a08fe693ba7819cac75"
+    },
+    {
+      "key": "costatindex",
+      "requested_url": "https://content.leg.colorado.gov/agencies/office-legislative-legal-services/colorado-revised-statutes",
+      "retrieved_url": "https://content.leg.colorado.gov/agencies/office-legislative-legal-services/colorado-revised-statutes",
+      "http_status": 200,
+      "outcome": "index_only",
+      "scrape_id": "01a1290a-4afc-748f-93cb-4dea378997bf",
+      "characters": 6529,
+      "markdown_sha256": "0af7f2596b89d41589659b8545572531bc167e1ab4593e1cb5ff5443c1d0221d"
+    },
+    {
+      "key": "ak710",
+      "requested_url": "https://law.justia.com/codes/alaska/title-10/chapter-06/article-10/section-10-06-710/",
+      "retrieved_url": "https://law.justia.com/codes/alaska/title-10/chapter-06/article-10/section-10-06-710/",
+      "http_status": 200,
+      "outcome": "retrieved",
+      "scrape_id": "01a1290a-73dc-76cc-9a54-ab925cb8563f",
+      "characters": 10941,
+      "markdown_sha256": "0cabe6c0ca5a982233c07c5f1f4288f9acd608a9d9bd6fd45aadf4b47759ce53"
+    },
+    {
+      "key": "akpdfwww",
+      "requested_url": "https://www.akleg.gov/basis/statutes.asp#10.50.700",
+      "retrieved_url": "https://www.akleg.gov/basis/statutes.asp#10.50.700",
+      "http_status": 200,
+      "outcome": "navigation_only",
+      "scrape_id": "01a1290a-a014-71bb-ac03-007bd6c3bda0",
+      "characters": 20721,
+      "markdown_sha256": "f20b3f60c8829981e58764fd0a574718f9461625987c6a4116089891d3e55272"
+    },
+    {
+      "key": "coforeignfinal",
+      "requested_url": "https://www.coloradosos.gov/pubs/business/FAQs/foreigns.html",
+      "retrieved_url": "https://www.coloradosos.gov/pubs/business/FAQs/foreigns.html",
+      "http_status": 200,
+      "outcome": "retrieved",
+      "scrape_id": "01a1290a-c6c6-70d1-8262-7c3e53dd54f8",
+      "characters": 7283,
+      "markdown_sha256": "5626295638c5c5a2745a539ffbeddc24c99ea0f641ed1af99961561b65b158bc"
+    },
+    {
+      "key": "arlfinal",
+      "requested_url": "https://law.justia.com/codes/arkansas/title-4/subtitle-3/chapter-38/subchapter-9/section-4-38-905/?",
+      "retrieved_url": "https://law.justia.com/codes/arkansas/title-4/subtitle-3/chapter-38/subchapter-9/section-4-38-905/?",
+      "http_status": 200,
+      "outcome": "retrieved",
+      "scrape_id": "01a1290a-ef40-7149-b098-0d7d5e854cc3",
+      "characters": 3907,
+      "markdown_sha256": "50aa6701aae6acc30029c697d77689cf02973e6e1476c13ba46c6b3e602d0e1f"
+    },
+    {
+      "key": "alformsfinal",
+      "requested_url": "https://www.sos.alabama.gov/business-entities/downloadable-forms",
+      "retrieved_url": "https://www.sos.alabama.gov/business-entities/downloadable-forms",
+      "http_status": 404,
+      "outcome": "http_error",
+      "scrape_id": "01a1290b-42c0-719c-9f1d-954dc469f681",
+      "characters": 247,
+      "markdown_sha256": "39b7a152f416a1dd15528d527c27890a3cbdad6dacb9d3c9d2e2cd8c7a98a999"
+    },
+    {
+      "key": "arllctax",
+      "requested_url": "https://www.sos.arkansas.gov/uploads/bcs/LLC_FT_2026.pdf",
+      "retrieved_url": "https://www.sos.arkansas.gov/uploads/bcs/LLC_FT_2026.pdf",
+      "http_status": 404,
+      "outcome": "http_error",
+      "scrape_id": "01a1290b-1f42-7776-b5c0-20528f6ddefb",
+      "characters": 4811,
+      "markdown_sha256": "3fb6dd593e8ee84d8bd308671abf9159a15365ab077b610489b83bdf02fd2960"
+    },
+    {
+      "key": "arcorptax",
+      "requested_url": "https://www.sos.arkansas.gov/uploads/bcs/Corp1_FT_2026.pdf",
+      "retrieved_url": "https://www.sos.arkansas.gov/uploads/bcs/Corp1_FT_2026.pdf",
+      "http_status": 200,
+      "outcome": "retrieved",
+      "scrape_id": "01a1290b-6c45-71b8-85ab-f2670f5e442f",
+      "characters": 9345,
+      "markdown_sha256": "b3b307259a98f5940ca31342653d30d2e3bd9a385f5082183f799545fbb3e443"
+    },
+    {
+      "key": "akcorpformfinal",
+      "requested_url": "https://www.commerce.alaska.gov/web/Portals/5/pub/08-414.pdf?review=20261011",
+      "retrieved_url": "https://www.commerce.alaska.gov/web/Portals/5/pub/08-414.pdf?review=20261011",
+      "http_status": 200,
+      "outcome": "retrieved",
+      "scrape_id": "01a12910-8ff6-77ea-8da4-3232f45c1501",
+      "characters": 14492,
+      "markdown_sha256": "d24be2d1bcd177f59bce8c76c76ffe2bc17fb32f556ece72f04efb032ede25ca"
+    },
+    {
+      "key": "alllcform",
+      "requested_url": "https://www.sos.alabama.gov/sites/default/files/2022-09/ForeignLLCRegistration.pdf",
+      "retrieved_url": "https://www.sos.alabama.gov/sites/default/files/2022-09/ForeignLLCRegistration.pdf",
+      "http_status": 200,
+      "outcome": "retrieved",
+      "scrape_id": "01a12910-c00b-74af-ad82-b0271396a7f0",
+      "characters": 6599,
+      "markdown_sha256": "ac1a87659de42728d6566b631abae6594751aa80dc5a413bbe7f4af5923c3b60"
+    },
+    {
+      "key": "alcorpform",
+      "requested_url": "https://www.sos.alabama.gov/sites/default/files/2022-09/ForeignCorporationRegistration.pdf",
+      "retrieved_url": "https://www.sos.alabama.gov/sites/default/files/2022-09/ForeignCorporationRegistration.pdf",
+      "http_status": 200,
+      "outcome": "retrieved",
+      "scrape_id": "01a12910-e8bb-72da-b039-8412546b09c3",
+      "characters": 6524,
+      "markdown_sha256": "acb55981eca2e026eadcf183beff53cd9f54af0ff93b9655183e526d37175f9f"
+    },
+    {
+      "key": "alllcpage",
+      "requested_url": "https://www.sos.alabama.gov/business-entities/llcs",
+      "retrieved_url": "https://www.sos.alabama.gov/business-entities/llcs",
+      "http_status": 200,
+      "outcome": "retrieved",
+      "scrape_id": "01a1290d-00e7-7780-a14b-eb72a795e54e",
+      "characters": 2821,
+      "markdown_sha256": "754313694811c326a3e1a44a88ee4f2b96da2cbf5fc60522cfc97503cc6d7509"
+    },
+    {
+      "key": "aldownloads",
+      "requested_url": "https://www.sos.alabama.gov/business-entities/business-downloads",
+      "retrieved_url": "https://www.sos.alabama.gov/business-entities/business-downloads",
+      "http_status": 200,
+      "outcome": "retrieved",
+      "scrape_id": "01a1290d-26c8-778a-a39c-b2c3b34f789b",
+      "characters": 19666,
+      "markdown_sha256": "3b2fc1f957c6f0252981b10d5d1b7daaf30ec4f95f21f2016e2c690870c07345"
+    },
+    {
+      "key": "arllctaxfinal",
+      "requested_url": "https://www.sos.arkansas.gov/uploads/bcs/LLC_FT2_2026.pdf",
+      "retrieved_url": "https://www.sos.arkansas.gov/uploads/bcs/LLC_FT2_2026.pdf",
+      "http_status": 404,
+      "outcome": "http_error",
+      "scrape_id": "01a1290d-5128-753e-946b-b1d97c7cfc4c",
+      "characters": 4811,
+      "markdown_sha256": "3fb6dd593e8ee84d8bd308671abf9159a15365ab077b610489b83bdf02fd2960"
+    },
+    {
+      "key": "coprimary",
+      "requested_url": "https://olls.info/crs/crs2026-title-07.htm",
+      "retrieved_url": "https://olls.info/crs/crs2026-title-07.htm",
+      "http_status": 200,
+      "outcome": "retrieved",
+      "scrape_id": "01a1290b-7245-7571-b9aa-2b9527a18172",
+      "characters": 2315146,
+      "markdown_sha256": "bae4c41177e26a13590c362f616104abbfdd6d063fa3297ea4b8c268da702e0b"
+    },
+    {
+      "key": "akprimaryprint",
+      "requested_url": "https://www.akleg.gov/basis/statutes.asp?media=print&secStart=10.06&secEnd=10.06.995",
+      "retrieved_url": "https://www.akleg.gov/basis/statutes.asp?media=print&secStart=10.06&secEnd=10.06.995",
+      "http_status": 200,
+      "outcome": "retrieved",
+      "scrape_id": "01a1290b-ab2b-753c-98ce-052366e570cc",
+      "characters": 327230,
+      "markdown_sha256": "1b20766e2ee6054d7532b5fa8edbeefc398fc03cbd40519667e9accb422b5baa"
+    },
+    {
+      "key": "akllcprimary",
+      "requested_url": "https://www.akleg.gov/basis/statutes.asp?media=print&secStart=10.50&secEnd=10.50.995",
+      "retrieved_url": "https://www.akleg.gov/basis/statutes.asp?media=print&secStart=10.50&secEnd=10.50.995",
+      "http_status": 200,
+      "outcome": "retrieved",
+      "scrape_id": "01a1290b-fd7c-705a-8524-b214c96b1a6c",
+      "characters": 116481,
+      "markdown_sha256": "f492f35db3919c8a2bcb3cd24f2bfdbadf330ded1d8469bece2d3509daa9c4a8"
+    },
+    {
+      "key": "aractprimary",
+      "requested_url": "https://www.arkleg.state.ar.us/Home/FTPDocument?path=/ACTS/2021R/Public/ACT1041.pdf",
+      "retrieved_url": null,
+      "http_status": null,
+      "outcome": "fetch_error",
+      "scrape_id": null,
+      "characters": 0,
+      "markdown_sha256": null
+    },
+    {
+      "key": "co2026index",
+      "requested_url": "https://content.leg.colorado.gov/agencies/office-legislative-legal-services/2026-crs-titles-download",
+      "retrieved_url": "https://content.leg.colorado.gov/agencies/office-legislative-legal-services/2026-crs-titles-download",
+      "http_status": 200,
+      "outcome": "index_only",
+      "scrape_id": "01a1290b-1c9e-71df-ba6b-b61698653aef",
+      "characters": 10661,
+      "markdown_sha256": "8e773808dc5e555f6f50a2843422cffc1db7b1cb75365c42a4cb6a7b9b489b81"
+    },
+    {
+      "key": "akpdfcorrect",
+      "requested_url": "https://www.akleg.gov/basis/statutes.asp#10.06.710",
+      "retrieved_url": "https://www.akleg.gov/basis/statutes.asp#10.06.710",
+      "http_status": 200,
+      "outcome": "index_only",
+      "scrape_id": "01a1290b-423d-713f-84d5-18be313b21dc",
+      "characters": 20721,
+      "markdown_sha256": "f20b3f60c8829981e58764fd0a574718f9461625987c6a4116089891d3e55272"
+    }
+  ]
+}
