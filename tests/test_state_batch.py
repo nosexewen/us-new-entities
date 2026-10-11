@@ -243,7 +243,7 @@ def test_second_batch_reporting_cycles_and_entity_specific_tax_amounts():
     assert "0.3%" in ar.for_entity(EntityType.C_CORP).annual_obligations[0].notes
 
 
-def test_second_batch_conservative_screening_and_source_review_gaps_are_preserved():
+def test_second_batch_review_acceptance_preserves_conservative_screening():
     al = DEFAULT_REGISTRY.get("AL")
     assert "90 days" in al.for_entity(EntityType.LLC).qualification_penalty.description
     assert "$25 name reservation" in " ".join(al.notes)
@@ -252,9 +252,11 @@ def test_second_batch_conservative_screening_and_source_review_gaps_are_preserve
     )
     assert "2025" in DEFAULT_REGISTRY.get("CO").registered_agent.citation
     ar = DEFAULT_REGISTRY.get("AR")
-    assert not ar.rules_verified and "primary" in ar.verification_issues[0]
+    assert ar.rules_verified and not ar.verification_issues
+    assert "third-party" in " ".join(ar.review_disclosures)
+    assert "franchise tax requirements" in " ".join(ar.review_disclosures)
     assert "$270" in " ".join(ar.notes)
-    for state in ("AL", "AK", "AZ", "CO"):
+    for state in ("AL", "AK", "AZ", "AR", "CO"):
         assert DEFAULT_REGISTRY.get(state).rules_verified
     for state in ("AK", "AZ", "AR", "CO"):
         for entity in (EntityType.LLC, EntityType.C_CORP):

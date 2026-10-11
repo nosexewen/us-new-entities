@@ -151,12 +151,16 @@ REQUIREMENT = StateRequirement(
             ),
         )
     ),
-    version="2026-10-11-batch2",
-    verification_issues=(
-        "Current LLC and corporate statutory text was reviewed through Justia's 2025 "
-        "reproductions; primary enacted-code retrieval remains incomplete. The official "
-        "Act 1041 download failed. Older agency Chapter 32 references are not used to "
-        "override current Chapter 38 exemptions or sanctions.",
+    version="2026-10-11-accepted-statutory-review",
+    verification_issues=(),
+    review_disclosures=(
+        "Review acceptance: at the user's direction, the reviewed Justia statutory "
+        "citations are sufficient verification for Arkansas statutory rules and "
+        "franchise tax requirements. The primary review flag is satisfied. Justia "
+        "remains identified as a third-party statutory reproduction; the failed "
+        "official Act 1041 retrieval is retained in the verification log. Franchise "
+        "tax figures also rely on the reviewed SOS fee schedules and 2026 tax form. "
+        "Older Chapter 32 references do not override current Chapter 38 rules.",
     ),
     notes=(
         "The $300 qualification fee is the paper fee. LLCs and corporations may file "
