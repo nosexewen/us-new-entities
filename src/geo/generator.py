@@ -15,6 +15,7 @@ from pathlib import Path
 from ..models import EntityType, LegalSource, normalize_state
 from ..rules import DEFAULT_REGISTRY, RulesRegistry
 from .redirect import AffiliateDestination, Provider, build_affiliate_url, get_public_site_url
+from .styles import GUIDE_STYLES
 from .types import FilingOptions, ProviderQuote
 
 _ENTITY_SLUGS = {EntityType.LLC: "llc", EntityType.C_CORP: "c-corp", EntityType.LP: "lp"}
@@ -478,10 +479,12 @@ class LandingPageGenerator:
         esc = html.escape
         body = [
             f"<h1>{esc(title)}</h1>",
+            '<div class="table-scroll" role="region" '
+            'aria-label="Filing routes and compliance timing" tabindex="0">',
             "<table><caption>Filing routes and compliance timing</caption>",
             "<thead><tr>"
             + "".join(
-                f"<th>{esc(c)}</th>"
+                f'<th scope="col">{esc(c)}</th>'
                 for c in (
                     "Route",
                     "Appointment / preparation",
@@ -494,10 +497,15 @@ class LandingPageGenerator:
         body.extend(
             "<tr>" + "".join(f"<td>{esc(c)}</td>" for c in row) + "</tr>" for row in comparison
         )
-        body += ["</tbody></table>", "<h2>Filing fees and agent pricing</h2>", "<ul>"]
+        body += [
+            "</tbody></table></div>",
+            '<section class="callout" aria-labelledby="filing-fees">',
+            '<h2 id="filing-fees">Filing fees and agent pricing</h2>',
+            "<ul>",
+        ]
         body.extend(
             f"<li>{esc(name)}: {esc(price)}. {esc(timing)} "
-            f'— <a href="{esc(url, quote=True)}">'
+            f'— <a class="reference-badge" href="{esc(url, quote=True)}">'
             "Official source</a></li>"
             for name, price, url, timing in fee_rows
         )
@@ -508,7 +516,9 @@ class LandingPageGenerator:
                 "the official filing instructions.</p>"
             ]
         body += [
-            "<h2>Registered-agent providers</h2>",
+            "</section>",
+            '<section class="callout providers" aria-labelledby="registered-agents">',
+            '<h2 id="registered-agents">Registered-agent providers</h2>',
             "<p>Provider links may earn a referral commission. "
             "Compare current quotes and included services.</p>",
             "<ul>",
@@ -518,7 +528,7 @@ class LandingPageGenerator:
             f"{esc(name)}</a>: {esc(price)}</li>"
             for name, url, price in provider_links
         )
-        body += ["</ul>", "<h2>Requirements and consequences</h2>"]
+        body += ["</ul></section>", "<h2>Requirements and consequences</h2>"]
         body.extend(f"<p>{esc(p)}</p>" for p in paragraphs)
         body += [
             "<p>Required forms: " + esc("; ".join(form_lines)) + "</p>",
@@ -529,7 +539,8 @@ class LandingPageGenerator:
             "<ul>",
         ]
         body.extend(
-            f'<li><a href="{esc(s.url, quote=True)}">{esc(s.citation)}</a> — '
+            f'<li><a class="reference-badge" href="{esc(s.url, quote=True)}">'
+            f"{esc(s.citation)}</a> — "
             + (f"reviewed {s.verified_on.isoformat()}" if s.verified_on else "review pending")
             + "</li>"
             for s in sources
@@ -541,6 +552,7 @@ class LandingPageGenerator:
                 '<meta name="viewport" content="width=device-width, initial-scale=1">',
                 f"<title>{esc(title)}</title>",
                 f'<link rel="canonical" href="{esc(canonical, quote=True)}">',
+                f"<style>{GUIDE_STYLES}</style>",
                 _script(graph),
                 "</head><body><main>",
                 *body,
