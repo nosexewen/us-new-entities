@@ -1,14 +1,14 @@
 """Domestic-formation draft contract: exactly fifty states, two entity kinds, no legal claims."""
+import json
 from pathlib import Path
 
-from us_new_entities.formation_guides import build, REQUIRED_REVIEW_FIELDS
+from us_new_entities.formation_guides import REQUIRED_REVIEW_FIELDS, build
 
 
 def test_formation_drafts_are_unpublished(tmp_path: Path):
     assert build(tmp_path) == 100
     paths = list(tmp_path.glob("*/record.json"))
     assert len(paths) == 100
-    import json
     for path in paths:
         data = json.loads(path.read_text(encoding="utf-8"))
         assert data["jurisdiction"] == "domestic formation"
