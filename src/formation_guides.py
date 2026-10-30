@@ -17,6 +17,8 @@ from .models.entity import STATE_NAMES
 # Official domestic-formation source entrypoints reviewed 2026-10-30.
 # These are not sufficient alone to verify all legal fields of a guide.
 OFFICIAL_DOMESTIC_SOURCES = {
+    "AZ": "https://www.azcc.gov/corporations/fee-and-payment-info",
+    "WA": "https://www.sos.wa.gov/corporations-charities/business-entities/business-entities-filings-forms-information",
     "GA": "https://sos.ga.gov/how-to-guide/how-guide-register-domestic-entity",
     "OR": "https://sos.oregon.gov/business/Pages/obr-business-types.aspx",
     "CA": "https://www.sos.ca.gov/business-programs/business-entities/starting-business/types",
@@ -46,7 +48,7 @@ def record(state: str, name: str, kind: str) -> dict:
         "state_name": name,
         "entity": kind,
         "jurisdiction": "domestic formation",
-        "status": "research_required",
+        "status": "partially_researched" if any(v is not None for v in fields.values()) else "research_required",
         "reviewed_on": None,
         "official_source_entrypoint": OFFICIAL_DOMESTIC_SOURCES.get(state),
         "review_fields": fields,
