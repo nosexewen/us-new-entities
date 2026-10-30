@@ -80,6 +80,8 @@ def build(destination: Path) -> int:
     destination.mkdir(parents=True, exist_ok=True)
     manifest = []
     for state, name in sorted(STATE_NAMES.items()):
+        if state == "DC":
+            continue  # 50 states only; DC needs a separate jurisdiction track.
         for kind in ENTITY_TYPES:
             data = record(state, name, kind)
             path = destination / f"{state.lower()}-{kind}-formation"
