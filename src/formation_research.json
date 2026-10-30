@@ -79,6 +79,19 @@
       "sources": [
         "https://www.sos.wa.gov/es/node/30080"
       ]
+    },
+    "corporation": {
+      "source": "https://www.sos.wa.gov/corporations-charities/business-entities/business-entities-filings-forms-information",
+      "fields": {
+        "official_domestic_form": "Articles of Incorporation — Washington Profit Corporation",
+        "state_filing_fee": "$180 original filing fee, online processing fees may apply",
+        "filing_method": "Online or mail/in person",
+        "recurring_report_or_tax": "Annual report $70 per current Washington Secretary of State fee schedule"
+      },
+      "sources": [
+        "https://www.sos.wa.gov/corporations-charities/frequently-asked-questions-faqs/fee-schedules-priority-services",
+        "https://www.sos.wa.gov/sites/default/files/2023-10/Profit_AOI.pdf"
+      ]
     }
   }
 }
