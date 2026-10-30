@@ -1,0 +1,79 @@
+{
+  "reviewed_on": "2026-10-30",
+  "scope": "Domestic formation research, partial official-source verification only",
+  "jurisdictions": {
+    "FL": {
+      "llc": {
+        "document": "Articles of Organization",
+        "government_required_fees_usd": {
+          "articles": 100,
+          "registered_agent_designation": 25,
+          "total": 125
+        },
+        "filing": "Online or paper mailed to Division of Corporations",
+        "annual_report": "Due January 1–May 1, beginning calendar year after formation/effective date; regular fee $138.75; late filing $538.75",
+        "sources": [
+          "https://dos.fl.gov/sunbiz/start-business/efile/fl-llc/instructions",
+          "https://dos.fl.gov/sunbiz/forms/fees/"
+        ]
+      },
+      "corporation": {
+        "status": "not independently reviewed"
+      }
+    },
+    "NY": {
+      "llc": {
+        "document": "Articles of Organization",
+        "filing_fee_usd": 200,
+        "operating_agreement": "Written agreement within 90 days",
+        "publication": "Two designated newspapers, six consecutive weeks; Certificate of Publication filed within 120 days, $50 government filing fee, newspaper charges separate; exceptions apply",
+        "biennial_statement_fee_usd": 9,
+        "sources": [
+          "https://dos.ny.gov/forming-limited-liability-company-new-york"
+        ]
+      },
+      "corporation": {
+        "status": "not independently reviewed"
+      }
+    },
+    "WY": {
+      "llc": {
+        "document": "Articles of Organization",
+        "filing_fee_usd": 100,
+        "annual_report_due": "First day of anniversary month; administrative dissolution exposure if still unpaid after 60 days",
+        "paper_processing": "Up to 15 business days following receipt; no expedited processing",
+        "sources": [
+          "https://sos.wyo.gov/Forms/Business/LLC/LLC-ArticlesOrganization.pdf"
+        ]
+      },
+      "corporation": {
+        "status": "not independently reviewed"
+      }
+    },
+    "DE": {
+      "llc": {
+        "document": "Certificate of Formation",
+        "registered_agent": "Registered agent required; in-state business location may permit self-agent, subject to statutory qualifications",
+        "name_reservation": "Optional, $75, holds name 120 days",
+        "source": [
+          "https://corp.delaware.gov/howtoform/"
+        ]
+      },
+      "corporation": {
+        "document": "Certificate of Incorporation",
+        "name_reservation": "Optional, $75, holds name 120 days",
+        "source": [
+          "https://corp.delaware.gov/howtoform/"
+        ]
+      },
+      "filing_caution": "Document upload is submission, not direct electronic formation or instant acceptance. State filing fees not independently confirmed."
+    }
+  },
+  "publication_eligible": false,
+  "limitations": [
+    "Only explicitly cited field claims were researched",
+    "Corporation requirements missing in several states",
+    "Tax, agent, filing class and special-case verification incomplete",
+    "Do not use this file to imply 8 completed, reviewed guides"
+  ]
+}
