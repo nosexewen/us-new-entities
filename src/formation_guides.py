@@ -17,6 +17,8 @@ from .models.entity import STATE_NAMES
 # Official domestic-formation source entrypoints reviewed 2026-10-30.
 # These are not sufficient alone to verify all legal fields of a guide.
 OFFICIAL_DOMESTIC_SOURCES = {
+    "GA": "https://sos.ga.gov/how-to-guide/how-guide-register-domestic-entity",
+    "OR": "https://sos.oregon.gov/business/Pages/obr-business-types.aspx",
     "CA": "https://www.sos.ca.gov/business-programs/business-entities/starting-business/types",
     "DE": "https://corp.delaware.gov/howtoform/",
     "TX": "https://www.sos.state.tx.us/corp/forms_boc.shtml",
@@ -35,6 +37,9 @@ ENTITY_TYPES = {"llc": "LLC", "corporation": "Corporation"}
 
 
 def record(state: str, name: str, kind: str) -> dict:
+    evidence = json.loads(Path(__file__).with_name("formation_research.json").read_text(encoding="utf-8"))
+    research = evidence.get(state, {}).get(kind, {})
+    fields = {field: research.get("fields", {}).get(field) for field in REQUIRED_REVIEW_FIELDS}
     return {
         "state": state,
         "state_name": name,
@@ -43,7 +48,9 @@ def record(state: str, name: str, kind: str) -> dict:
         "status": "research_required",
         "reviewed_on": None,
         "official_source_entrypoint": OFFICIAL_DOMESTIC_SOURCES.get(state),
-        "review_fields": {field: None for field in REQUIRED_REVIEW_FIELDS},
+        "review_fields": fields,
+        "evidence_source": research.get("source"),
+        "research_status": "partial" if any(v is not None for v in fields.values()) else "not_started",
         "publication_eligible": False,
     }
 
@@ -59,7 +66,8 @@ def render_page(data: dict) -> str:
         else "<p>Official state formation source not yet independently reviewed.</p>"
     )
     fields = "".join(
-        f"<li>{html.escape(key.replace('_', ' ').capitalize())}: <strong>Not verified</strong></li>"
+        f"<li>{html.escape(key.replace('_', ' ').capitalize())}: "
+        f"<strong>{html.escape(str(data['review_fields'][key])) if data['review_fields'][key] is not None else 'Not verified'}</strong></li>"
         for key in REQUIRED_REVIEW_FIELDS
     )
     return (
@@ -71,7 +79,7 @@ def render_page(data: dict) -> str:
         "<p>This page concerns a NEW domestic entity, not registration of an "
         "existing out-of-state company. No amounts, deadlines or filing forms "
         "have been approved for publication.</p>"
-        f"{source_html}<h2>State-specific fields awaiting source review</h2>"
+        f"{source_html}<h2>State-specific research (unapproved)</h2>"
         f"<ul>{fields}</ul></main></body></html>"
     )
 
