@@ -4,6 +4,7 @@ No foreign qualification form, fee, or obligation is reused. All drafts have
 noindex until independently sourced and approved for publication.
 Run: python -m us_new_entities.formation_guides dist/formation-drafts
 """
+
 from __future__ import annotations
 
 import argparse
@@ -54,16 +55,15 @@ def render_page(data: dict) -> str:
     source_html = (
         f'<p>Official domestic formation entrypoint: <a href="{html.escape(source, quote=True)}">'
         "State filing office</a></p>"
-        if source else
-        "<p>Official state formation source not yet independently reviewed.</p>"
+        if source
+        else "<p>Official state formation source not yet independently reviewed.</p>"
     )
     fields = "".join(
-        f"<li>{html.escape(key.replace('_', ' ').capitalize())}: "
-        "<strong>Not verified</strong></li>"
+        f"<li>{html.escape(key.replace('_', ' ').capitalize())}: <strong>Not verified</strong></li>"
         for key in REQUIRED_REVIEW_FIELDS
     )
     return (
-        "<!doctype html><html lang=\"en\"><head><meta charset=\"utf-8\">"
+        '< !doctype html><html lang="en"><head><meta charset="utf-8">'.replace("< !", "<!")
         '<meta name="robots" content="noindex, nofollow">'
         f"<title>Draft: Form a {kind} in {state}</title></head><body>"
         f"<main><h1>Form a new {kind} in {state}</h1>"
