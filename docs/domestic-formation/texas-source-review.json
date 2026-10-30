@@ -1,0 +1,50 @@
+{
+  "jurisdiction": "TX",
+  "jurisdiction_type": "domestic formation",
+  "reviewed_on": "2026-10-30",
+  "source_authority": "Texas Secretary of State",
+  "entities": {
+    "llc": {
+      "filing_form": "Form 205 — Certificate of Formation, Limited Liability Company",
+      "state_filing_fee_usd": "300.00",
+      "fee_excludes": "Payment-channel convenience charges, expedited services and private agent fees",
+      "registered_agent": "Texas resident individual or qualifying registered entity; consent required; LLC cannot name itself; Texas physical service address required",
+      "name_availability": "Must be distinguishable on SOS records; final decision is made on filing",
+      "filing_method": "SOSPortal online; mail; in person",
+      "source_urls": [
+        "https://www.sos.state.tx.us/corp/instructions/205.shtml",
+        "https://www.sos.state.tx.us/corp/forms_boc.shtml"
+      ],
+      "additional_notes": [
+        "Manager-managed versus member-managed declaration and initial governing persons required",
+        "Initial mailing address required",
+        "Professional LLC uses separate Form 206"
+      ],
+      "research_status": "partially_verified"
+    },
+    "corporation": {
+      "filing_form": "Form 201 — Certificate of Formation, For-Profit Corporation",
+      "state_filing_fee_usd": "300.00",
+      "fee_excludes": "Payment-channel convenience charges, expedited services and private agent fees",
+      "registered_agent": "Texas resident individual or qualifying registered entity; consent required; corporation cannot name itself; Texas physical service address required",
+      "name_availability": "Must be distinguishable on SOS records; final decision is made on filing",
+      "filing_method": "SOSPortal online; mail; in person",
+      "source_urls": [
+        "https://www.sos.state.tx.us/corp/instructions/201.shtml",
+        "https://www.sos.state.tx.us/corp/forms_boc.shtml"
+      ],
+      "additional_notes": [
+        "At least one initial director; authorized shares must be specified",
+        "Initial mailing address required",
+        "Professional corporation uses separate Form 203"
+      ],
+      "research_status": "partially_verified"
+    }
+  },
+  "not_yet_verified": [
+    "Texas Comptroller recurring franchise tax and information report rules",
+    "formation-specific tax exceptions and exemption thresholds",
+    "all industry- and professional-specific requirements"
+  ],
+  "publication_eligible": false
+}
