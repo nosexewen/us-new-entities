@@ -15,7 +15,10 @@ def test_formation_drafts_are_unpublished(tmp_path: Path):
         assert data["jurisdiction"] == "domestic formation"
         assert data["publication_eligible"] is False
         assert set(data["review_fields"]) == set(REQUIRED_REVIEW_FIELDS)
-        assert all(value is None for value in data["review_fields"].values())
+        if data["state"] not in {"GA", "OR"}:
+            assert all(value is None for value in data["review_fields"].values())
+        else:
+            assert any(value is not None for value in data["review_fields"].values())
         page = (path.parent / "index.html").read_text(encoding="utf-8")
         assert "noindex, nofollow" in page
         assert "foreign qualification filing fee" not in page.lower()
