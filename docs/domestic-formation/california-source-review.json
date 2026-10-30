@@ -1,0 +1,40 @@
+{
+  "jurisdiction": "CA",
+  "jurisdiction_type": "domestic formation",
+  "reviewed_on": "2026-10-30",
+  "source_authority": "California Secretary of State",
+  "entities": {
+    "llc": {
+      "filing_form": "Articles of Organization, Form LLC-1",
+      "state_filing_fee_usd": "70.00",
+      "filing_method": "bizfile Online; consult official forms page for alternate methods",
+      "recurring_state_report": "Statement of Information every two years; initial statement required after formation",
+      "operating_agreement": "LLC operating agreement required but not filed with SOS",
+      "source_urls": [
+        "https://www.sos.ca.gov/business-programs/business-entities/starting-business/types",
+        "https://www.sos.ca.gov/business-programs/business-entities/faqs",
+        "https://www.sos.ca.gov/business-programs/business-entities/forms"
+      ],
+      "research_status": "partially_verified"
+    },
+    "corporation": {
+      "filing_form": "Articles of Incorporation",
+      "filing_method": "bizfile Online",
+      "recurring_state_report": "Statement of Information every year for California stock corporations",
+      "source_urls": [
+        "https://www.sos.ca.gov/business-programs/business-entities/starting-business/types",
+        "https://www.sos.ca.gov/business-programs/business-entities/faqs",
+        "https://www.sos.ca.gov/business-programs/business-entities/forms"
+      ],
+      "research_status": "partially_verified"
+    }
+  },
+  "unresolved": [
+    "Corporation filing fee and additional charges require direct class-specific fee review",
+    "Registered-agent requirements and exceptions to be source-checked for both entity types",
+    "Current initial Statement of Information deadlines and fees for both entity types",
+    "California Franchise Tax Board current annual LLC tax, corporation franchise tax, exemptions and first-year provisions",
+    "Name and professional entity restrictions"
+  ],
+  "publication_eligible": false
+}
