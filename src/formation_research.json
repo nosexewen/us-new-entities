@@ -1,0 +1,44 @@
+{
+  "GA": {
+    "llc": {
+      "source": "https://sos.ga.gov/how-to-guide/how-guide-register-domestic-entity",
+      "fields": {
+        "official_domestic_form": "Articles of Organization (CD 030 for mailed filings)",
+        "state_filing_fee": "$100 filing fee plus $10 service charge in current agency instructions",
+        "registered_agent_rules": "Registered agent located in Georgia",
+        "filing_method": "Online, paper-upload or mail",
+        "recurring_report_or_tax": "Annual registration Jan 1–Apr 1; $60 including service charge"
+      }
+    },
+    "corporation": {
+      "source": "https://sos.ga.gov/how-to-guide/how-guide-register-domestic-entity",
+      "fields": {
+        "official_domestic_form": "Articles of Incorporation",
+        "state_filing_fee": "$100 filing fee plus $10 service charge in agency instructions",
+        "registered_agent_rules": "Registered agent located in Georgia",
+        "filing_method": "Online, paper-upload or mail",
+        "initial_report": "Initial annual registration generally within 90 days; different window for Oct 2–Dec 31 incorporations",
+        "recurring_report_or_tax": "Annual registration Jan 1–Apr 1; $60 including service charge"
+      }
+    }
+  },
+  "OR": {
+    "llc": {
+      "source": "https://sos.oregon.gov/business/Pages/obr-business-types.aspx",
+      "fields": {
+        "official_domestic_form": "Articles of Organization",
+        "state_filing_fee": "$100",
+        "registered_agent_rules": "Oregon street address; LLC cannot be its own registered agent",
+        "recurring_report_or_tax": "Annual renewal $100"
+      }
+    },
+    "corporation": {
+      "source": "https://sos.oregon.gov/business/Pages/obr-business-types.aspx",
+      "fields": {
+        "official_domestic_form": "Articles of Incorporation for business corporations",
+        "state_filing_fee": "$100",
+        "recurring_report_or_tax": "Annual renewal required; fee under review"
+      }
+    }
+  }
+}
