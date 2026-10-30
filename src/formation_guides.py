@@ -51,7 +51,9 @@ def record(state: str, name: str, kind: str) -> dict:
         "official_source_entrypoint": OFFICIAL_DOMESTIC_SOURCES.get(state),
         "review_fields": fields,
         "evidence_source": research.get("source"),
-        "research_status": "partial" if any(v is not None for v in fields.values()) else "not_started",
+        "research_status": (
+            "partial" if any(v is not None for v in fields.values()) else "not_started"
+        ),
         "publication_eligible": False,
     }
 
