@@ -40,5 +40,45 @@
         "recurring_report_or_tax": "Annual renewal required; fee under review"
       }
     }
+  },
+  "AZ": {
+    "llc": {
+      "source": "https://www.azcc.gov/corporations/fee-and-payment-info",
+      "fields": {
+        "official_domestic_form": "Articles of Organization",
+        "state_filing_fee": "$50 regular processing; $85 expedited; Arizona Corporation Commission schedule revised March 2026",
+        "registered_agent_rules": "Statutory agent must accept appointment; individual agent has Arizona physical street address",
+        "state_specific_exceptions": "Publication required after approval; statutory agent in Maricopa or Pima county results in commission website publication, otherwise newspaper requirements must be checked"
+      },
+      "sources": [
+        "https://www.azcc.gov/docs/default-source/corps-files/fee-schedules/fee-schedule-llcs646a1cd0d6b24246ab2253aecbc3ab40.pdf?sfvrsn=debb38e6_5",
+        "https://www.azcc.gov/docs/default-source/corps-files/instructions/l010i-instructions-articles-of-organization88bf60ed7df74158a58145c66f72aa90.pdf?sfvrsn=fb0a9180_8"
+      ]
+    },
+    "corporation": {
+      "source": "https://www.azcc.gov/corporations/fee-and-payment-info",
+      "fields": {
+        "official_domestic_form": "Articles of Incorporation for-profit",
+        "state_filing_fee": "$60 regular; $95 expedited, per Corporation Commission corporation fee schedule revised 2023",
+        "recurring_report_or_tax": "Annual corporate report $45 regular processing; current schedule recheck required"
+      },
+      "sources": [
+        "https://azcc.gov/docs/default-source/corps-files/fee-schedules/fee-schedule-corporations.pdf"
+      ]
+    }
+  },
+  "WA": {
+    "llc": {
+      "source": "https://www.sos.wa.gov/corporations-charities/business-entities/limited-liability-company-llc-professional-llc-pllc-filing-resource-page",
+      "fields": {
+        "official_domestic_form": "Certificate of Formation with Initial Report",
+        "state_filing_fee": "$180 base state filing fee; online processing fee additional",
+        "filing_method": "Online or mail/in-person",
+        "initial_report": "Initial report is part of online Certificate of Formation workflow"
+      },
+      "sources": [
+        "https://www.sos.wa.gov/es/node/30080"
+      ]
+    }
   }
 }
