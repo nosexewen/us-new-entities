@@ -1,4 +1,5 @@
 """Domestic-formation draft contract: exactly fifty states, two entity kinds, no legal claims."""
+
 import json
 from pathlib import Path
 
@@ -16,5 +17,5 @@ def test_formation_drafts_are_unpublished(tmp_path: Path):
         assert set(data["review_fields"]) == set(REQUIRED_REVIEW_FIELDS)
         assert all(value is None for value in data["review_fields"].values())
         page = (path.parent / "index.html").read_text(encoding="utf-8")
-        assert 'noindex, nofollow' in page
+        assert "noindex, nofollow" in page
         assert "foreign qualification filing fee" not in page.lower()
