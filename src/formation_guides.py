@@ -63,7 +63,7 @@ def render_page(data: dict) -> str:
         for key in REQUIRED_REVIEW_FIELDS
     )
     return (
-        '< !doctype html><html lang="en"><head><meta charset="utf-8">'.replace("< !", "<!")
+        '<!doctype html><html lang="en"><head><meta charset="utf-8">'
         '<meta name="robots" content="noindex, nofollow">'
         f"<title>Draft: Form a {kind} in {state}</title></head><body>"
         f"<main><h1>Form a new {kind} in {state}</h1>"
