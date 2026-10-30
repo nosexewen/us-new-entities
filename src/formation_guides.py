@@ -37,7 +37,8 @@ ENTITY_TYPES = {"llc": "LLC", "corporation": "Corporation"}
 
 
 def record(state: str, name: str, kind: str) -> dict:
-    evidence = json.loads(Path(__file__).with_name("formation_research.json").read_text(encoding="utf-8"))
+    evidence_path = Path(__file__).with_name("formation_research.json")
+    evidence = json.loads(evidence_path.read_text(encoding="utf-8"))
     research = evidence.get(state, {}).get(kind, {})
     fields = {field: research.get("fields", {}).get(field) for field in REQUIRED_REVIEW_FIELDS}
     return {
@@ -65,11 +66,12 @@ def render_page(data: dict) -> str:
         if source
         else "<p>Official state formation source not yet independently reviewed.</p>"
     )
-    fields = "".join(
-        f"<li>{html.escape(key.replace('_', ' ').capitalize())}: "
-        f"<strong>{html.escape(str(data['review_fields'][key])) if data['review_fields'][key] is not None else 'Not verified'}</strong></li>"
-        for key in REQUIRED_REVIEW_FIELDS
-    )
+    fields = ""
+    for key in REQUIRED_REVIEW_FIELDS:
+        value = data["review_fields"][key]
+        display = html.escape(str(value)) if value is not None else "Not verified"
+        title = html.escape(key.replace("_", " ").capitalize())
+        fields += f"<li>{title}: <strong>{display}</strong></li>"
     return (
         '<!doctype html><html lang="en"><head><meta charset="utf-8">'
         '<meta name="robots" content="noindex, nofollow">'
