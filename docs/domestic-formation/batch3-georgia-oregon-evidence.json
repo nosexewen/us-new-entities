@@ -1,0 +1,58 @@
+{
+  "reviewed_on": "2026-10-30",
+  "authority": "Official state secretaries of state",
+  "scope": "domestic formation",
+  "status": "partially_verified",
+  "jurisdictions": {
+    "GA": {
+      "source": "https://sos.ga.gov/how-to-guide/how-guide-register-domestic-entity",
+      "entities": {
+        "llc": {
+          "official_domestic_form": "Articles of Organization (CD 030 for mail; online generated)",
+          "state_filing_fee": "$100 filing plus $10 service charge stated in current Georgia formation instructions",
+          "registered_agent_rules": "Georgia located registered agent",
+          "filing_method": "Online, uploaded paper, or mail",
+          "recurring_report_or_tax": "Annual registration January 1 to April 1; $60 including $10 service charge; first calendar year after formation"
+        },
+        "corporation": {
+          "official_domestic_form": "Articles of Incorporation; CD 227 transmittal for paper",
+          "state_filing_fee": "$100 plus $10 service charge according to current formation instructions",
+          "registered_agent_rules": "Georgia located registered agent",
+          "filing_method": "Online, uploaded paper, or mail",
+          "initial_report": "Initial annual registration within 90 days generally; October 2-December 31 formations have next-year Jan 1-Apr 1 timing",
+          "recurring_report_or_tax": "Annual registration $60 including service charge; subsequent Jan 1-Apr 1 annual periods"
+        }
+      }
+    },
+    "OR": {
+      "source": "https://sos.oregon.gov/business/Pages/obr-business-types.aspx",
+      "entities": {
+        "llc": {
+          "official_domestic_form": "Articles of Organization",
+          "state_filing_fee": "$100",
+          "registered_agent_rules": "Oregon street address for agent; LLC cannot appoint itself; no PO Box or virtual office",
+          "recurring_report_or_tax": "Annual renewal $100",
+          "source_details": [
+            "https://sos.oregon.gov/business/register/pages/articles-of-organization-form-instructions.aspx",
+            "https://sos.oregon.gov/business/Documents/business-registry-forms/br-fee-schedule.pdf"
+          ]
+        },
+        "corporation": {
+          "official_domestic_form": "Articles of Incorporation (business/professional)",
+          "state_filing_fee": "$100",
+          "recurring_report_or_tax": "Annual renewal required; class-specific current fee still needs checking",
+          "source_details": [
+            "https://sos.oregon.gov/business/Documents/business-registry-forms/dbc-articles.pdf",
+            "https://sos.oregon.gov/business/Documents/business-registry-forms/br-fee-schedule.pdf"
+          ]
+        }
+      }
+    }
+  },
+  "unresolved": [
+    "All eight mandatory fields not verified per entity",
+    "Official fees or processes may change",
+    "Exceptions, taxes and name restrictions require further review"
+  ],
+  "publication_eligible": false
+}
